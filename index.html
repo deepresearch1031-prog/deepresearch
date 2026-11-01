@@ -1,0 +1,2533 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>딥리서치 DeepResearch — 연구 PPT·포스터·과학 시각화</title>
+  <meta name="description" content="어려운 연구 내용을 선명하게 기억되는 전달로. 연구 발표 PPT·강의안, 학회 포스터, 3D 과학 시각화 제작" />
+  <meta property="og:title" content="딥리서치 DeepResearch" />
+  <meta property="og:description" content="학회 포스터 · 강의안·발표 PPT · 3D 과학 시각화" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b1728" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1728'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='13' fill='%2372d5c7' text-anchor='middle'%3EDR%3C/text%3E%3C/svg%3E" />
+  <script>
+    // JS가 켜졌을 때만 등장 모션용 숨김 상태를 쓴다 (JS가 없으면 모두 바로 보임) · ?check 는 이미지 점검 모드
+    document.documentElement.classList.add('js');
+    if (/[?&]check\b/.test(location.search)) document.documentElement.classList.add('check-mode');
+  </script>
+  <!-- 사례별 이미지·영상 목록: assets/media.js 만 고치면 반영됨 (파일이 없어도 페이지는 기존 도식으로 동작) -->
+  <script src="assets/media_v2_2.js"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Pretendard & Google Fonts (Noto Sans KR, Space Grotesk, JetBrains Mono) -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Pretendard Variable"', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+            display: ['"Space Grotesk"', '"Pretendard Variable"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#07101d',
+              900: '#0b1728',
+              800: '#102136',
+              700: '#142b45',
+              600: '#1d3b5c',
+            },
+            teal: {
+              700: '#0f7a74',
+              600: '#159f97',
+              500: '#22b8cf',
+              400: '#48c9b0',
+              300: '#72d5c7',
+              100: '#dcf4f1',
+              50: '#f0faf9',
+            },
+            paper: {
+              DEFAULT: '#eef5f5',
+              light: '#f7fafa',
+              card: '#ffffff',
+              border: '#d3e2e2',
+              muted: '#52667a',
+              ink: '#0f1f33',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --navy-dark: #0b1728;
+      --navy-mid: #142b45;
+      --teal-main: #159f97;
+      --teal-light: #72d5c7;
+      --paper-bg: #eef5f5;
+      --ink-main: #0f1f33;
+    }
+
+    body {
+      background-color: var(--paper-bg);
+      color: var(--ink-main);
+      font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+      overflow-x: hidden;
+      word-break: keep-all;
+    }
+
+    /* Editorial Container (.wrap) */
+    .wrap {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .wrap {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+      }
+    }
+
+    /* Editorial 30% / 70% Split Grid (.editorial-split) */
+    .editorial-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 1024px) {
+      .editorial-split {
+        grid-template-columns: 3.2fr 6.8fr;
+        gap: 3.5rem;
+      }
+    }
+
+    /* Lusion-inspired Project Row / Card Hover */
+    .work-card {
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+    }
+    .work-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 54px -16px rgba(11, 23, 40, 0.14), 0 0 0 1px rgba(21, 159, 151, 0.35);
+    }
+
+    /* Before -> After Hover Reveal on Card Thumbnails */
+    .ba-stage .after-layer {
+      transition: clip-path 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      clip-path: inset(0 0 0 46%);
+    }
+    .work-card:hover .ba-stage .after-layer {
+      clip-path: inset(0 0 0 14%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b1728;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1d3b5c;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #159f97;
+    }
+
+    /* Modal Backdrop Animation */
+    .modal-backdrop {
+      transition: opacity 0.3s ease;
+    }
+
+    /* ---------- v2.1 실제 작업물 미디어 슬롯 ----------
+       .media-slot 안에 실제 파일(.media-real)과 대체 도식(.media-fallback)을 함께 두고,
+       파일을 못 불러오면 is-missing 으로 도식을 보여 준다 */
+    .media-slot { position: relative; }
+    .media-slot .media-fallback { display: none; }
+    .media-slot.is-missing .media-real { display: none; }
+    .media-slot.is-missing .media-fallback { display: block; }
+    .media-frame {
+      overflow: hidden;
+      border-radius: 1rem;
+      background: #f7fafa;
+      border: 1px solid #d3e2e2;
+    }
+    .media-frame img, .media-frame video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .work-card:hover .media-frame img,
+    .work-card:hover .media-frame video { transform: scale(1.025); }
+    .media-zoom { cursor: zoom-in; }
+
+    /* 점검 모드(?check): 사례마다 파일 경로·상태 표시 */
+    .media-check { display: none; }
+    .check-mode .media-check {
+      display: block;
+      position: absolute; left: 8px; bottom: 8px; z-index: 5;
+      max-width: calc(100% - 16px);
+      padding: 2px 8px; border-radius: 6px;
+      font: 11px/1.5 "JetBrains Mono", monospace;
+      background: #b91c1c; color: #fff; word-break: break-all;
+    }
+    .check-mode .media-slot.is-ok .media-check { background: #0f7a74; }
+
+    /* 스크롤 등장 모션 (Lusion식 부드러운 전환) */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .js .reveal.is-in { opacity: 1; transform: none; }
+
+    /* 히어로 미리보기 이미지 전환 */
+    .hero-thumb img { transition: opacity 0.5s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* 확대 보기(라이트박스) */
+    #lightbox img { max-height: 88vh; }
+
+    /* 키보드 포커스 표시 */
+    .work-card:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible {
+      outline: 2px solid #48c9b0;
+      outline-offset: 3px;
+    }
+
+    /* 움직임 줄이기 설정을 켠 방문자에게는 모션을 끈다 */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      .js .reveal { opacity: 1; transform: none; }
+      .work-card:hover { transform: none; }
+    }
+    [data-paused], [hidden] { display: none !important; }
+    input[type=range] { accent-color: #159f97; }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-teal-600 selection:text-white">
+
+  <!-- =====================================================================
+       STICKY HEADER (상단 고정 헤더)
+       ===================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-white/10 text-white">
+    <div class="wrap h-16 flex items-center justify-between gap-4">
+      <!-- Brand Identity -->
+      <a href="#top" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-600 to-teal-400 flex items-center justify-center text-navy-950 font-display font-bold text-sm shadow-[0_0_15px_rgba(21,159,151,0.45)] group-hover:scale-105 transition-transform">
+          DR
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold tracking-tight text-base text-white">딥리서치</span>
+            <span class="font-display text-xs text-teal-300 font-medium">DeepResearch</span>
+          </div>
+          <span class="block text-[11px] text-slate-400 leading-none mt-0.5">연구 PPT·포스터·과학 시각화 스튜디오</span>
+        </div>
+      </a>
+
+      <!-- Main Navigation -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#work" class="hover:text-teal-300 transition-colors">포트폴리오(사례)</a>
+        <a href="#service-pricing" class="hover:text-teal-300 transition-colors">서비스·가격 안내</a>
+        <a href="#estimator" class="hover:text-teal-300 transition-colors flex items-center gap-1.5">
+          <span>예상 견적 확인기</span>
+          <span hidden class="hidden px-1.5 py-0.5 text-[10px] font-mono rounded bg-teal-500/20 text-teal-300">Interactive</span>
+        </a>
+        <a href="#process-trust" class="hover:text-teal-300 transition-colors">진행 방식·보안</a>
+        <a href="#about" class="hover:text-teal-300 transition-colors">소개</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5">
+        <a href="#special-3d-bridge" onclick="filterWorks('all')" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-teal-300 bg-white/[0.05] hover:bg-white/[0.1] border border-teal-400/25 transition-all" title="3D 과학 시각화 사례로 이동">
+          <span>연구 시각화 쇼케이스</span>
+          <span>↓</span>
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-teal-600 hover:bg-teal-500 text-white shadow-sm transition-all">
+          <span>문의하기</span>
+          <span>→</span>
+        </a>
+        <!-- 모바일 메뉴 (lg 미만에서는 상단 메뉴가 숨겨지므로) -->
+        <details class="lg:hidden relative" id="mobileNav">
+          <summary class="list-none cursor-pointer px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-semibold" aria-label="메뉴 열기">메뉴</summary>
+          <nav class="absolute right-0 mt-2 w-60 rounded-xl bg-navy-900 border border-white/15 shadow-2xl p-2 text-sm" onclick="if(event.target.closest('a')) this.parentElement.removeAttribute('open')">
+            <a href="#work" class="block px-3 py-2 rounded-lg hover:bg-white/10">포트폴리오(사례)</a>
+            <a href="#service-pricing" class="block px-3 py-2 rounded-lg hover:bg-white/10">서비스·가격 안내</a>
+            <a href="#estimator" class="block px-3 py-2 rounded-lg hover:bg-white/10">예상 견적 확인기</a>
+            <a href="#process-trust" class="block px-3 py-2 rounded-lg hover:bg-white/10">진행 방식·보안</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg hover:bg-white/10">소개</a>
+          </nav>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       SECTION 1. HERO (첫 화면 집중도 & 핵심 3대 서비스)
+       ===================================================================== -->
+  <section id="top" class="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-navy-900 via-navy-800 to-navy-700 text-white overflow-hidden border-b border-white/10">
+    <!-- Subtle Background Grid & Radial Glow -->
+    <div class="absolute inset-0 pointer-events-none opacity-25" style="background-image: radial-gradient(circle at 75% 25%, rgba(21, 159, 151, 0.35), transparent 55%), linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 100% 100%, 48px 48px, 48px 48px;"></div>
+
+    <div class="wrap relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <!-- Left 7 Cols: Strong Editorial Headline & Core Services -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.06] border border-teal-300/25 text-teal-300 text-xs font-mono tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+            <span>RESEARCH &amp; SCIENTIFIC VISUALIZATION STUDIO</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-[52px] font-bold tracking-tight text-white leading-[1.16]">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-200 to-white">
+              어려운 연구 내용을<br class="hidden sm:inline" /> 선명하게 기억되는 전달로.
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl">
+            논문 원문·연구 결과·전공 강의안을 발표 PPT와 학회 포스터, 3D 과학 시각화로.
+            <strong>자연과학 박사·10년 연구 경력</strong>의 원문 독해력과 구조적 시각화로, 복잡한 수식·데이터·원리를 청중과 심사위원이 한눈에 이해하는 결과물로 바꿉니다.
+          </p>
+
+          <!-- 3 Core Services Quick Pills -->
+          <div class="pt-2">
+            <div class="text-xs font-mono uppercase tracking-wider text-teal-300 mb-2.5">핵심 서비스 3종 (클릭 시 해당 사례로 이동)</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <button onclick="filterAndScrollToWork('ppt')" class="text-left p-3 rounded-xl bg-white/[0.06] hover:bg-teal-600/25 border border-white/10 hover:border-teal-300/50 transition-all group">
+                <span class="font-mono text-[11px] text-teal-300 block">SERVICE 01</span>
+                <span class="font-semibold text-sm text-white group-hover:text-teal-200 block mt-0.5">PPT·강의안 제작</span>
+                <span class="text-[11px] text-slate-300 block mt-1">원문 도식화·시각화</span>
+              </button>
+              <button onclick="filterAndScrollToWork('poster')" class="text-left p-3 rounded-xl bg-white/[0.06] hover:bg-teal-600/25 border border-white/10 hover:border-teal-300/50 transition-all group">
+                <span class="font-mono text-[11px] text-teal-300 block">SERVICE 02</span>
+                <span class="font-semibold text-sm text-white group-hover:text-teal-200 block mt-0.5">학회 포스터 제작</span>
+                <span class="text-[11px] text-slate-300 block mt-1">논문·초안 1장 압축</span>
+              </button>
+              <button onclick="filterAndScrollToWork('3d-motion')" class="text-left p-3 rounded-xl bg-white/[0.06] hover:bg-teal-600/25 border border-white/10 hover:border-teal-300/50 transition-all group">
+                <span class="font-mono text-[11px] text-teal-300 block">SERVICE 03</span>
+                <span class="font-semibold text-sm text-white group-hover:text-teal-200 block mt-0.5">3D 과학 시각화</span>
+                <span class="text-[11px] text-slate-300 block mt-1">원리·구조 모션 그래픽</span>
+              </button>
+              <button hidden data-paused="서비스 일시 중단" onclick="filterAndScrollToWork('consulting')" class="text-left p-3 rounded-xl bg-white/[0.06] hover:bg-teal-600/25 border border-white/10 hover:border-teal-300/50 transition-all group">
+                <span class="font-mono text-[11px] text-teal-300 block">SERVICE 04</span>
+                <span class="font-semibold text-sm text-white group-hover:text-teal-200 block mt-0.5">발표·포트폴리오</span>
+                <span class="text-[11px] text-slate-300 block mt-1">시간 배분·STAR 구조</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Primary CTAs -->
+          <div class="flex flex-wrap items-center gap-3 pt-3">
+            <a href="#work" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm shadow-lg shadow-teal-950/50 transition-all">
+              <span>포트폴리오 사례 살펴보기</span>
+              <span>↓</span>
+            </a>
+            <a href="#estimator" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-medium text-sm border border-white/15 transition-all">
+              <span>내 작업 예상 견적·납기 계산기</span>
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-navy-950/60 hover:bg-navy-950 text-teal-300 font-mono text-xs border border-teal-400/30 transition-all">
+              <span>문의 양식 작성</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Interactive Before -> After Visual Preview Deck -->
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl bg-navy-950/90 border border-white/15 shadow-2xl overflow-hidden">
+            <!-- Top Bar of Hero Showcase -->
+            <div class="px-4 py-3 bg-navy-900 border-b border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+                <span class="ml-2 font-mono text-[11px] text-slate-300">BEFORE → AFTER TRANSFORMATION PREVIEW</span>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-teal-500/20 text-teal-300 border border-teal-400/30">작업 예시</span>
+            </div>
+
+            <!-- Interactive Showcase Switcher Tabs -->
+            <div class="grid grid-cols-3 border-b border-white/10 bg-navy-900/60 text-[11px] font-medium">
+              <button onclick="switchHeroPreview(0)" id="heroTab0" class="hero-tab py-2.5 px-2 text-center border-b-2 border-teal-400 text-teal-300 bg-white/[0.04]">01 전공 강의안</button>
+              <button onclick="switchHeroPreview(1)" id="heroTab1" class="hero-tab py-2.5 px-2 text-center border-b-2 border-transparent text-slate-400 hover:text-white">02 학회 포스터</button>
+              <button onclick="switchHeroPreview(2)" id="heroTab2" class="hero-tab py-2.5 px-2 text-center border-b-2 border-transparent text-slate-400 hover:text-white">03 3D 시각화</button>
+              <button hidden data-paused="서비스 일시 중단" onclick="switchHeroPreview(3)" id="heroTab3" class="hero-tab py-2.5 px-2 text-center border-b-2 border-transparent text-slate-400 hover:text-white">04 포트폴리오</button>
+            </div>
+
+            <!-- Dynamic Hero Preview Content -->
+            <div id="heroPreviewBody" class="p-5 space-y-4 min-h-[320px] flex flex-col justify-between">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Loop Viewport — quantum_photonics_research_portfolio.html STEP 01 히어로 장면을 옮김 -->
+      <div class="mt-12 relative rounded-3xl overflow-hidden border border-white/15 bg-navy-950 shadow-2xl aspect-[16/9] max-h-[600px] w-full">
+        <canvas id="heroSceneCanvas" class="w-full h-full block" role="img" aria-label="DBR 마이크로캐비티 내부에서 빛이 왕복 공진하며 위로 방출되는 개념 루프 애니메이션"></canvas>
+        <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/30"></div>
+
+        <div class="absolute top-4 left-4 right-4 sm:top-5 sm:left-5 sm:right-5 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-950/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-slate-200">
+            <span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span>
+            <span>REAL-TIME 3D OPTICAL LOOP </span>
+          </div>
+          <div class="hidden sm:block px-3 py-1.5 rounded-full bg-navy-950/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-slate-300">
+            Microcavity Laser · DBR Resonator
+          </div>
+        </div>
+
+        <div class="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div class="max-w-2xl bg-navy-950/80 backdrop-blur-md border border-white/10 rounded-2xl p-3 sm:p-4">
+            <div class="text-[10px] font-mono uppercase tracking-widest text-teal-300 mb-1">Microcavity Laser · Core Visual Synopsis</div>
+            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">Microcavity에서 빛이 형성되고 방출되는 과정 — 상·하부 DBR 사이 공진기에서 빛이 왕복하다 위쪽으로 방출됩니다.</p>
+          </div>
+          <button type="button" onclick="openCaseModal('case-3d-microcavity')" class="hidden sm:inline-flex shrink-0 items-center gap-2 px-4 py-2.5 rounded-xl bg-teal-400 hover:bg-teal-300 text-navy-950 font-mono text-xs font-semibold tracking-wider uppercase transition-all shadow-lg">
+            <span>3D 시각화 사례 보기</span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Legal / Ethical Safety Notice Bar -->
+      <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-300">
+        <div class="flex items-center gap-2.5">
+          <span class="px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[11px] border border-teal-400/30 shrink-0">포트폴리오 표기 원칙</span>
+          <span>본 사이트의 모든 수록 사례는 <strong>대표 본인 제작 자료</strong>입니다. 실제 고객의 비공개 자료와 성과를 노출한 사례는 일절 포함하지 않았습니다.</span>
+        </div>
+        <a href="#process-trust" class="text-teal-300 hover:underline shrink-0 font-mono text-[11px]">고객 자료 보호 원칙 보기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 2. 고객 고민 & 작업 철학 (WHAT WE SOLVE — 30% / 70% Split)
+       ===================================================================== -->
+  <section class="py-16 md:py-24 bg-paper-light border-b border-paper-border">
+    <div class="wrap">
+      <div class="editorial-split items-start">
+        <!-- Left 30% -->
+        <div class="lg:sticky lg:top-24">
+          <span class="font-mono text-xs uppercase tracking-widest text-teal-700 font-semibold block mb-2">01 / WHAT WE SOLVE</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-navy-900 leading-snug">
+            자료는 충분한데<br />
+            왜 전달이 어려울까요?
+          </h2>
+          <p class="mt-4 text-sm sm:text-base text-paper-muted leading-relaxed">
+            열심히 연구한 논문, 수십 장의 실험 데이터, 치열했던 프로젝트 기록이 있어도 <strong>핵심 결론</strong>으로 재구성되지 않으면 설득력을 잃습니다. 딥리서치는 단순 디자인이 아닌 <strong>내용 이해에서 출발하는 구조화</strong>로 문제를 해결합니다.
+          </p>
+        </div>
+
+        <!-- Right 70%: 3-Step Core Philosophy -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Step 01 -->
+          <div class="bg-white rounded-2xl p-6 border border-paper-border shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-navy-900 text-teal-300">STEP 01</span>
+                <span class="text-xs font-mono text-paper-muted">원문·맥락 해독</span>
+              </div>
+              <h3 class="text-lg font-bold text-navy-900 mb-2">정리된 내용 이해</h3>
+              <p class="text-sm text-paper-muted leading-relaxed">
+                보내주신 논문 원문, 연구노트, 실험 데이터, 강의 자료의 핵심 질문을 먼저 정확히 파악합니다. 단순 AI 요약이 아닌 <strong>연구자·전문가의 맥락과 의도를</strong> 깊이 이해하는 것이 설득력 있는 결과물 제작의 출발점입니다.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-mono text-teal-700">
+              ✓ 수식·실험 원리·연구 맥락 정밀 검토
+            </div>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="bg-white rounded-2xl p-6 border border-paper-border shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-navy-900 text-teal-300">STEP 02</span>
+                <span class="text-xs font-mono text-paper-muted">논리 설계</span>
+              </div>
+              <h3 class="text-lg font-bold text-navy-900 mb-2">전달 순서·분량 구성</h3>
+              <p class="text-sm text-paper-muted leading-relaxed">
+                청중(학회 참가자·과제 심사위원·교수·수강생 등)의 배경지식과 발표 제한 시간에 맞춰 연구 배경부터 핵심 결론까지 흐름을 체계적으로 재구성합니다.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-mono text-teal-700">
+              ✓ 두괄식 결론 · 핵심 근거 중심 구조 설계
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="bg-white rounded-2xl p-6 border border-paper-border shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-teal-600 text-white">STEP 03</span>
+                <span class="text-xs font-mono text-paper-muted">시각·근거 완성</span>
+              </div>
+              <h3 class="text-lg font-bold text-navy-900 mb-2">그림·도표·3D로 직관적인 전달</h3>
+              <p class="text-sm text-paper-muted leading-relaxed">
+                복잡한 동작 원리와 수식은 직관적인 2D/3D 도식으로 풀어내고 데이터와 실험 결과는 핵심 근거만 남겨 설득력 있는 그림·도표로 재구성합니다.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-xs font-mono text-teal-700">
+              ✓ 편집 가능한 원본(PPTX) + 고해상도 PDF/MP4 납품
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 3. 포트폴리오 사례 탐색 (SELECTED WORK — 6단계 상세 모달)
+       ===================================================================== -->
+  <section id="work" class="py-20 md:py-28 bg-paper border-b border-paper-border">
+    <div class="wrap">
+      <!-- Section Header & Filter Bar -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-paper-border">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-teal-700 font-semibold block mb-2">02 / SELECTED CASE STUDIES</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">
+            포트폴리오 사례 탐색
+          </h2>
+          <p class="mt-2.5 text-sm sm:text-base text-paper-muted max-w-2xl">
+            각 카드를 클릭하면 <strong>① 대표 결과물 → ② 해결 과제 → ③ 3단계 접근 방법 → ④ 전후(Before &amp; After) 비교 → ⑤ 진행 과정·납품 조건 → ⑥ 출처·성격 고지</strong>의 6단계 상세 사례 연구를 확인하실 수 있습니다.
+          </p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2" id="workFilterBar">
+          <button onclick="filterWorks('all')" data-cat="all" class="work-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-navy-900 text-white shadow-sm transition-all">
+            전체 사례 (4)
+          </button>
+          <button onclick="filterWorks('ppt')" data-cat="ppt" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
+            PPT·강의안 (2)
+          </button>
+          <button onclick="filterWorks('poster')" data-cat="poster" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
+            학회 포스터 (1)
+          </button>
+          <button hidden data-paused="서비스 일시 중단" onclick="filterWorks('editing')" data-cat="editing" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
+            문서 교정·첨삭 (1)
+          </button>
+          <button hidden data-paused="서비스 일시 중단" onclick="filterWorks('consulting')" data-cat="consulting" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
+            발표·포트폴리오 컨설팅 (2)
+          </button>
+          <button onclick="filterWorks('3d-motion')" data-cat="3d-motion" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
+            3D 과학 시각화 (1)
+          </button>
+        </div>
+      </div>
+
+      <!-- Project Cards Stream (Populated dynamically from PORTFOLIO_CASES) -->
+      <div id="workCardsContainer" class="mt-12 space-y-10">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 4. 서비스 선택 & 가격·일정 안내 + 실시간 견적 확인기
+       ===================================================================== -->
+  <section id="service-pricing" class="py-20 md:py-28 bg-paper-light border-b border-paper-border">
+    <div class="wrap">
+      <!-- Header -->
+      <div class="max-w-3xl">
+        <span class="font-mono text-xs uppercase tracking-widest text-teal-700 font-semibold block mb-2">03 / SERVICE GUIDE &amp; TRANSPARENT PRICING</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">
+          서비스 선택 &amp; 가격·일정 기준표
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-paper-muted leading-relaxed">
+          내 자료 상태에 맞춰 <strong>초안 정리(구성·디자인)</strong>와 <strong>원문 기반 기획 포함</strong> 중 알맞은 방식을 선택하세요. 표시 금액은 서비스 작업 총액이며 사전 합의 없는 별도 금액을 가산하지 않습니다.
+        </p>
+      </div>
+
+      <!-- '초안 정리 vs 기획 포함' 10초 선택 가이드 -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="rounded-2xl bg-white p-6 sm:p-7 border border-paper-border shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-100 text-navy-900">TYPE A · 이미 초안이 있는 경우</span>
+            <span class="text-xs font-mono text-teal-700 font-semibold">합리적 비용 · 빠른 시안</span>
+          </div>
+          <h3 class="text-xl font-bold text-navy-900">구성·디자인 / 기존 초안 편집</h3>
+          <p class="mt-2 text-sm text-paper-muted leading-relaxed">
+            이미 장별 내용이나 PPT 초안이 준비되어 있고, <strong>레이아웃 정돈·가독성 개선·도식 다듬기·시각적 통일감</strong>이 필요할 때 적합합니다.
+          </p>
+          <ul class="mt-4 space-y-1.5 text-xs sm:text-sm text-navy-800">
+            <li>• <strong>PPT 구성·디자인:</strong> 최대 30장 기준 <strong>100,000원</strong> (첫 시안 영업일 3~5일)</li>
+            <li>• <strong>학회 포스터 초안 편집:</strong> 국문/영문 1장·1규격 <strong>40,000원</strong></li>
+            <li data-paused="서비스 일시 중단">• <strong>문서 교정·편집:</strong> 30쪽 이내 <strong>50,000원</strong> / 31~50쪽 <strong>70,000원</strong></li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl bg-navy-900 text-white p-6 sm:p-7 border border-teal-400/30 shadow-lg">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-teal-500/20 text-teal-300 border border-teal-400/30">TYPE B · 논문·원고만 있거나 구조화·3D 시각화가 필요한 경우</span>
+            <span class="text-xs font-mono text-teal-300 font-semibold">딥리서치 주력 추천</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">기획·구성·디자인 / 3D 과학 시각화</h3>
+          <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+            논문 원문·보고서·실험 데이터에서 <strong>핵심 내용을 추려 스토리라인을 기획</strong>하고, 수식·원리 도식화나 3D 과학 모션그래픽 제작까지 깊이 있는 구조화가 필요할 때 적합합니다.
+          </p>
+          <ul class="mt-4 space-y-1.5 text-xs sm:text-sm text-slate-100">
+            <li>• <strong>PPT 기획·구성·디자인:</strong> 최대 30장 기준 <strong>200,000원</strong> (첫 시안 영업일 5~7일)</li>
+            <li>• <strong>학회 포스터 기획·구성·디자인:</strong> 논문 원문 기반 <strong>80,000원</strong></li>
+            <li>• <strong>3D 과학 시각화:</strong> 3D 이미지 <strong>150,000원</strong> / 3D 애니메이션(30초 이내) <strong>300,000원</strong></li>
+            <li data-paused="서비스 일시 중단">• <strong>직무 포트폴리오 컨설팅·편집:</strong> 20쪽 이내 <strong>150,000원</strong> / <strong>발표 컨설팅:</strong> <strong>100,000원</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 핵심 서비스 전체 기준표 -->
+      <div class="mt-10 bg-white rounded-3xl border border-paper-border shadow-sm overflow-hidden">
+        <div class="px-6 py-5 bg-navy-900 text-white flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h3 class="text-lg font-bold">딥리서치 서비스 상세 가격·분량·납기 기준표</h3>
+            <p class="text-xs text-slate-300 mt-0.5">모든 금액은 서비스 작업 총액 표기</p>
+          </div>
+          <span class="px-3 py-1 rounded-lg bg-white/10 text-teal-300 font-mono text-xs">수정: 각 시안 수령 후 7일 이내 취합 요청 기준</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-slate-50 border-b border-paper-border text-navy-900 font-semibold">
+                <th class="py-3.5 px-5">서비스 영역</th>
+                <th class="py-3.5 px-5">세부 작업 유형</th>
+                <th class="py-3.5 px-5">기준 분량</th>
+                <th class="py-3.5 px-5">기본가 (총액)</th>
+                <th class="py-3.5 px-5">초과·추가 기준</th>
+                <th class="py-3.5 px-5">첫 시안 납기 · 수정 · 납품물</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-paper-border text-navy-800">
+              <!-- PPT -->
+              <tr class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-bold text-navy-900" rowspan="2">① PPT·강의안 제작</td>
+                <td class="py-4 px-5 font-semibold">구성·디자인 <span class="block text-xs font-normal text-paper-muted">장별 초안이 정리된 상태</span></td>
+                <td class="py-4 px-5 font-mono">최대 30장</td>
+                <td class="py-4 px-5 font-mono font-bold text-navy-900">100,000원</td>
+                <td class="py-4 px-5">31장부터 10장마다 <span class="font-mono font-semibold">+30,000원</span></td>
+                <td class="py-4 px-5">영업일 3~5일 · 취합 수정 2회 · <span class="font-mono text-xs">PPTX + PDF</span></td>
+              </tr>
+              <tr class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-semibold text-teal-700">기획·구성·디자인 <span class="block text-xs font-normal text-paper-muted">원문·자료에서 내용 정리+시각화</span></td>
+                <td class="py-4 px-5 font-mono">최대 30장</td>
+                <td class="py-4 px-5 font-mono font-bold text-teal-700">200,000원</td>
+                <td class="py-4 px-5">31장부터 10장마다 <span class="font-mono font-semibold">+60,000원</span></td>
+                <td class="py-4 px-5">영업일 5~7일 · 취합 수정 2회 · <span class="font-mono text-xs">PPTX + PDF</span></td>
+              </tr>
+
+              <!-- 학회 포스터 -->
+              <tr class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-bold text-navy-900" rowspan="2">② 학회 포스터 제작</td>
+                <td class="py-4 px-5 font-semibold">기존 초안 편집 <span class="block text-xs font-normal text-paper-muted">PPT 초안 기반 배치·가독성 정리</span></td>
+                <td class="py-4 px-5 font-mono">국문/영문 1장·1규격<br/><span class="text-[11px] text-paper-muted">(A0 등 학회 양식)</span></td>
+                <td class="py-4 px-5 font-mono font-bold text-navy-900">40,000원</td>
+                <td class="py-4 px-5" rowspan="2">원문 전체 독해·요약·번역·신규 도식 제작은 범위 확인 후 견적 반영</td>
+                <td class="py-4 px-5" rowspan="2">영업일 2~3일 · 취합 수정 2회 · <span class="font-mono text-xs">PPTX + 인쇄용 PDF</span></td>
+              </tr>
+              <tr class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-semibold text-teal-700">기획·구성·디자인 <span class="block text-xs font-normal text-paper-muted">논문 원문·핵심 자료 기반 구성</span></td>
+                <td class="py-4 px-5 font-mono">국문/영문 1장·1규격</td>
+                <td class="py-4 px-5 font-mono font-bold text-teal-700">80,000원</td>
+              </tr>
+
+              <!-- 3D 과학 시각화 (신규 정식 반영) -->
+              <tr class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-bold text-navy-900" rowspan="2">③ 3D 과학 시각화</td>
+                <td class="py-4 px-5 font-semibold">연구 모식도 3D 스틸컷 <span class="block text-xs font-normal text-paper-muted">소자·분자·실험 구조 고해상도 렌더링</span></td>
+                <td class="py-4 px-5 font-mono">3D 이미지 1개 (기획~디자인)<br/><span class="text-[11px] text-paper-muted">(슬라이드·포스터 삽입용)</span></td>
+                <td class="py-4 px-5 font-mono font-bold text-navy-900">150,000원</td>
+                <td class="py-4 px-5" rowspan="2"> 구조 복잡도·단면 절개 · 연출 범위에 따라 사전 합의</td>
+                <td class="py-4 px-5">영업일 5~7일 · 취합 수정 2회 · <span class="font-mono text-xs">고해상도 PNG/PDF</span></td>
+              </tr>
+              <tr class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-semibold text-teal-700">3D 과학 모션그래픽 <span class="block text-xs font-normal text-paper-muted">BUILD·REVEAL·EXPLAIN 구동 원리 영상</span></td>
+                <td class="py-4 px-5 font-mono">30초 이내 영상<br/><span class="text-[11px] text-paper-muted">(기획~구현 포함)</span></td>
+                <td class="py-4 px-5 font-mono font-bold text-teal-700">300,000원</td>
+                <td class="py-4 px-5">영업일 7~10일 · 스토리보드 합의 후 제작 · <span class="font-mono text-xs">MP4 + 스틸컷</span></td>
+              </tr>
+
+              <!-- 문서 교정·첨삭 (일시 중단) -->
+              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-bold text-navy-900" rowspan="3">④ 문서 교정·첨삭</td>
+                <td class="py-4 px-5 font-semibold">문서 교정·편집 <span class="block text-xs font-normal text-paper-muted">문장 교정 + 문서 서식·편집 정리</span></td>
+                <td class="py-4 px-5 font-mono">30쪽 이내<br/>(31~50쪽)</td>
+                <td class="py-4 px-5 font-mono font-bold text-navy-900">50,000원<br/><span class="text-xs font-normal">(70,000원)</span></td>
+                <td class="py-4 px-5">50쪽 초과 시 분량 확인 후 사전 합의</td>
+                <td class="py-4 px-5">취합 수정 1회 · <span class="font-mono text-xs">Word(DOCX) + PDF</span></td>
+              </tr>
+              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-semibold text-teal-700">문서 서면 피드백 <span class="block text-xs font-normal text-paper-muted">핵심 메시지·논리·근거 검토 의견서</span></td>
+                <td class="py-4 px-5 font-mono">20쪽 이내</td>
+                <td class="py-4 px-5 font-mono font-bold text-teal-700">70,000원</td>
+                <td class="py-4 px-5">20쪽 초과 시 범위 사전 합의</td>
+                <td class="py-4 px-5">영업일 3~5일 · 질문 답변 1회 · <span class="font-mono text-xs">피드백 보고서 1종</span></td>
+              </tr>
+              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-semibold">취업·대학원 서류 첨삭 <span class="block text-xs font-normal text-paper-muted">학업계획서·연구계획서·자기소개서</span></td>
+                <td class="py-4 px-5 font-mono">1건 3,000자 이내<br/><span class="text-[11px] text-paper-muted">(공백 포함)</span></td>
+                <td class="py-4 px-5 font-mono font-bold text-navy-900">30,000원</td>
+                <td class="py-4 px-5">글자 수 초과 시 사전 합의</td>
+                <td class="py-4 px-5">영업일 2~3일 · 수정 2회 · <span class="font-mono text-xs">서면 의견 + 첨삭본</span></td>
+              </tr>
+
+              <!-- 발표 & 포트폴리오 컨설팅 (일시 중단) -->
+              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-bold text-navy-900" rowspan="3">⑤ 발표 &amp; 직무 포트폴리오 컨설팅</td>
+                <td class="py-4 px-5 font-semibold">발표 컨설팅 <span class="block text-xs font-normal text-paper-muted">장별 요점·시간 배분 + 리허설 피드백</span></td>
+                <td class="py-4 px-5 font-mono">15~20분 발표<br/><span class="text-[11px] text-paper-muted">(온라인 미팅 60분 이내)</span></td>
+                <td class="py-4 px-5 font-mono font-bold text-navy-900">100,000원</td>
+                <td class="py-4 px-5">발표 시간 초과 시 사전 합의</td>
+                <td class="py-4 px-5">리허설 후 영업일 2일 내 서면 피드백 + 시간 배분표 · 보완 1회</td>
+              </tr>
+              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-semibold text-teal-700">포트폴리오 컨설팅·편집 <span class="block text-xs font-normal text-paper-muted">6단계 직무 분석·STAR 정리·레이아웃 편집</span></td>
+                <td class="py-4 px-5 font-mono">20쪽 이내</td>
+                <td class="py-4 px-5 font-mono font-bold text-teal-700">150,000원</td>
+                <td class="py-4 px-5">20쪽 초과 시 사전 합의</td>
+                <td class="py-4 px-5">취합 수정 2회 · <span class="font-mono text-xs">서면 의견 + 편집본 PDF</span></td>
+              </tr>
+              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
+                <td class="py-4 px-5 font-semibold">포트폴리오 서면 진단 (단독) <span class="block text-xs font-normal text-paper-muted">전체 진단+우선순위 과제+장별·배치 의견</span></td>
+                <td class="py-4 px-5 font-mono">분량·범위 확인</td>
+                <td class="py-4 px-5 font-mono font-bold text-navy-900">개별 견적</td>
+                <td class="py-4 px-5">검토 범위 확인 후 안내</td>
+                <td class="py-4 px-5">취합 수정 2회 · <span class="font-mono text-xs">서면 진단 보고서</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pricing Footnote Rules -->
+        <div class="p-5 bg-slate-50 border-t border-paper-border text-xs text-paper-muted flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <strong>[공통 가산 및 투명성 원칙]</strong> 표시 금액은 서비스 작업 총액이며 별도 금액을 가산하지 않습니다. 급행 작업과 언어 전환(국문→영문, 영문→국문) 작업은 <strong>각각 기본가의 30%를 더합니다</strong>(예: 100,000원 + 급행 30,000원 + 언어 전환 30,000원 = 160,000원). 모든 추가 작업은 사전 합의 후 반영합니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 분량 초과·추가 작업 요금 & 연구비 결제/행정 서류 안내 (2단 그리드) -->
+      <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div data-paused="서비스 일시 중단" class="bg-white rounded-3xl border border-paper-border shadow-sm overflow-hidden">
+          <div class="px-6 py-4 border-b border-paper-border">
+            <h3 class="text-base font-bold text-navy-900">PPT + 발표 컨설팅 함께 진행</h3>
+            <p class="text-xs text-paper-muted mt-0.5">두 서비스 금액을 더한 총액입니다 (별도 할인 묶음 상품 아님)</p>
+          </div>
+          <table class="w-full text-left text-xs sm:text-sm">
+            <tbody class="divide-y divide-paper-border text-navy-800">
+              <tr><td class="py-3 px-6 font-semibold">PPT 구성·디자인 + 발표 컨설팅</td><td class="py-3 px-6 font-mono">최대 30장 + 리허설 1회</td><td class="py-3 px-6 font-mono font-bold text-navy-900 text-right">200,000원</td></tr>
+              <tr><td class="py-3 px-6 font-semibold text-teal-700">PPT 기획·구성·디자인 + 발표 컨설팅</td><td class="py-3 px-6 font-mono">최대 30장 + 리허설 1회</td><td class="py-3 px-6 font-mono font-bold text-teal-700 text-right">300,000원</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-paper-border shadow-sm overflow-hidden">
+          <div class="px-6 py-4 border-b border-paper-border">
+            <h3 class="text-base font-bold text-navy-900">분량 초과·추가 작업 요금 기준</h3>
+            <p class="text-xs text-paper-muted mt-0.5">사전 합의 후 총액에 반영하며 임의로 가산하지 않습니다</p>
+          </div>
+          <table class="w-full text-left text-xs sm:text-sm">
+            <tbody class="divide-y divide-paper-border text-navy-800">
+              <tr><td class="py-2.5 px-6">PPT 구성·디자인 30장 초과</td><td class="py-2.5 px-6 font-mono text-right">10장마다 +30,000원</td></tr>
+              <tr><td class="py-2.5 px-6">PPT 기획·구성·디자인 30장 초과</td><td class="py-2.5 px-6 font-mono text-right">10장마다 +60,000원</td></tr>
+              <tr><td class="py-2.5 px-6">포스터 내 신규 고난도 도식·3D 스틸컷 추가</td><td class="py-2.5 px-6 font-mono text-right">범위 확인 후 사전 합의</td></tr>
+              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">문서 교정·편집 50쪽 초과</td><td class="py-2.5 px-6 font-mono text-right">10쪽마다 +10,000원</td></tr>
+              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">서면 피드백 20쪽 초과</td><td class="py-2.5 px-6 font-mono text-right">10쪽마다 +30,000원</td></tr>
+              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">포트폴리오 20쪽 초과</td><td class="py-2.5 px-6 font-mono text-right">10쪽마다 +70,000원</td></tr>
+              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">서류 첨삭 3천 자 초과</td><td class="py-2.5 px-6 font-mono text-right">1천 자마다 +10,000원</td></tr>
+              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">추가 리허설 (60분 이내)</td><td class="py-2.5 px-6 font-mono text-right">1회 50,000원</td></tr>
+              <tr><td class="py-2.5 px-6">포함 횟수(2회)를 넘는 추가 수정</td><td class="py-2.5 px-6 font-mono text-right">1회당 20,000원</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 연구비 결제 및 행정 서류 안내 카드 (신규 추가) -->
+        <div hidden data-paused="일시 숨김" class="bg-white rounded-3xl border border-paper-border shadow-sm p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-teal-50 text-teal-800 border border-teal-200">RESEARCH GRANT &amp; BILLING GUIDE</span>
+              <span class="text-xs font-mono text-paper-muted">대학·연구소·기업 과제</span>
+            </div>
+            <h3 class="text-base font-bold text-navy-900 mt-1">연구비 결제 및 증빙 서류 안내</h3>
+            <p class="text-xs sm:text-sm text-paper-muted mt-2 leading-relaxed">
+              대학 산학협력단, 국책·기업 연구과제, 법인 비용 처리를 위한 결제 및 사전 견적 안내를 지원합니다.
+            </p>
+            <ul class="mt-3.5 space-y-1.5 text-xs sm:text-sm text-navy-800">
+              <li>• <strong>공식 견적서·내역 안내:</strong> 숨고 메시지로 문의 시 작업 항목별 상세 견적서 발급</li>
+              <li>• <strong>플랫폼 카드 결제:</strong> 숨고페이 등 안전결제를 통한 연구비 카드·법인카드 결제 지원</li>
+              <li>• <strong>원본+납품 증빙:</strong> 결과물 납품 시 편집 가능한 원본(PPTX)과 검수용 PDF/MP4 동시 전달</li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-teal-700">
+            <span>✓ 행정 절차에 맞춘 일정 조율 가능</span>
+            <a href="#contact" class="hover:underline font-semibold">문의 양식 작성하기 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================================
+           INTERACTIVE ESTIMATOR (직접 조작형 견적·납기 계산기)
+           ================================================================= -->
+      <div id="estimator" class="mt-14 scroll-mt-24 rounded-3xl bg-navy-900 text-white p-6 sm:p-10 border border-teal-400/30 shadow-xl">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/10">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-teal-300 block">INTERACTIVE QUICK ESTIMATOR</span>
+            <h3 class="text-2xl font-bold text-white mt-1">내 상황에 맞는 서비스 · 예상 견적 빠른 확인기</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300">
+            자료 상태와 예상 분량을 선택하면 가격 기준표에 따른 예상 금액과 납기를 바로 보여 드립니다. 확정 견적은 자료를 확인한 뒤 안내합니다.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6 items-center">
+          <!-- Controls (7 Cols) -->
+          <div class="lg:col-span-7 space-y-5">
+            <!-- 1. Service Type -->
+            <div>
+              <label for="estServiceSelect" class="block text-xs font-mono uppercase text-teal-300 mb-2">01. 필요한 서비스 선택</label>
+              <select id="estServiceSelect" onchange="updateEstimator()" class="w-full rounded-xl bg-navy-800 border border-white/15 px-4 py-3 text-sm text-white focus:outline-none focus:border-teal-400">
+                <option value="ppt_design">PPT·강의안 제작 — 구성·디자인 (초안 있음 · 기본 30장 100,000원)</option>
+                <option value="ppt_plan" selected>PPT·강의안 제작 — 기획·구성·디자인 (원문 기반 · 기본 30장 200,000원)</option>
+                <option value="poster_draft">학회 포스터 제작 — 기존 초안 편집 (국문 1장 40,000원~)</option>
+                <option value="poster_plan">학회 포스터 제작 — 논문 원문 기반 기획·구성·디자인 (국문 1장 80,000원~)</option>
+                <option value="viz_3d_still">3D 과학 시각화 — 연구 모식도 3D 스틸컷 (3D 이미지 1개 150,000원)</option>
+                <option value="viz_3d_motion">3D 과학 시각화 — 3D 과학 모션그래픽 루프 영상 (30초 이내 300,000원)</option>
+                <!-- 서비스 일시 중단(2026-10-30): <option value="doc_edit">문서 교정·편집 — 문장 교정 및 서식 정리 (30쪽 이내 50,000원)</option>
+                <option value="doc_feedback">문서 서면 피드백 — 메시지·논리·근거 피드백 보고서 (20쪽 이내 70,000원)</option>
+                <option value="doc_resume">취업·대학원 서류 첨삭 — 학업·연구계획서·자소서 (3,000자 이내 30,000원)</option>
+                <option value="consult_pres">발표 컨설팅 — 장별 요점·시간 배분 + 60분 리허설 피드백 (100,000원)</option>
+                <option value="consult_pf">직무 포트폴리오 컨설팅·편집 — 6단계 구조화 + 편집본 (20쪽 이내 150,000원)</option> -->
+              </select>
+            </div>
+
+            <!-- 2. Volume Slider -->
+            <div id="estVolumeWrapper">
+              <div class="flex justify-between text-xs font-mono mb-1.5">
+                <span id="estVolumeLabel" class="text-slate-300">02. 예상 작업 분량 (슬라이드 장수)</span>
+                <span id="estVolumeValue" class="text-teal-300 font-bold">25장 (기본 30장 이내)</span>
+              </div>
+              <input id="estVolumeSlider" type="range" min="10" max="60" step="5" value="25" oninput="updateEstimator()" class="w-full accent-teal-400 cursor-pointer" />
+              <p id="estVolumeHint" class="text-[11px] text-slate-400 mt-1">30장까지 기본가 적용, 31장부터 10장 단위로 초과분 가산</p>
+            </div>
+
+            <!-- 3. Add-on Options (단리 30% 가산) -->
+            <div class="pt-1">
+              <span class="block text-xs font-mono uppercase text-teal-300 mb-2">03. 추가 옵션 (선택마다 기본가의 30%를 더함)</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="flex items-center gap-3 p-3 rounded-xl bg-navy-800/80 border border-white/10 cursor-pointer hover:border-teal-400/40">
+                  <input type="checkbox" id="estOptUrgent" onchange="updateEstimator()" class="w-4 h-4 accent-teal-500 rounded" />
+                  <span class="text-xs sm:text-sm">
+                    <strong class="block text-white">급행 작업 (+30%)</strong>
+                    <span class="text-[11px] text-slate-400">일정 조율 후 우선 시안 제작</span>
+                  </span>
+                </label>
+                <label class="flex items-center gap-3 p-3 rounded-xl bg-navy-800/80 border border-white/10 cursor-pointer hover:border-teal-400/40">
+                  <input type="checkbox" id="estOptEnglish" onchange="updateEstimator()" class="w-4 h-4 accent-teal-500 rounded" />
+                  <span class="text-xs sm:text-sm">
+                    <strong class="block text-white">언어 전환: 국문↔영문 (+30%)</strong>
+                    <span class="text-[11px] text-slate-400">국문 자료를 영문으로, 영문 자료를 국문으로 제작할 때 (같은 언어 제작은 가산 없음)</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Output Summary Box (5 Cols) -->
+          <div class="lg:col-span-5 bg-navy-950 rounded-2xl p-6 border border-white/15 space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <span class="text-xs font-mono text-slate-400">ESTIMATED TOTAL (예상 총액)</span>
+              <span id="estTotalPrice" class="text-2xl sm:text-3xl font-display font-bold text-teal-300">200,000원</span>
+            </div>
+
+            <div class="space-y-2 text-xs sm:text-sm">
+              <div class="flex justify-between">
+                <span class="text-slate-400">선택 서비스:</span>
+                <span id="estSummaryName" class="text-white font-medium text-right">PPT 기획·구성·디자인</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">첫 시안 예상 납기:</span>
+                <span id="estSummaryLeadTime" class="text-teal-300 font-mono">영업일 5~7일</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">포함 수정 및 납품물:</span>
+                <span id="estSummaryDeliverable" class="text-slate-200 font-mono text-right">취합 수정 2회 · PPTX + PDF</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">산출 내역:</span>
+                <span id="estSummaryBreakdown" class="text-slate-300 font-mono text-xs text-right">기본가 200,000원</span>
+              </div>
+            </div>
+
+            <p class="text-[11px] text-slate-400 leading-relaxed">예상 금액입니다. 자료·분량·일정을 확인한 뒤 확정 총액을 안내드립니다.</p>
+
+            <button onclick="applyEstimateToContactForm()" class="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs sm:text-sm transition-all shadow-md">
+              이 조건으로 문의 양식 자동 채우기 ↓
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 5. 진행 과정과 수정·보안 약속 (PROCESS & TRUST)
+       ===================================================================== -->
+  <section id="process-trust" class="py-20 md:py-24 bg-paper border-b border-paper-border">
+    <div class="wrap">
+      <div class="max-w-3xl">
+        <span class="font-mono text-xs uppercase tracking-widest text-teal-700 font-semibold block mb-2">04 / WORKFLOW &amp; DATA SECURITY</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">
+          4단계 진행 과정과 수정·보안 약속
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-paper-muted">
+          합의된 범위와 일정을 정확히 지키며, 연구자와 의뢰인의 소중한 미공개 자료를 철저히 보호합니다.
+        </p>
+      </div>
+
+      <!-- 4-Step Workflow -->
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white rounded-2xl p-6 border border-paper-border">
+          <span class="font-mono text-xs font-bold text-teal-700">STEP 01</span>
+          <h3 class="text-lg font-bold text-navy-900 mt-1">자료 확인 · 견적 안내</h3>
+          <p class="mt-2 text-xs sm:text-sm text-paper-muted leading-relaxed">
+            용도·현재 자료 상태·목표 분량·희망 일정을 확인하고 작업 범위와 확정 총액 견적을 안내합니다.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-paper-border">
+          <span class="font-mono text-xs font-bold text-teal-700">STEP 02</span>
+          <h3 class="text-lg font-bold text-navy-900 mt-1">범위 합의 · 작업 착수</h3>
+          <p class="mt-2 text-xs sm:text-sm text-paper-muted leading-relaxed">
+            장별 구성안 또는 시각화 방향을 합의한 뒤 원문 독해·도식화·3D 렌더링 본 작업에 착수합니다.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-paper-border">
+          <span class="font-mono text-xs font-bold text-teal-700">STEP 03</span>
+          <h3 class="text-lg font-bold text-navy-900 mt-1">초안 전달 · 피드백 검토</h3>
+          <p class="mt-2 text-xs sm:text-sm text-paper-muted leading-relaxed">
+            약속된 기한 내에 첫 시안을 전달하고 연구자 확인이 필요한 수식·데이터 질문 메모를 함께 안내합니다.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 border border-paper-border">
+          <span class="font-mono text-xs font-bold text-teal-700">STEP 04</span>
+          <h3 class="text-lg font-bold text-navy-900 mt-1">취합 수정 · 최종본 전달</h3>
+          <p class="mt-2 text-xs sm:text-sm text-paper-muted leading-relaxed">
+            한 번에 모아 주신 수정 요청을 반영하여 편집 가능한 원본 파일(PPTX)과 최종 PDF/MP4를 전달합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 Core Trust Promises -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-navy-900 text-white rounded-2xl p-6 border border-white/10">
+          <div class="w-9 h-9 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 font-mono font-bold text-sm mb-4">01</div>
+          <h4 class="text-base font-bold text-white">명확하고 합리적인 수정 기준</h4>
+          <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            의견을 한 번에 모아 전달해 주신 요청을 <strong>1회</strong>로 계산하며, 각 시안 수령 후 <strong>7일 이내</strong> 접수합니다. 작업자의 오탈자·누락·파일 오류는 수정 횟수에서 절대 차감하지 않습니다.
+          </p>
+        </div>
+
+        <div class="bg-navy-900 text-white rounded-2xl p-6 border border-teal-400/40 shadow-md">
+          <div class="w-9 h-9 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 font-mono font-bold text-sm mb-4">02</div>
+          <h4 class="text-base font-bold text-teal-300">고객 자료 절대 비공개 &amp; AI 보안 원칙</h4>
+          <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            고객의 원본 자료와 작업물은 외부에 절대 공개하지 않습니다. AI 보조 도구는 사전 안내·동의 시에만 제한적으로 사용하며, <strong>미공개 연구 데이터·특허 출원 전 자료는 동의 여부와 관계없이 AI에 입력하지 않고 대표가 직접 처리</strong>합니다.
+          </p>
+        </div>
+
+        <div class="bg-navy-900 text-white rounded-2xl p-6 border border-white/10">
+          <div class="w-9 h-9 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 font-mono font-bold text-sm mb-4">03</div>
+          <h4 class="text-base font-bold text-white">90일 보관 후 영구 삭제 &amp; 윤리 준수</h4>
+          <p class="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            구매 확정 후 후속 수정 대응을 위해 <strong>90일간 보관한 뒤 모든 작업 파일을 영구 삭제</strong>합니다. 또한 허위 데이터·기여율 생성이나 학위논문·과제 대필은 일절 수행하지 않습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 6. 대표자 소개 (ABOUT & 지원 가능 전공 분야 확장)
+       ===================================================================== -->
+  <section id="about" class="py-20 md:py-24 bg-navy-900 text-white border-b border-white/10">
+    <div class="wrap">
+      <div class="editorial-split items-start">
+        <!-- Left 30% -->
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-teal-300 font-semibold block mb-2">05 / ABOUT DEEPRESEARCH</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white leading-snug">
+            연구자의 언어를 이해하는<br />
+            자연과학 박사가<br />
+            직접 읽고 설계합니다.
+          </h2>
+          <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+            연구 발표자료와 학술 시각화의 구성·전달력을 돕는 딥리서치입니다. 단순 AI 요약으로 흉내 낼 수 없는 정확한 원문 독해로 읽기 쉬운 시각 언어를 설계합니다.
+          </p>
+        </div>
+
+        <!-- Right 70%: Verified Credentials Grid & Supported Fields -->
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl bg-navy-800/90 border border-white/10">
+              <span class="font-mono text-xs text-teal-300 block">ACADEMIC &amp; RESEARCH CAREER</span>
+              <h3 class="text-lg font-bold text-white mt-1">박사 · 자연과학 연구 10년</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                자연과학 분야 연구 경험으로 수식, 실험 장치도, 데이터 그래프의 핵심을 먼저 읽고 구성합니다.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-navy-800/90 border border-white/10">
+              <span class="font-mono text-xs text-teal-300 block">PROJECTS &amp; PUBLICATIONS</span>
+              <h3 class="text-lg font-bold text-white mt-1">국가·기업 분야 연구과제 · 국제학술지 논문</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                다수의 국가·기업 분야 연구과제를 수행하며 제안서·보고서 작성부터 발표자료 제작, SCI급 논문 설계부터 게재까지 프로세스를 이해하고 있습니다.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-navy-800/90 border border-white/10">
+              <span class="font-mono text-xs text-teal-300 block">PRESENTATION AWARDS</span>
+              <h3 class="text-lg font-bold text-white mt-1">검증된 전달력</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                학술대회에서 20회 발표했고, 우수발표상과 포스터 발표상을 받았습니다.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-navy-800/90 border border-white/10">
+              <span class="font-mono text-xs text-teal-300 block">PATENTS &amp; DOCUMENTS</span>
+              <h3 class="text-lg font-bold text-white mt-1">국내 등록특허 3건 발명자</h3>
+              <p class="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                발명 내용 정리·특허 문서 작성에 참여했으며, 국내 등록특허 3건의 발명자이고 해외 출원 경험이 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- 작업 가능 연구 분야 안내 (타 전공 연구자 진입장벽 완화) -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-navy-950/80 border border-teal-400/30">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <span class="font-mono text-xs text-teal-300 font-semibold">SUPPORTED RESEARCH FIELDS · 작업 가능 이공계 분야</span>
+              <span class="text-[11px] font-mono text-slate-400">SCI 논문 · 국책과제 · 전공 강의안 공통</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+              포트폴리오에 수록된 <strong>물리·반도체·광학</strong> 외에도 <strong>재료·화학·화공, 생명과학·바이오·의약학, 기계·로보틱스, 전기·전자, AI·데이터사이언스</strong> 등 이공계 전 분야의 영문 논문 독해 및 메커니즘·수식 도식화를 수행합니다.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-1.5 text-[11px] font-mono text-teal-200">
+              <span class="px-2.5 py-1 rounded-lg bg-white/[0.06] border border-white/10">#물리·광학·양자</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/[0.06] border border-white/10">#반도체·나노소자</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/[0.06] border border-white/10">#재료·화학·배터리</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/[0.06] border border-white/10">#생명과학·바이오·의학</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/[0.06] border border-white/10">#기계·시뮬레이션(FEM/FDTD)</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/[0.06] border border-white/10">#AI·데이터시각화</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 7. 의뢰 전 준비 & 문의하기 (CONTACT — 이메일 다이렉트 발송 + 양식 복사)
+       ===================================================================== -->
+  <section id="contact" class="py-20 md:py-28 bg-navy-950 text-white">
+    <div class="wrap">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <!-- Left 5 Cols: 3 Preparation Checklists & Direct Email Card -->
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-teal-300 font-semibold block mb-2">06 / BEFORE YOU INQUIRE</span>
+            <h2 class="text-3xl font-bold text-white leading-tight">
+              의뢰 전 준비:<br />
+              자료와 마감일을 보내주세요
+            </h2>
+            <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+              숨고 메시지로 연락 주실 때 아래 <strong>3가지 사항</strong>을 함께 알려주시면, 작업 범위와 정확한 일정·견적을 빠르게 안내해 드립니다.
+            </p>
+          </div>
+
+          <div class="space-y-3.5">
+            <div class="p-4 rounded-2xl bg-navy-900 border border-white/10">
+              <span class="font-mono text-xs text-teal-300 font-semibold">CHECK 01 · 용도와 대상</span>
+              <h3 class="font-bold text-sm sm:text-base text-white mt-0.5">발표·제출 용도와 대상은 무엇인가요?</h3>
+              <p class="text-xs text-slate-300 mt-1">학회 포스터, 전공 강의, 연구과제 발표, 학위논문 디펜스, 3D 연구 시각화 등 구체적인 용도와 발표 시간(또는 포스터 규격)</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-navy-900 border border-white/10">
+              <span class="font-mono text-xs text-teal-300 font-semibold">CHECK 02 · 현재 자료와 목표 분량</span>
+              <h3 class="font-bold text-sm sm:text-base text-white mt-0.5">현재 준비된 자료 상태와 예상 분량은 어느 정도인가요?</h3>
+              <p class="text-xs text-slate-300 mt-1">논문 원문(PDF), 장별 초안(PPT/Word), 스케치 유무 및 목표 장수·컷 수, 국문/영문 여부</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-navy-900 border border-white/10">
+              <span class="font-mono text-xs text-teal-300 font-semibold">CHECK 03 · 필요한 작업과 희망 완료일</span>
+              <h3 class="font-bold text-sm sm:text-base text-white mt-0.5">원하시는 작업 범위와 첫 시안 희망일은 언제인가요?</h3>
+              <p class="text-xs text-slate-300 mt-1">구성·디자인 vs 기획 포함 여부, 3D 스틸컷/모션그래픽 여부, 최종 제출·발표 마감일</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 7 Cols: Interactive Inquiry Template Builder & One-Click Copy / Email Send -->
+        <div class="lg:col-span-7 bg-navy-900 rounded-3xl p-6 sm:p-8 border border-teal-400/30 shadow-2xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
+            <div>
+              <span class="text-xs font-mono text-teal-300">ONE-CLICK INQUIRY BUILDER</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white">숨고 문의 양식 자동 생성기</h3>
+            </div>
+            <span class="px-2.5 py-1 rounded bg-teal-500/20 text-teal-300 font-mono text-xs">클립보드 복사 지원</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+            <div>
+              <label for="inqService" class="block text-xs font-mono text-slate-300 mb-1">1. 문의 서비스</label>
+              <input id="inqService" type="text" value="PPT 기획·구성·디자인 (예상 25장)" oninput="syncInquiryPreview()" class="w-full rounded-xl bg-navy-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-teal-400" />
+            </div>
+            <div>
+              <label for="inqPurpose" class="block text-xs font-mono text-slate-300 mb-1">2. 용도 및 발표/제출 대상</label>
+              <input id="inqPurpose" type="text" placeholder="예: 학술대회 구두발표 (15분) / 연구과제 평가" oninput="syncInquiryPreview()" class="w-full rounded-xl bg-navy-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-teal-400" />
+            </div>
+            <div>
+              <label for="inqMaterial" class="block text-xs font-mono text-slate-300 mb-1">3. 현재 보유 자료 및 분량 (국/영문)</label>
+              <input id="inqMaterial" type="text" placeholder="예: 영문 논문 PDF 1편 + 핵심 그래프 원본 보유 (국문 제작)" oninput="syncInquiryPreview()" class="w-full rounded-xl bg-navy-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-teal-400" />
+            </div>
+            <div>
+              <label for="inqDeadline" class="block text-xs font-mono text-slate-300 mb-1">4. 희망 첫 시안일 / 최종 마감일</label>
+              <input id="inqDeadline" type="text" placeholder="예: 첫 시안 11/10 희망 (최종 발표 11/15)" oninput="syncInquiryPreview()" class="w-full rounded-xl bg-navy-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-teal-400" />
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label for="inqPreviewTextarea" class="block text-xs font-mono text-slate-300 mb-1.5">자동 생성된 문의 메시지 (직접 수정 가능)</label>
+            <textarea id="inqPreviewTextarea" rows="7" class="w-full rounded-2xl bg-navy-950 border border-white/15 p-4 text-xs sm:text-sm font-mono text-slate-200 leading-relaxed focus:outline-none focus:border-teal-400"></textarea>
+          </div>
+
+          <!-- Action Buttons: Direct Email Send + Copy to Clipboard -->
+          <div class="mt-5 flex flex-wrap items-center gap-3">
+            <button type="button" onclick="copyInquiryText()" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm border border-white/15 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>문의 양식 클립보드 복사 (숨고 붙여넣기용)</span>
+            </button>
+          </div>
+
+          <div class="mt-3 min-h-[20px]">
+            <span id="copyToastMsg" class="text-xs font-mono text-teal-300 opacity-0 transition-opacity">
+              ✓ 문의 양식이 복사되었습니다! 숨고 메시지창에 붙여넣어 주세요.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       FLOATING QUICK ACTION BAR (스크롤 중 언제든 견적·이메일 문의 진입)
+       ===================================================================== -->
+  <div class="fixed bottom-4 right-4 z-30 flex items-center gap-2 bg-navy-900/95 backdrop-blur-md border border-teal-400/35 rounded-2xl p-2 shadow-2xl">
+    <a href="#estimator" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold transition-all">
+      예상 견적 계산기
+    </a>
+  </div>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="py-10 bg-navy-950 border-t border-white/10 text-xs text-slate-400">
+    <div class="wrap flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <div class="font-bold text-white text-sm">딥리서치 DeepResearch Portfolio</div>
+        <p class="mt-1">대표 본인 제작 자료와 가상 자료로 재구성한 샘플입니다. 실제 고객 자료와 성과를 공개한 사례는 포함하지 않았습니다.</p>
+      </div>
+      <div class="font-mono text-[11px] text-slate-400">
+        © 2026 DeepResearch Studio. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       MODAL: 6-STEP CASE STUDY DETAIL VIEW (사례별 실전 6단계 상세 모달)
+       ===================================================================== -->
+  <div id="caseModal" role="dialog" aria-modal="true" aria-labelledby="modalCategoryText" onclick="if(event.target === this) closeCaseModal()" class="fixed inset-0 z-50 hidden items-center justify-center bg-navy-950/85 backdrop-blur-md p-3 sm:p-6 overflow-y-auto">
+    <div class="relative w-full max-w-5xl bg-white rounded-3xl border border-paper-border shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col">
+      <!-- Sticky Modal Top Header -->
+      <div class="px-5 sm:px-8 py-4 bg-navy-900 text-white flex items-center justify-between gap-4 border-b border-white/10 shrink-0">
+        <div class="flex items-center gap-3 min-w-0">
+          <span id="modalIndexBadge" class="px-2.5 py-1 rounded bg-teal-500/20 text-teal-300 border border-teal-400/30 font-mono text-xs shrink-0">01 / 04</span>
+          <span id="modalCategoryText" class="font-mono text-xs text-teal-300 uppercase tracking-wider truncate">CATEGORY</span>
+        </div>
+        <button id="modalCloseBtn" onclick="closeCaseModal()" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-mono flex items-center gap-1.5 shrink-0">
+          <span>닫기 (ESC)</span>
+          <span>✕</span>
+        </button>
+      </div>
+
+      <!-- Scrollable 6-Step Content Body -->
+      <div id="modalBodyScroll" class="p-5 sm:p-8 overflow-y-auto space-y-8 text-navy-900">
+        <!-- Populated dynamically when a card is clicked -->
+      </div>
+
+      <!-- Sticky Modal Footer -->
+      <div class="px-5 sm:px-8 py-4 bg-slate-50 border-t border-paper-border flex flex-wrap items-center justify-between gap-3 shrink-0">
+        <div id="modalSourceBadgeFooter" class="text-xs font-mono text-paper-muted"></div>
+        <div class="flex items-center gap-2.5">
+          <button onclick="closeCaseModal()" class="px-4 py-2 rounded-xl border border-paper-border bg-white hover:bg-slate-100 text-xs font-semibold text-navy-900">
+            목록으로 돌아가기
+          </button>
+          <button id="modalInquireBtn" class="px-5 py-2 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold shadow-sm">
+            이 서비스로 견적·문의하기 →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 확대 보기 (실제 작업물 이미지를 크게) -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 크게 보기" onclick="closeLightbox()" class="fixed inset-0 z-[60] hidden items-center justify-center bg-navy-950/95 p-4">
+    <figure class="max-w-6xl w-full text-center">
+      <img id="lightboxImg" src="" alt="" class="mx-auto rounded-xl shadow-2xl object-contain" />
+      <figcaption id="lightboxCap" class="mt-3 text-xs text-slate-300"></figcaption>
+    </figure>
+    <button onclick="closeLightbox()" class="absolute top-4 right-4 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-mono">닫기 ✕</button>
+  </div>
+
+  <!-- =====================================================================
+       APPLICATION DATA & INTERACTIVE SCRIPTS (v2.3 통합)
+       ===================================================================== -->
+  <script>
+
+    /**
+     * ============================================================================
+     * 1. HERO SHOWCASE PREVIEW DATA (3 Core Services Transformation)
+     * ============================================================================
+     */
+    const HERO_PREVIEWS = [
+      {
+        badge: 'SERVICE 01 · 전공 강의안·발표 PPT 제작',
+        title: '반도체 PN접합 동작 원리와 복잡한 수식을 밴드 다이어그램으로 시각화',
+        beforeTitle: '학부 강의에서 수식과 현상을 따로 설명할 때',
+        beforeDesc: '수식 유도와 물리 현상이 서로 다른 슬라이드에 나뉘어 있으면, 수식의 각 항이 어떤 현상인지 연결하기 어렵습니다',
+        afterTitle: '강의안에서 보여 주는 방식 (대표 본인 제작)',
+        afterDesc: '접합 전후 에너지 밴드, 도핑 차이에 따른 전기장 분포, 내장 전위를 그림과 수식을 나란히 놓아 설명',
+        priceInfo: '구성·디자인 100,000원 (30장) / 기획·구성·디자인 200,000원 (30장)',
+        targetId: 'case-pn-ppt'
+      },
+      {
+        badge: 'SERVICE 02 · 학회 포스터 제작',
+        title: '영문 논문 줄글을 한눈에 읽히는 포스터 1장으로',
+        beforeTitle: '논문 원문을 그대로 포스터로 옮길 때',
+        beforeDesc: '줄글과 여러 쪽에 흩어진 Figure·수식은 포스터 앞을 지나가는 짧은 시간에 핵심 질문과 결론을 파악하기 어렵습니다',
+        afterTitle: '한 장 포스터 (대표 본인 제작)',
+        afterDesc: '논문 내용을 그림과 설명으로 핵심만 전달하는 포스터 1장으로 재구성',
+        priceInfo: '기존 초안 편집 40,000원~ / 논문 원문 기반 기획·구성·디자인 80,000원~',
+        targetId: 'case-poster'
+      },
+      {
+        badge: 'SERVICE 03 · 연구 발표용 3D 과학 시각화',
+        title: '상상으로 그린 이미지를 3D 그래픽 모션으로',
+        beforeTitle: '글과 수식, 정지된 그림으로만 설명할 때',
+        beforeDesc: '눈에 보이지 않는 구조와 원리는 말과 한 장의 그림만으로는 청중이 머릿속에 그리기 어렵습니다',
+        afterTitle: '연구 내용 대표 이미지 + 애니메이션 모션 (개념 시각화)',
+        afterDesc: '연구 내용을 대표하는 이미지를 직접 그리고, 그 이미지가 움직이는 모션까지 제작해 원리를 순서대로 보여 줌.',
+        priceInfo: '3D 이미지 150,000원 / 3D 애니메이션 30초 이내 300,000원 (수정 2회 포함)',
+        targetId: 'case-3d-microcavity'
+      }
+    ];
+
+    function switchHeroPreview(index) {
+      document.querySelectorAll('.hero-tab').forEach((btn, i) => {
+        if (i === index) {
+          btn.className = 'hero-tab py-2.5 px-2 text-center border-b-2 border-teal-400 text-teal-300 bg-white/[0.04] font-semibold';
+        } else {
+          btn.className = 'hero-tab py-2.5 px-2 text-center border-b-2 border-transparent text-slate-400 hover:text-white';
+        }
+      });
+
+      const item = HERO_PREVIEWS[index];
+      const container = document.getElementById('heroPreviewBody');
+      const heroMedia = getMedia(item.targetId);
+      const heroCover = heroMedia && heroMedia.cover;
+      const heroVideo = heroMedia && heroMedia.video;
+      // 3D 탭은 첫 화면에서 캔버스 루프를 보여 주고, 실제 영상은 상세 사례(모달)에서 본다
+      const heroLoopOn = item.targetId === 'case-3d-microcavity';
+      if (heroLoop) { heroLoop.stop(); heroLoop = null; }
+      const heroThumb = heroLoopOn ? `
+        <button type="button" onclick="openCaseModal('${item.targetId}')" class="hero-thumb block w-full mb-4 rounded-xl overflow-hidden border border-white/10" aria-label="상세 사례 열기">
+          <div class="w-full h-44 sm:h-52"><canvas id="heroLoopCanvas" role="img" aria-label="DBR 마이크로캐비티 개념 시각화 루프 애니메이션" style="width:100%;height:100%;display:block"></canvas></div>
+        </button>` : heroVideo ? `
+        <button type="button" onclick="openCaseModal('${item.targetId}')" class="hero-thumb block w-full mb-4 rounded-xl overflow-hidden border border-white/10 bg-paper-light" aria-label="상세 사례 열기">
+          <video class="w-full h-44 sm:h-52 object-cover" muted loop playsinline preload="metadata" data-autoplay poster="${escAttr(heroVideo.poster)}" aria-label="${escAttr(heroVideo.alt)}">
+            <source src="${escAttr(heroVideo.src)}" type="video/mp4" />
+          </video>
+        </button>` : heroCover ? `
+        <button type="button" onclick="openCaseModal('${item.targetId}')" class="hero-thumb media-slot block w-full mb-4 rounded-xl overflow-hidden border border-white/10 bg-paper-light" aria-label="상세 사례 열기">
+          <img class="media-real w-full h-44 sm:h-52 object-cover object-top" src="${heroCover.src}" alt="${heroCover.alt || ''}" decoding="async" onload="mediaOk(this)" onerror="mediaFail(this)" />
+          <span class="media-check">${heroCover.src}</span>
+        </button>` : '';
+      container.innerHTML = `
+        <div>
+          ${heroThumb}
+          <span class="font-mono text-[11px] text-teal-300 uppercase">${item.badge}</span>
+          <h3 class="text-base sm:text-lg font-bold text-white mt-1 leading-snug">${item.title}</h3>
+
+          <div class="mt-4 space-y-2.5">
+            <div class="p-3.5 rounded-xl bg-rose-950/30 border border-rose-400/25">
+              <div class="text-[11px] font-mono text-rose-300 font-semibold">${item.beforeTitle}</div>
+              <p class="text-xs text-slate-300 mt-1 leading-relaxed">${item.beforeDesc}</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-teal-950/40 border border-teal-400/35">
+              <div class="text-[11px] font-mono text-teal-300 font-semibold">${item.afterTitle}</div>
+              <p class="text-xs text-slate-100 mt-1 leading-relaxed">${item.afterDesc}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+          <span class="text-[11px] font-mono text-slate-300">${item.priceInfo}</span>
+          <button onclick="openCaseModal('${item.targetId}')" class="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold shrink-0 transition-colors">
+            상세 Case Study 보기 →
+          </button>
+        </div>
+      `;
+      bindMotion(container);
+      if (heroLoopOn) heroLoop = createMicrocavityLoop(document.getElementById('heroLoopCanvas'));
+    }
+
+    /**
+     * 첫 화면 3D 루프 — quantum_photonics_research_portfolio.html의
+     * createOpticalLoopSimulation + drawMicrocavity3DLoop에서 마이크로캐비티 부분만 옮김
+     * (2D 엑시톤·폴라리톤 분기는 공개 대상이 아니라 제외. 수치·글자는 그리지 않음)
+     */
+    let heroLoop = null;
+
+    function createMicrocavityLoop(canvas) {
+      const ctx = canvas.getContext('2d');
+      let running = true;
+      let t = Math.random() * 100;
+      const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const particles = Array.from({ length: 48 }, (_, i) => ({
+        x: (Math.random() - 0.5) * 260,
+        y: (Math.random() - 0.5) * 80,
+        z: Math.random(),
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.6 + Math.random() * 1.4,
+        upward: i % 3 === 0
+      }));
+
+      function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        if (canvas.width !== Math.floor(rect.width * dpr) || canvas.height !== Math.floor(rect.height * dpr)) {
+          canvas.width = Math.max(300, Math.floor(rect.width * dpr));
+          canvas.height = Math.max(200, Math.floor(rect.height * dpr));
+        }
+      }
+
+      // shortcut: 화면 밖으로 스크롤해도 계속 그림(탭 전환·백그라운드 탭에서는 멈춤), 모바일 발열 문제가 보이면 IntersectionObserver로 멈춤 추가
+      function render() {
+        if (!running) return;
+        resize();
+        t += 0.025;
+        const w = canvas.width;
+        const h = canvas.height;
+        const cx = w * 0.5;
+        const cy = h * 0.54;
+        const bgGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, w * 0.65);
+        bgGrad.addColorStop(0, '#0d1b2e');
+        bgGrad.addColorStop(0.55, '#080c16');
+        bgGrad.addColorStop(1, '#05060a');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, w, h);
+        drawMicrocavity3DLoop(ctx, w, h, cx, cy, t, particles);
+        if (!still) requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+      return { stop: () => { running = false; } };
+    }
+
+    function drawMicrocavity3DLoop(ctx, w, h, cx, cy, t, particles) {
+      const scale = Math.min(w, h) / 420;
+      const slabW = 240 * scale;
+      const slabD = 90 * scale;
+
+      function drawIsoSlab(yCenter, thickness, fillStyle, strokeStyle) {
+        const yTop = yCenter - thickness / 2;
+        const yBot = yCenter + thickness / 2;
+        ctx.beginPath();
+        ctx.moveTo(cx, yTop - slabD * 0.5);
+        ctx.lineTo(cx + slabW, yTop);
+        ctx.lineTo(cx, yTop + slabD * 0.5);
+        ctx.lineTo(cx - slabW, yTop);
+        ctx.closePath();
+        ctx.fillStyle = fillStyle;
+        ctx.fill();
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = 1 * scale;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(cx - slabW, yTop);
+        ctx.lineTo(cx, yTop + slabD * 0.5);
+        ctx.lineTo(cx, yBot + slabD * 0.5);
+        ctx.lineTo(cx - slabW, yBot);
+        ctx.closePath();
+        ctx.fillStyle = fillStyle;
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(cx + slabW, yTop);
+        ctx.lineTo(cx, yTop + slabD * 0.5);
+        ctx.lineTo(cx, yBot + slabD * 0.5);
+        ctx.lineTo(cx + slabW, yBot);
+        ctx.closePath();
+        ctx.fillStyle = fillStyle;
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      // 아래 DBR 거울 층
+      for (let i = 4; i >= 0; i--) {
+        const yPos = cy + (36 + i * 13) * scale;
+        const isHighN = i % 2 === 0;
+        drawIsoSlab(yPos, 8 * scale,
+          isHighN ? 'rgba(30, 64, 175, 0.28)' : 'rgba(15, 23, 42, 0.45)',
+          isHighN ? 'rgba(56, 189, 248, 0.35)' : 'rgba(148, 163, 184, 0.2)');
+      }
+
+      // 가운데 공진층
+      const pulseGlow = 0.55 + 0.35 * Math.sin(t * 2.2);
+      drawIsoSlab(cy, 24 * scale,
+        `rgba(56, 189, 248, ${0.18 + pulseGlow * 0.18})`,
+        `rgba(125, 211, 252, ${0.5 + pulseGlow * 0.4})`);
+
+      // 공진층 안의 정상파
+      ctx.save();
+      ctx.beginPath();
+      for (let x = -slabW * 0.75; x <= slabW * 0.75; x += 4) {
+        const env = Math.cos((x / (slabW * 0.75)) * (Math.PI / 2));
+        const waveY = cy + Math.sin(x * 0.08 - t * 4) * 14 * scale * env;
+        if (x === -slabW * 0.75) ctx.moveTo(cx + x, waveY);
+        else ctx.lineTo(cx + x, waveY);
+      }
+      ctx.strokeStyle = 'rgba(186, 230, 253, 0.85)';
+      ctx.lineWidth = 2.2 * scale;
+      ctx.shadowColor = '#38bdf8';
+      ctx.shadowBlur = 15;
+      ctx.stroke();
+      ctx.restore();
+
+      // 위로 나가는 빛
+      const beamGrad = ctx.createLinearGradient(cx, cy, cx, cy - 185 * scale);
+      beamGrad.addColorStop(0, `rgba(56, 189, 248, ${0.55 * pulseGlow})`);
+      beamGrad.addColorStop(0.5, `rgba(125, 211, 252, ${0.32 * pulseGlow})`);
+      beamGrad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+      ctx.fillStyle = beamGrad;
+      ctx.beginPath();
+      ctx.moveTo(cx - 26 * scale, cy);
+      ctx.lineTo(cx + 26 * scale, cy);
+      ctx.lineTo(cx + 48 * scale, cy - 190 * scale);
+      ctx.lineTo(cx - 48 * scale, cy - 190 * scale);
+      ctx.closePath();
+      ctx.fill();
+
+      // 위 DBR 거울 층
+      for (let i = 3; i >= 0; i--) {
+        const yPos = cy - (34 + i * 13) * scale;
+        const isHighN = i % 2 === 0;
+        drawIsoSlab(yPos, 7 * scale,
+          isHighN ? 'rgba(56, 189, 248, 0.14)' : 'rgba(15, 23, 42, 0.30)',
+          isHighN ? 'rgba(56, 189, 248, 0.4)' : 'rgba(148, 163, 184, 0.22)');
+      }
+
+      // 광자 입자
+      particles.forEach(p => {
+        p.phase += 0.04 * p.speed;
+        let px, py, radius, alpha;
+        if (p.upward) {
+          const progress = ((t * 0.45 * p.speed + p.z) % 1);
+          px = cx + Math.sin(p.phase) * 18 * scale * (1 - progress * 0.3);
+          py = cy - progress * 175 * scale;
+          radius = (2.2 + (1 - progress) * 2.2) * scale;
+          alpha = (1 - progress) * 0.95;
+        } else {
+          px = cx + Math.sin(t * p.speed + p.phase) * slabW * 0.55;
+          py = cy + Math.cos(t * 2.4 * p.speed + p.phase) * 12 * scale;
+          radius = 2.4 * scale;
+          alpha = 0.75;
+        }
+        ctx.beginPath();
+        ctx.arc(px, py, radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(224, 242, 254, ${alpha})`;
+        ctx.shadowColor = '#38bdf8';
+        ctx.shadowBlur = 12;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+    }
+
+    /**
+     * ============================================================================
+     * 2. PORTFOLIO CASES DATA
+     * ============================================================================
+     */
+    const PAUSED_CASE_IDS = ['case-editing', 'case-pres-consult', 'case-job-portfolio'];
+    const ALL_PORTFOLIO_CASES = [
+      {
+        id: 'case-pn-ppt',
+        num: '01 / 04',
+        category: 'ppt',
+        categoryLabel: '강의안·발표 PPT 01',
+        sourceBadge: '대표 본인 제작 · 교육/강의 자료 (응용물리실험 강의안 31장 중 일부)',
+        sourceType: 'real',
+        title: '반도체의 동작 원리와 복잡한 수식도 그림으로 이해하기 쉽게 (PN접합 강의안)',
+        subtitle: 'PN 접합 형성, 평형 상태의 페르미 준위, 도핑 차이에 따른 전기장 분포, 내장 전위, 캐리어 밀도를 그림과 수식을 함께 놓아 설명한 응용물리실험 강의안입니다.',
+        beforeLabel: '이런 설명이 어려울 때',
+        afterLabel: '강의안에서 보여 주는 방식 (대표 본인 제작)',
+        pricePill: '구성·디자인 100,000원 · 기획·구성·디자인 200,000원 (30장 기준)',
+        estimatorKey: 'ppt_plan',
+        visualType: 'pn-junction-slides',
+
+        problem: '학부생 대상 실험 강의에서 수식 유도(페르미 준위 정렬, 푸아송 방정식 적분)와 물리 현상(다수 캐리어 확산, 공간 전하층 형성)이 서로 다른 슬라이드에 나뉘어 있으면, 수식의 각 항이 어떤 현상에 해당하는지 연결하기 어렵습니다.',
+        steps: [
+          { no: '01', title: '강의 목표·핵심 전제 파악', desc: '실험 매뉴얼과 전공 서적에서 수식 유도의 전제(계단형 접합 근사 등)와 학생이 이해해야 할 핵심 결과를 정리합니다.' },
+          { no: '02', title: '수식-현상 대응 구조 설계', desc: '에너지 밴드, 전하 분포, 전기장을 같은 기준으로 놓고 수식과 나란히 보여 줄 장면 순서를 정합니다.' },
+          { no: '03', title: '시각화·강조 정리', desc: '최대 전기장·내장 전위 같은 핵심 결과를 박스·화살표로 그래프 위치와 연결하고, 한 장에 한 개념씩 정리합니다.' }
+        ],
+        beforeSummary: '수식 유도와 물리 현상을 따로 설명하면 확산·드리프트, 공간 전하, 전기장, 내장 전위가 어떻게 이어지는지 따라가기 어렵습니다.',
+        afterSummary: '수록 슬라이드 6장(강의안 31장 중): ① 접합 형성과 캐리어 확산·드리프트 ② 평형 페르미 준위와 전류 균형 ③·④ 도핑 차이에 따른 전기장 분포 ⑤ 내장 전위 ⑥ 캐리어 밀도 정의.',
+        improvements: [
+          '에너지 밴드·전하 분포·전기장 그래프를 분해해서 보여 줌',
+          '결과 식을 박스·화살표로 표시해 그래프의 어느 부분인지 연결',
+          '한 장에 한 개념씩 나눠 설명 순서대로 넘길 수 있게 구성'
+        ],
+        deliveryTerms: '최대 30장 기준 | ① 구성·디자인: 100,000원 (영업일 3~5일, 10장 초과당 +30,000원) / ② 기획·구성·디자인: 200,000원 (영업일 5~7일, 10장 초과당 +60,000원) | 납품: 편집 가능한 PPTX + PDF | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
+      },
+
+      {
+        id: 'case-rne-ppt',
+        num: '02 / 04',
+        category: 'ppt',
+        categoryLabel: '강의안·발표 PPT 02',
+        sourceBadge: '대표 본인 제작 · 교육 자료 (R&E 프로그램 강의안 29장 중 일부)',
+        sourceType: 'real',
+        title: '시뮬레이션 원리와 프로그램 사용법을 그림으로 이해하기 쉽게 (R&E 프로그램 강의안)',
+        subtitle: '시뮬레이션의 이론적 원리부터 소프트웨어 UI 조작, 물질 데이터 피팅, 경계 조건 및 Mesh 정확도 비교까지 한 흐름으로 구성했습니다.',
+        beforeLabel: '이런 설명이 어려울 때',
+        afterLabel: '강의안에서 보여 주는 방식 (대표 본인 제작)',
+        pricePill: '구성·디자인 100,000원 · 기획·구성·디자인 200,000원 (30장 기준)',
+        estimatorKey: 'ppt_plan',
+        visualType: 'rne-fdtd-slides',
+
+        problem: '학부생 대상 시뮬레이션 실습 강의에서는 이론 설명, 프로그램 조작 화면, 결과 해석이 서로 다른 자료에 흩어지기 쉽습니다. 수강생이 어떤 값을 왜 입력하는지 연결하지 못하면, 따라 하기는 해도 결과를 스스로 판단하기 어려울 수 있습니다.',
+        steps: [
+          { no: '01', title: '강의 목표·대상 파악', desc: '수강생(학부생)이 실습 후 무엇을 할 수 있어야 하는지, 알고 있는 배경지식이 어디까지인지 확인합니다.' },
+          { no: '02', title: '원리 → 조작 → 결과 흐름 설계', desc: '이론 설명, 프로그램 설정 화면, 결과 비교가 한 흐름으로 이어지도록 슬라이드 순서와 장당 하나의 메시지를 정합니다.' },
+          { no: '03', title: '도식·비교 자료 제작', desc: '원리 도식(Yee Cell), 파라미터 전후 비교를 같은 장에 나란히 놓아 수강생이 값을 고르는 기준을 볼 수 있게 정리합니다.' }
+        ],
+        beforeSummary: '시뮬레이션 교육에서 이론과 프로그램 조작을 따로 설명하면, 왜 그 경계 조건과 격자 크기를 골라야 하는지 수강생이 연결하기 어렵습니다.',
+        afterSummary: '수록 슬라이드 6장(강의안 29장 중): ① Yee Cell 원리 ② 구조(x,y,z span) 설정 매칭 ③ 물질 선정 및 유전율 피팅 곡선 확인 ④ 4대 경계 조건(PML/Metal/PMC/Periodic) 비교 ⑤ 광원 Bandwidth 설정 ⑥ Mesh accuracy 2 vs 8 결과 정밀 비교.',
+        improvements: [
+          '경계 조건 4가지(흡수·완전도체·대칭·주기)의 물리적 차이를 직관적인 아이콘과 표로 정리',
+          'Mesh 설정에 따른 전기장 분포 해상도 차이를 시각적으로 대조하여 파라미터 선택 근거 제시'
+        ],
+        deliveryTerms: '최대 30장 기준 | ① 구성·디자인: 100,000원 (영업일 3~5일, 10장 초과당 +30,000원) / ② 기획·구성·디자인: 200,000원 (영업일 5~7일, 10장 초과당 +60,000원) | 납품: 편집 가능한 PPTX + PDF | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
+      },
+
+      {
+        id: 'case-poster',
+        num: '03 / 04',
+        category: 'poster',
+        categoryLabel: '학회 포스터 제작',
+        sourceBadge: '대표 본인 제작 · 논문 원문 기반 제작 (연구 내용 보호 블러 적용)',
+        sourceType: 'real',
+        title: '논문 원문의 핵심 내용을 한 장의 포스터로 구성',
+        subtitle: '논문의 연구 맥락을 발표 현장에서 한눈에 읽히는 4단 구조로 압축했습니다.',
+        pricePill: '초안 편집 40,000원~ · 논문 기반 기획·구성 80,000원~',
+        estimatorKey: 'poster_plan',
+        visualType: 'poster-transform',
+
+        problem: '학술대회 포스터 세션에서는 방문자가 포스터 앞을 지나가며 30초~1분 이내에 핵심 연구 질문과 결론을 파악해야 합니다. 하지만 논문 원문을 그대로 복사해 넣으면 글자 밀도가 지나치게 높아지고 그림과 본문 설명이 따로 놀아 발표자의 전달 효율이 크게 떨어집니다.',
+        steps: [
+          { no: '01', title: '논문·자료(PPT) 검토', desc: '논문 원문 또는 보유하신 발표 자료에서 연구 목적, 핵심 실험 구조, 대표 결과 그래프를 먼저 선별합니다.' },
+          { no: '02', title: '그림·도표·수식으로 내용 구성', desc: '줄글 설명을 줄이고 핵심 원리 도식과 결과 그래프 주변에 직관적인 캡션·콜아웃 박스를 배치합니다.' },
+          { no: '03', title: '한 장에 핵심 내용 설명', desc: '소제목과 읽는 순서를 정리하여 발표자가 현장에서 짚어가며 설명하기 편한 1장의 포스터로 완성합니다.' }
+        ],
+        beforeSummary: '영문 논문 원문 페이지. 본문 텍스트와 수식, figure가 여러 페이지에 나뉘어 있어 한눈에 전체 흐름을 조망하기 어려움.',
+        afterSummary: '상단 타이틀 바 + 좌측(Abstract & Introduction 도식) + 우측(핵심 실험 결과 그래프 비교 및 정량 지표 하이라이트) + 하단(핵심 결론 요약)으로 재구성된 A0 포스터.',
+        improvements: [
+          '논문 줄글을 핵심 개조식 문장과 소제목 블록으로 압축해 읽는 부담을 줄임',
+          '핵심 그래프와 소자 구조 도식을 시선 중심부에 배치하고 수치 결과를 컬러 박스로 강조',
+         ],
+        deliveryTerms: '국문/영문 1장·1규격(A0 등 학회 지정 양식) 기준 | ① 기존 초안 편집: 40,000원부터 / ② 논문 원문 기반 기획·구성·디자인: 80,000원부터 | 납품: 편집 가능한 PPTX + 인쇄용 고해상도 PDF | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함 (원문 전체 독해·번역·신규 도식 제작은 범위 확인 후 견적 반영)'
+      },
+
+      {
+        id: 'case-editing',
+        num: '04 / 06',
+        category: 'editing',
+        categoryLabel: '문서 교정·첨삭 & 서면 피드백',
+        sourceBadge: '가상 자료·결과로 재구성한 자체 제작 샘플',
+        sourceType: 'reconstructed',
+        title: '문장마다 수정 이유를 설명하고, 확인이 필요한 내용은 질문으로 남깁니다',
+        subtitle: '단순히 문장만 고쳐서 돌려주는 것이 아니라 왜 고쳤는지 3가지 기준을 설명하고, 작성자만 알 수 있는 사실관계나 평가 기준은 질문 메모로 남겨 완성도를 높입니다.',
+        pricePill: '문서 교정 50,000원(30쪽) · 서면 피드백 70,000원(20쪽)',
+        estimatorKey: 'doc_feedback',
+        visualType: 'doc-editing-3col',
+
+        problem: '연구계획서, 보고서, 학업계획서를 작성할 때 가장 흔한 문제는 (1) 같은 단어가 한 문단에 수차례 반복되고, (2) 연구 목적과 조사 방법 사이의 연결이 느슨하며, (3) 아직 수행하거나 검증하지 않은 결과를 이미 달성한 것처럼 단정적으로 서술하여 심사위원에게 감점을 받는 것입니다.',
+        steps: [
+          { no: '01', title: '반복 표현 정리', desc: '반복되는 표현(‘사용성’, ‘개선’)을 줄여 연구 목적을 짧게 정리합니다.' },
+          { no: '02', title: '목적과 방법 연결', desc: '이용자 조사와 개선 과제 도출의 관계가 한 문장에서 분명히 보이게 만듭니다.' },
+          { no: '03', title: '결과 단정 점검 & 확인 질문', desc: '검증 전 효과를 단정하지 않고, 작성자만 아는 조사 대상·방법·평가 기준은 질문으로 남깁니다.' }
+        ],
+        beforeSummary: '[첨삭 전 · 가상 연구계획서 문단] “본 연구는 온라인 학습 서비스의 사용성을 개선하기 위한 연구이다. 사용성 개선을 위해 이용자의 의견을 조사하고자 한다. 이를 통해 사용성을 크게 향상시킬 수 있을 것으로 생각한다.”',
+        afterSummary: '[첨삭 후] “본 연구는 이용자 의견을 조사하여 온라인 학습 서비스의 사용성 문제와 개선 과제를 도출하고자 한다.” + [작성자에게 확인할 질문: 조사 대상과 방법은 무엇인가요? 어떤 기준으로 사용성을 평가하나요?]',
+        improvements: [
+          '01 반복 표현 정리: 세 문장에 반복되던 ‘사용성’·‘개선’을 한 문장의 목적으로 정리',
+          '02 목적과 방법 연결: ‘이용자 의견 조사 → 사용성 문제와 개선 과제 도출’로 관계를 분명히 함',
+          '03 결과 단정 점검: 검증 전 효과(‘크게 향상’)를 지우고, 작성자가 채워야 할 조사 대상·평가 기준을 질문으로 안내 (대신 지어 쓰지 않음)'
+        ],
+        deliveryTerms: '① 문서 교정·편집: 30쪽 이내 50,000원 / 31~50쪽 70,000원 (Word+PDF, 수정 1회) | ② 문서 서면 피드백: 20쪽 이내 70,000원 (영업일 3~5일, 피드백 보고서 1종 + 질문 답변 1회) | ③ 취업·대학원 서류 첨삭: 1건 공백 포함 3,000자 이내 30,000원 (영업일 2~3일, 서면 의견 + 첨삭본, 수정 2회)'
+      },
+
+      {
+        id: 'case-pres-consult',
+        num: '05 / 06',
+        category: 'consulting',
+        categoryLabel: '발표 컨설팅',
+        sourceBadge: '대표 본인 자료 · 발표 준비 예시 (고객 자료가 아닙니다)',
+        sourceType: 'real',
+        title: '31장 강의안을 15분 발표 흐름으로 — 장별 요점과 시간 배분',
+        subtitle: '방대한 31장 슬라이드를 15분 제한 시간에 맞춰 7개 구간으로 재편성하고, 온라인 리허설 뒤 수식 유도 축소·그래프 통합·마무리 질문 유도까지 구체적인 서면 피드백을 제공합니다.',
+        pricePill: '발표 컨설팅 100,000원 (15~20분 발표 · 미팅 60분 이내)',
+        estimatorKey: 'consult_pres',
+        visualType: 'pres-timeline-consult',
+
+        problem: '30장이 넘는 연구·강의 슬라이드를 15분 발표에 그대로 가져가면, 초반 배경 설명과 복잡한 수식 유도에 시간을 다 써버리고 정작 가장 중요한 핵심 결과와 결론은 시간에 쫓겨 빠르게 넘어가게 됩니다.',
+        steps: [
+          { no: '01', title: '발표 목적 · 청중 · 제한 시간 확인', desc: '학회 발표, 과제 평가, 세미나 등 청중의 전공 배경과 질의응답 비중을 고려해 핵심 전달 목표를 설정합니다.' },
+          { no: '02', title: '장별 요점 정리 & 7구간 시간 배분표 설계', desc: '31장 전체를 7개 의미 구간으로 묶어 총 15:00(도입 1분 ~ 실험·정리 1분) 타임라인과 슬라이드별 한 줄 핵심 멘트를 설계합니다.' },
+          { no: '03', title: '실전 리허설 진행 후 서면 피드백 전달', desc: '온라인 미팅(60분 이내)에서 실제 발표 리허설을 점검하고, 영업일 2일 이내에 장별 수정 지침이 담긴 서면 피드백을 전달합니다.' }
+        ],
+        beforeSummary: '31장 모든 슬라이드에 동일한 비중으로 시간을 배분하여 수식 유도 구간에서 시간이 초과되고 핵심 그래프 설명이 압축된 상태.',
+        afterSummary: '15:00 정밀 시간 배분표(도입 1:00 → 캐리어 이동 3:00 → 접합 형성 3:30 → 도핑 차이 2:30 → 캐리어 밀도 2:00 → 전류-전압 2:00 → 실험·정리 1:00) + 실전 리허설 피드백 3대 지침 적용.',
+        improvements: [
+          '피드백 01: “수식 유도는 최종 결과 식만 본문에 남기고 세부 유도 과정은 부록(Appendix) 슬라이드로 이동”',
+          '피드백 02: “16~19장에 나뉜 개별 그래프는 비교 그래프 하나로 묶어 핵심 물리 원리 설명 시간 확보”',
+          '피드백 03: “마지막 장은 질문 하나로 끝내 질의응답으로 연결”'
+        ],
+        deliveryTerms: '15~20분 발표 기준 | 온라인 미팅 총 60분 이내 (리허설 + 실시간 피드백·질의응답) | 기본가: 100,000원 | 납품: 리허설 종료 후 영업일 2일 이내 서면 피드백 보고서 + 슬라이드별 요점·시간 배분표 전달 (보완 1회 포함)'
+      },
+
+      {
+        id: 'case-job-portfolio',
+        num: '06 / 06',
+        category: 'consulting',
+        categoryLabel: '직무·취업 포트폴리오 컨설팅',
+        sourceBadge: '가상 자료·결과로 재구성한 자체 제작 샘플',
+        sourceType: 'reconstructed',
+        title: '경험 나열에서 직무 역량·본인 기여·근거가 보이는 구성으로',
+        subtitle: '지원 회사의 공식 핵심 가치 원문 연결부터 두괄식 결론, S·T·A·R 구조화, 팀 역할과 본인 담당 범위 분리, 주장별 객관적 근거 교차 검증까지 5대 원칙으로 재구성합니다.',
+        pricePill: '포트폴리오 컨설팅·편집 150,000원 (20쪽 이내) · 서면 진단 개별 견적',
+        estimatorKey: 'consult_pf',
+        visualType: 'job-portfolio-star',
+
+        problem: '많은 취업·이직 포트폴리오가 수행한 프로젝트 순서대로 화면을 나열하며 “팀 프로젝트로 데이터 분석을 수행해 성과를 크게 높였다”처럼 모호하게 서술합니다. 채용 담당자와 실무 면접관은 (1) 지원 직무와 무슨 관련이 있는지, (2) 팀 성과 중 본인이 실제로 한 일은 어디까지인지, (3) 수치가 어떤 기준(기간·모수·비교 대상)에서 나온 것인지 즉시 확인하고 싶어 합니다.',
+        steps: [
+          { no: '01', title: '타겟 직무 확정 & 공식 핵심 가치 원문 매칭', desc: '지원 기업 채용 공고와 공식 핵심 가치 원문을 임의 변형 없이 분석하여 보여줄 핵심 역량 키워드를 먼저 확정합니다.' },
+          { no: '02', title: '두괄식 결론 + S·T·A·R & 팀/개인 기여 분리', desc: '페이지 상단에 한 줄 결론을 배치하고 Situation·Task·Action·Result 구조와 [팀 전체 역할 vs 본인 담당 범위 띠]를 명확히 분리합니다.' },
+          { no: '03', title: '근거 2~3개 교차 검증 & 시각·배치 결함 검수', desc: '핵심 주장마다 단위·기간·모수·비교 기준이 포함된 근거를 매칭(`원문에 있음 / 기준 빠짐 / 확인 필요` 점검)하고 레이아웃 가독성을 완성합니다.' }
+        ],
+        beforeSummary: '[Before: 나열형 포트폴리오] “공정 데이터 분석 프로젝트 (2025.03~08) — 팀원들과 협력하여 불량 원인을 분석하고 대시보드를 제작함. 이를 통해 공정 수율을 대폭 향상시키고 업무 효율을 크게 개선함.” (본인 역할 불분명, 비교 기준·모수 누락)',
+        afterSummary: '[After: 5대 원칙 구조화 · 아래 수치는 모두 가상] 두괄식 제목(“센서 로그 12만 건 변수 상관분석을 통한 열처리 온도 편차 규명 및 불량률 3.8%p 감소”) + [팀 4명 중 본인 담당: Python 결측치 전처리 및 회귀 모델 검증] + [근거 상태: 2025년 2분기 파일럿 라인 3개 로트 비교 기준 명시].',
+        improvements: [
+          '원칙 01~02: 상황 설명이 결론을 가리지 않도록 두괄식 헤드라인 + S·T·A·R 4요소 그리드 배치',
+          '원칙 03~04: 허위 수치·기여율 생성 절대 금지 원칙 아래, 기존 자료에서 단위·기간·모수·비교 기준을 찾아 근거 박스로 명시',
+          '원칙 05: 장 리듬 설계, 핵심 수치 콜아웃 강조, 글자 겹침·잘림·캡처 저화질 등 시각 결함 전수 점검'
+        ],
+        deliveryTerms: '① 포트폴리오 컨설팅·편집 (6단계 전 과정: 사전 진단 → 직무 분석 → 경험 선별 → 심층 정리 → 구성안 확인 → 레이아웃 편집): 20쪽 이내 150,000원 (서면 의견 + 편집본 PDF, 취합 수정 2회) | ② 포트폴리오 서면 진단 (단독): 분량·범위 확인 후 개별 견적 (전체 진단+우선순위 과제+장별·배치 의견, 수정 2회)'
+      },
+
+      {
+        id: 'case-3d-microcavity',
+        num: 'SPECIAL 04',
+        category: '3d-motion',
+        categoryLabel: '연구 발표용 3D 과학 시각화 (Bridge Showcase)',
+        sourceBadge: '대표 자체 제작 / 개념 시각화',
+        sourceType: 'real',
+        title: '보이지 않는 연구 원리를 설명하는 3D 과학 모션그래픽 — Microcavity Laser',
+        subtitle: '소자가 어떻게 제작되고 어떻게 작동하는지(광 펌핑·공진·레이저 방출)를 눈으로 이해하도록, 논문의 핵심 현상을 파악한 뒤 어떤 그림으로 보여 줄지 기획 구상 → 디자인 → 구현 순서로 제작했습니다.',
+        pricePill: '3D 이미지 150,000원 · 3D 애니메이션(30초 이내) 300,000원',
+        estimatorKey: 'viz_3d_motion',
+        visualType: 'microcavity-3d-bridge',
+
+        problem: '나노 광학 소자의 2차원 단면 모식도 한 장만 보여주면, Fabrication 과정과 소자 내부의 빛이 어떻게 갇히고 증폭되는지(Optical Physics) 시간적·공간적 흐름을 청중에게 동시에 이해시키기 어렵습니다.',
+        steps: [
+          { no: '01', title: '기획 구상 (핵심 현상 이해 → 보여 줄 그림 정하기)', desc: '논문에서 핵심 현상(빛이 갇히고 공진해 방출되는 과정)을 먼저 이해하고, 무엇을 어떤 그림으로 보여 줄지 장면과 순서를 구상합니다.' },
+          { no: '02', title: '디자인 (시안 제작)', desc: '소자의 구조와 내부 광 경로를 어떤 형태·시점으로 그릴지 시안을 만들고, 검토하며 수정합니다.' },
+          { no: '03', title: '구현 (BUILD → REVEAL → EXPLAIN 모션)', desc: '층이 쌓이는 과정, 단면 절개와 공진기 확대, 펌프 광 입사 → 왕복 반사 → 레이저 방출을 모션으로 구현합니다.' }
+        ],
+        beforeSummary: '정지된 2D 단면 모식도와 텍스트 설명. 전체적인 소자 구동 원리(내부 광 경로와 외부 방출)가 드러나지 않음.',
+        afterSummary: '3D 루프 애니메이션 및 슬라이드 삽입용 고해상도 스틸컷 패키지.',
+        improvements: [
+          '디자인 판단: 상부 구조에 가려 보이지 않던 내부 광 경로를 절개하는 연출로 개선하여 물리적 이해도 강화',
+          '모션 구현: 펌프 광 입사 → 공진기 내부 왕복 반사 → 레이저 방출까지 시간적 흐름을 보여 주는 3D 모션그래픽 제작'],
+        deliveryTerms: '① 3D 이미지 1개(기획~디자인): 150,000원 (영업일 5~7일, 고해상도 PNG/PDF) / ② 3D 애니메이션 30초 이내(기획~구현): 300,000원 (영업일 7~10일, MP4) | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
+      }
+    ];
+    const PORTFOLIO_CASES = ALL_PORTFOLIO_CASES.filter(c => !PAUSED_CASE_IDS.includes(c.id));
+    PORTFOLIO_CASES.forEach((c, i) => { if (!/^SPECIAL/.test(c.num)) c.num = String(i + 1).padStart(2, '0') + ' / 0' + PORTFOLIO_CASES.length; });
+
+    /**
+     * ============================================================================
+     * 3. RENDER PORTFOLIO SHOWCASE CARDS (Section 3)
+     * ============================================================================
+     */
+    let currentWorkFilter = 'all';
+
+    function renderWorkCards() {
+      const container = document.getElementById('workCardsContainer');
+      if (!container) return;
+
+      const filtered = currentWorkFilter === 'all'
+        ? PORTFOLIO_CASES
+        : PORTFOLIO_CASES.filter(item => item.category === currentWorkFilter);
+
+      container.innerHTML = filtered.map((item) => {
+        const isSpecial3D = item.id === 'case-3d-microcavity';
+        const badgeStyle = item.sourceType === 'real'
+          ? 'bg-teal-50 text-teal-800 border-teal-300'
+          : 'bg-amber-50 text-amber-900 border-amber-300';
+
+        return `
+          <article
+            id="${ isSpecial3D ? 'special-3d-bridge' : item.id }"
+            onclick="openCaseModal('${item.id}')"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCaseModal('${item.id}')}"
+            tabindex="0" role="button" aria-label="${item.categoryLabel} 상세 사례 열기"
+            class="work-card reveal group cursor-pointer rounded-3xl ${ isSpecial3D ? 'bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white border-teal-400/40' : 'bg-white text-navy-900 border-paper-border' } border overflow-hidden shadow-sm"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+              <!-- Left / Top Visual Preview Stage (7 Cols) -->
+              <div class="lg:col-span-7 relative p-5 sm:p-7 flex flex-col justify-between ${ isSpecial3D ? 'bg-navy-950/70 border-b lg:border-b-0 lg:border-r border-white/10' : 'bg-slate-50/90 border-b lg:border-b-0 lg:border-r border-paper-border' }">
+                <!-- Top Meta Bar inside Visual Stage -->
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="font-mono text-xs font-bold px-2.5 py-1 rounded ${ isSpecial3D ? 'bg-teal-500/20 text-teal-300 border border-teal-400/30' : 'bg-navy-900 text-teal-300' }">
+                      ${item.num}
+                    </span>
+                    <span class="font-mono text-xs font-semibold ${ isSpecial3D ? 'text-teal-300' : 'text-teal-700' }">
+                      ${item.categoryLabel}
+                    </span>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full text-[11px] font-medium border ${ isSpecial3D ? 'bg-white/10 text-slate-200 border-white/15' : badgeStyle }">
+                    ${item.sourceBadge}
+                  </span>
+                </div>
+
+                <!-- High-Resolution Structured Slide / Diagram Preview -->
+                <div class="my-auto">
+                  ${renderCardVisualStage(item, 'card')}
+                </div>
+
+                <!-- Bottom Hover Hint -->
+                <div class="mt-4 pt-3 border-t ${ isSpecial3D ? 'border-white/10 text-slate-300' : 'border-slate-200/80 text-paper-muted' } flex items-center justify-between text-xs font-mono">
+                  <span>클릭하여 6단계 상세 과정 · 전후 비교 · 납품 기준 보기</span>
+                  <span class="${ isSpecial3D ? 'text-teal-300' : 'text-teal-700' } font-semibold">CASE STUDY 열기 →</span>
+                </div>
+              </div>
+
+              <!-- Right / Bottom Editorial Summary (5 Cols) -->
+              <div class="lg:col-span-5 p-6 sm:p-8 lg:p-9 flex flex-col justify-between">
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-bold leading-snug ${ isSpecial3D ? 'text-white' : 'text-navy-900' }">
+                    ${item.title}
+                  </h3>
+                  <p class="mt-3 text-sm sm:text-base leading-relaxed ${ isSpecial3D ? 'text-slate-300' : 'text-paper-muted' }">
+                    ${item.subtitle}
+                  </p>
+
+                  <!-- 3-Step Approach Mini Preview -->
+                  <div class="mt-6 pt-5 border-t ${ isSpecial3D ? 'border-white/10' : 'border-paper-border' } space-y-2.5">
+                    <div class="text-[11px] font-mono uppercase tracking-wider ${ isSpecial3D ? 'text-teal-300' : 'text-teal-700' } font-semibold">
+                      핵심 작업 3단계 (3-Step Approach)
+                    </div>
+                    ${item.steps.map(st => `
+                      <div class="flex items-start gap-2.5 text-xs sm:text-sm">
+                        <span class="font-mono font-bold ${ isSpecial3D ? 'text-teal-300' : 'text-teal-700' } shrink-0">${st.no}</span>
+                        <div>
+                          <strong class="${ isSpecial3D ? 'text-white' : 'text-navy-900' }">${st.title}:</strong>
+                          <span class="${ isSpecial3D ? 'text-slate-300' : 'text-paper-muted' }"> ${st.desc}</span>
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <!-- Price & CTA Footer -->
+                <div class="mt-7 pt-4 border-t ${ isSpecial3D ? 'border-white/10' : 'border-paper-border' } flex items-center justify-between gap-3">
+                  <span class="text-xs font-mono font-semibold ${ isSpecial3D ? 'text-teal-300' : 'text-navy-800' }">
+                    ${item.pricePill}
+                  </span>
+                  <span class="px-3.5 py-2 rounded-xl text-xs font-semibold shrink-0 ${ isSpecial3D ? 'bg-teal-500 text-navy-950' : 'bg-navy-900 text-white group-hover:bg-teal-600' } transition-colors">
+                    상세 보기
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+      bindMotion(container);
+    }
+
+    /**
+     * ============================================================================
+     * 실제 작업물 미디어 (assets/media_v2_2.js → window.DR_MEDIA)
+     * ============================================================================
+     */
+    function getMedia(caseId) {
+      return (window.DR_MEDIA && window.DR_MEDIA[caseId]) || null;
+    }
+
+    function escAttr(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    }
+
+    function mediaOk(el) {
+      const slot = el.closest('.media-slot');
+      if (slot) slot.classList.add('is-ok');
+    }
+
+    function mediaFail(el) {
+      const slot = el.closest('.media-slot');
+      if (slot) slot.classList.add('is-missing');
+      console.warn('[딥리서치] 미디어 파일을 불러오지 못함:', el.getAttribute('src'));
+    }
+
+    function renderCardVisualStage(item, mode) {
+      const media = getMedia(item.id);
+      const video = media && media.video;
+      const cover = media && media.cover;
+      if (!video && !cover) return renderSchematic(item);
+
+      const ratio = (cover && cover.ratio) || '16/9';
+      const maxH = mode === 'modal' ? 'max-height:70vh;' : 'max-height:520px;';
+      let real;
+      if (video) {
+        real = `
+          <video class="media-real" muted loop playsinline preload="metadata" data-autoplay
+                 poster="${escAttr(video.poster)}" aria-label="${escAttr(video.alt)}" ${mode === 'modal' ? 'controls' : ''}>
+            <source src="${escAttr(video.src)}" type="video/mp4" onerror="mediaFail(this)" />
+          </video>`;
+      } else {
+        const zoom = mode === 'modal'
+          ? `onclick="event.stopPropagation();openLightbox('${escAttr(cover.src)}','${escAttr(cover.alt)}')"` : '';
+        real = `<img class="media-real ${mode === 'modal' ? 'media-zoom' : ''}" src="${escAttr(cover.src)}" alt="${escAttr(cover.alt)}"
+                     loading="lazy" decoding="async" onload="mediaOk(this)" onerror="mediaFail(this)" ${zoom} />`;
+      }
+      return `
+        <div class="media-slot">
+          <div class="media-real media-frame" style="aspect-ratio:${ratio};${maxH}">${real}</div>
+          <div class="media-fallback">${renderSchematic(item)}</div>
+          <span class="media-check">${escAttr(video ? video.src : cover.src)}</span>
+        </div>`;
+    }
+
+    function renderGallery(item) {
+      const media = getMedia(item.id);
+      const list = (media && media.gallery) || [];
+      if (!list.length) return '';
+      return `
+        <div class="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          ${list.map(g => `
+            <figure class="media-slot">
+              <button type="button" class="media-real media-frame media-zoom block w-full aspect-[4/3]"
+                      onclick="openLightbox('${escAttr(g.src)}','${escAttr(g.caption || g.alt)}')">
+                <img src="${escAttr(g.src)}" alt="${escAttr(g.alt)}" loading="lazy" decoding="async" onload="mediaOk(this)" onerror="mediaFail(this)" />
+              </button>
+              ${g.caption ? `<figcaption class="mt-1.5 text-[11px] text-paper-muted">${g.caption}</figcaption>` : ''}
+              <span class="media-check">${escAttr(g.src)}</span>
+            </figure>`).join('')}
+        </div>`;
+    }
+
+    function openLightbox(src, cap) {
+      const box = document.getElementById('lightbox');
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxImg').alt = cap || '';
+      document.getElementById('lightboxCap').textContent = cap || '';
+      box.classList.remove('hidden');
+      box.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const box = document.getElementById('lightbox');
+      box.classList.add('hidden');
+      box.classList.remove('flex');
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const videoObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const v = e.target;
+        if (e.isIntersecting && !reduceMotion) { v.play().catch(() => {}); } else { v.pause(); }
+      });
+    }, { threshold: 0.35 }) : null;
+
+    const revealObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 }) : null;
+
+    function bindMotion(root) {
+      root.querySelectorAll('video[data-autoplay]').forEach(v => {
+        v.addEventListener('loadeddata', () => mediaOk(v));
+        if (videoObserver) videoObserver.observe(v);
+      });
+      root.querySelectorAll('.reveal:not(.is-in)').forEach(el => {
+        if (revealObserver) revealObserver.observe(el); else el.classList.add('is-in');
+      });
+    }
+
+    /**
+     * 대체 도식 (실제 파일이 없을 때 보이는 HTML 도식)
+     */
+    function renderSchematic(item) {
+      if (item.visualType === 'poster-transform') {
+        return `
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center bg-white p-4 rounded-2xl border border-paper-border shadow-inner">
+            <!-- Left: 3 Dense Paper Pages -->
+            <div class="sm:col-span-4 bg-slate-100 rounded-xl p-3 border border-slate-200">
+              <div class="text-[10px] font-mono font-bold text-slate-500 mb-2">원문: 영문 논문 (1~3쪽)</div>
+              <div class="grid grid-cols-3 gap-1.5">
+                <div class="bg-white p-1.5 rounded border border-slate-200 space-y-1">
+                  <div class="h-1.5 bg-navy-900/70 rounded w-3/4"></div>
+                  <div class="grid grid-cols-2 gap-1 pt-1">
+                    <div class="space-y-0.5"><div class="h-1 bg-slate-300"></div><div class="h-1 bg-slate-300"></div><div class="h-1 bg-slate-300"></div></div>
+                    <div class="space-y-0.5"><div class="h-1 bg-slate-300"></div><div class="h-3 bg-teal-100 border border-teal-300 rounded"></div></div>
+                  </div>
+                </div>
+                <div class="bg-white p-1.5 rounded border border-slate-200 space-y-1">
+                  <div class="grid grid-cols-2 gap-1">
+                    <div class="space-y-0.5"><div class="h-3 bg-slate-200 rounded"></div><div class="h-1 bg-slate-300"></div><div class="h-1 bg-slate-300"></div></div>
+                    <div class="space-y-0.5"><div class="h-1 bg-slate-300"></div><div class="h-1 bg-slate-300"></div><div class="h-2 bg-amber-100 rounded"></div></div>
+                  </div>
+                </div>
+                <div class="bg-white p-1.5 rounded border border-slate-200 space-y-1">
+                  <div class="grid grid-cols-2 gap-1">
+                    <div class="space-y-0.5"><div class="h-1 bg-slate-300"></div><div class="h-3 bg-sky-100 rounded"></div></div>
+                    <div class="space-y-0.5"><div class="h-1 bg-slate-300"></div><div class="h-1 bg-slate-300"></div><div class="h-1 bg-slate-300"></div></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-600 mt-2 leading-tight">2단 영문 줄글 + 흩어진 수식·그래프</p>
+            </div>
+
+            <!-- Arrow -->
+            <div class="sm:col-span-1 flex sm:flex-col items-center justify-center text-teal-600 font-mono text-xs font-bold">
+              <span>3단계</span>
+              <span class="text-lg">→</span>
+            </div>
+
+            <!-- Right: 1 Structured Academic Poster -->
+            <div class="sm:col-span-7 bg-navy-900 text-white rounded-xl p-3.5 border border-teal-400/40">
+              <div class="flex items-center justify-between border-b border-white/15 pb-1.5 mb-2">
+                <span class="text-[10px] font-mono text-teal-300 font-bold">A0 학회 포스터 1장 구성 (연구 보호 블러 적용)</span>
+                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-teal-500/20 text-teal-200">PPTX + PDF</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-[10px]">
+                <div class="bg-white/10 rounded p-2 space-y-1">
+                  <div class="text-teal-300 font-mono font-bold">1. Abstract &amp; Intro</div>
+                  <div class="text-slate-300 text-[9px]">핵심 연구 질문 요약 + 소자 구조 모식도 배치</div>
+                </div>
+                <div class="bg-white/10 rounded p-2 space-y-1">
+                  <div class="text-teal-300 font-mono font-bold">2. Experimental Results</div>
+                  <div class="text-slate-300 text-[9px]">핵심 그래프 비교 + 정량 지표 콜아웃 강조</div>
+                </div>
+                <div class="col-span-2 bg-teal-500/20 border border-teal-400/30 rounded p-1.5 flex items-center justify-between">
+                  <span class="font-mono text-teal-200 font-semibold">3. Conclusion &amp; Take-Home Message</span>
+                  <span class="text-[9px] text-white">시선 순서 정리 완료</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (item.visualType === 'pn-junction-slides') {
+        return `
+          <div class="bg-white p-4 rounded-2xl border border-paper-border shadow-inner">
+            <div class="flex items-center justify-between text-[11px] font-mono text-paper-muted mb-2.5">
+              <span>응용물리실험 강의안 (총 31장 중 핵심 6면 발췌)</span>
+              <span class="text-teal-700 font-semibold">수식 ↔ 에너지 밴드 ↔ 전기장 적분 1:1 매칭</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-[11px]">
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">SLIDE 04</span>
+                <div class="font-bold text-navy-900 mt-0.5">PN 접합과 공핍층 형성</div>
+                <div class="mt-1.5 h-8 rounded bg-gradient-to-r from-sky-100 via-slate-100 to-rose-100 border border-slate-200 flex items-center justify-between px-2 font-mono text-[9px] text-navy-800">
+                  <span>p-type (−)</span><span>W_dep</span><span>(+) n-type</span>
+                </div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">SLIDE 09</span>
+                <div class="font-bold text-navy-900 mt-0.5">페르미 준위(E_F) 평형</div>
+                <div class="mt-1.5 h-8 rounded bg-navy-900 text-teal-300 flex items-center justify-center font-mono text-[9px]">
+                  E_F(p) = E_F(n) → qV_bi 장벽
+                </div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">SLIDE 14</span>
+                <div class="font-bold text-navy-900 mt-0.5">도핑 비대칭 (N_A ≠ N_D)</div>
+                <div class="mt-1.5 h-8 rounded bg-teal-50 border border-teal-200 flex items-center justify-center font-mono text-[9px] text-teal-900">
+                  N_A x_p = N_D x_n (전하량 보존)
+                </div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">SLIDE 18</span>
+                <div class="font-bold text-navy-900 mt-0.5">전기장 적분과 내장 전위</div>
+                <div class="mt-1.5 h-8 rounded bg-amber-50 border border-amber-200 flex items-center justify-center font-mono text-[9px] text-amber-900">
+                  Area = −∫E(x)dx = V_bi
+                </div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">SLIDE 23</span>
+                <div class="font-bold text-navy-900 mt-0.5">순방향·역방향 바이어스</div>
+                <div class="mt-1.5 h-8 rounded bg-slate-100 border border-slate-200 flex items-center justify-center font-mono text-[9px] text-navy-800">
+                  q(V_bi − V_F) vs q(V_bi + V_R)
+                </div>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-900 text-white border border-navy-700">
+                <span class="font-mono text-[10px] text-teal-300 font-bold">SLIDE 27</span>
+                <div class="font-bold text-white mt-0.5">I–V 특성과 실험 연결</div>
+                <div class="mt-1.5 h-8 rounded bg-white/10 flex items-center justify-center font-mono text-[9px] text-teal-200">
+                  I = I_0 [exp(qV/nkT) − 1]
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (item.visualType === 'rne-fdtd-slides') {
+        return `
+          <div class="bg-white p-4 rounded-2xl border border-paper-border shadow-inner">
+            <div class="flex items-center justify-between text-[11px] font-mono text-paper-muted mb-2.5">
+              <span>R&amp;E 시뮬레이션 강의안 (총 29장 중 핵심 6면 발췌)</span>
+              <span class="text-teal-700 font-semibold">수치해석 원리(Yee Cell) + UI 설정 + 결과 비교</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-[11px]">
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">01 · FDTD 원리</span>
+                <div class="font-bold text-navy-900 mt-0.5">3D Yee Cell 격자 도식</div>
+                <p class="text-[10px] text-paper-muted mt-1">E-field / H-field 공간·시간 교차 계산 시각화</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">02 · 구조 설정</span>
+                <div class="font-bold text-navy-900 mt-0.5">UI 입력창 ↔ 3D Span</div>
+                <p class="text-[10px] text-paper-muted mt-1">x, y, z span 설정값과 시뮬레이션 영역 매칭</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">03 · 물질 피팅</span>
+                <div class="font-bold text-navy-900 mt-0.5">Ag 유전율 데이터 피팅</div>
+                <p class="text-[10px] text-paper-muted mt-1">실험 굴절률 데이터와 FDTD 모델 곡선 비교</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">04 · 경계 조건</span>
+                <div class="font-bold text-navy-900 mt-0.5">PML · Metal · Periodic</div>
+                <p class="text-[10px] text-paper-muted mt-1">4대 경계 조건의 반사·흡수·주기 대칭 비교표</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-[10px] text-teal-700 font-bold">05 · 파장 대역</span>
+                <div class="font-bold text-navy-900 mt-0.5">Source Bandwidth 설정</div>
+                <p class="text-[10px] text-paper-muted mt-1">가시광~근적외선 펄스 스펙트럼 설정 가이드</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-navy-900 text-white">
+                <span class="font-mono text-[10px] text-teal-300 font-bold">06 · 격자 정밀도</span>
+                <div class="font-bold text-white mt-0.5">Mesh Accuracy 2 vs 8</div>
+                <p class="text-[10px] text-teal-200 mt-1">해상도 차이와 계산 시간 트레이드오프 직관 비교</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Special 3D Showcase Card
+      return `
+        <div class="rounded-2xl bg-navy-900 border border-teal-400/30 p-4 text-white">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span class="font-mono text-[11px] text-teal-300">28s 3-STAGE STORYBOARD · BLENDER 3D SCIENTIFIC MOTION</span>
+            <span class="font-mono text-[10px] text-slate-300">Si / Bottom DBR / Spacer / 활성 발광층 / Top DBR</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2.5 text-xs">
+            <div class="p-3 rounded-xl bg-navy-950 border border-white/10">
+              <span class="font-mono text-[10px] text-teal-300 block">01 · BUILD (0–8s)</span>
+              <strong class="text-white block mt-0.5">다층 박막 순차 적층</strong>
+              <span class="text-[11px] text-slate-400 block mt-1">층간 들뜸 없이 실제 박막처럼 밀착 적층 연출</span>
+            </div>
+            <div class="p-3 rounded-xl bg-navy-950 border border-white/10">
+              <span class="font-mono text-[10px] text-teal-300 block">02 · REVEAL (8–14s)</span>
+              <strong class="text-white block mt-0.5">단면 절개 및 확대</strong>
+              <span class="text-[11px] text-slate-400 block mt-1">Cutaway 절개로 내부 λ/2 공진기 구조 노출</span>
+            </div>
+            <div class="p-3 rounded-xl bg-navy-950 border border-teal-400/40">
+              <span class="font-mono text-[10px] text-teal-300 block">03 · EXPLAIN (14–28s)</span>
+              <strong class="text-white block mt-0.5">펌프·공진·레이저 출력</strong>
+              <span class="text-[11px] text-slate-400 block mt-1">상부 DBR 투과 점선 연출로 내부 왕복 공진 시각화</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function filterWorks(category) {
+      currentWorkFilter = category;
+      document.querySelectorAll('.work-filter-btn').forEach(btn => {
+        if (btn.dataset.cat === category) {
+          btn.className = 'work-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-navy-900 text-white shadow-sm transition-all';
+        } else {
+          btn.className = 'work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all';
+        }
+      });
+      renderWorkCards();
+    }
+
+    function filterAndScrollToWork(category) {
+      filterWorks(category);
+      const workSection = document.getElementById('work');
+      if (workSection) workSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /**
+     * ============================================================================
+     * 4. 6-STEP CASE STUDY MODAL CONTROLLER
+     * ============================================================================
+     */
+    function openCaseModal(caseId) {
+      const item = PORTFOLIO_CASES.find(c => c.id === caseId);
+      if (!item) return;
+
+      document.getElementById('modalIndexBadge').textContent = item.num;
+      document.getElementById('modalCategoryText').textContent = item.categoryLabel;
+      document.getElementById('modalSourceBadgeFooter').textContent = `출처 및 성격 고지: ${item.sourceBadge}`;
+
+      const inquireBtn = document.getElementById('modalInquireBtn');
+      inquireBtn.onclick = () => {
+        closeCaseModal();
+        const selectEl = document.getElementById('estServiceSelect');
+        if (selectEl && item.estimatorKey) {
+          selectEl.value = item.estimatorKey;
+          updateEstimator();
+        }
+        document.getElementById('estimator').scrollIntoView({ behavior: 'smooth' });
+      };
+
+      const body = document.getElementById('modalBodyScroll');
+      body.innerHTML = `
+        <!-- STEP 01: 첫 화면 (대표 결과물 프리뷰 · 서비스명 · 핵심 문장) -->
+        <div class="pb-6 border-b border-paper-border">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="px-2.5 py-1 rounded text-xs font-mono font-semibold bg-teal-50 text-teal-800 border border-teal-300">
+              STEP 01 · 첫 화면 (대표 결과물 &amp; 핵심 정의)
+            </span>
+            <span class="px-2.5 py-1 rounded text-xs font-mono bg-slate-100 text-navy-800">
+              ${item.sourceBadge}
+            </span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-navy-900 leading-snug">${item.title}</h2>
+          <p class="mt-2 text-sm sm:text-base text-paper-muted leading-relaxed">${item.subtitle}</p>
+          <div class="mt-5">
+            ${renderCardVisualStage(item, 'modal')}
+            ${renderGallery(item)}
+          </div>
+        </div>
+
+        <!-- STEP 02: 고객의 고민 / 해결 과제 -->
+        <div class="bg-slate-50 rounded-2xl p-5 sm:p-6 border border-paper-border">
+          <span class="font-mono text-xs font-bold text-teal-700 uppercase">STEP 02 · 고객의 고민 &amp; 해결 과제 (PROBLEM STATEMENT)</span>
+          <h3 class="text-lg font-bold text-navy-900 mt-1">무엇이 문제였고, 왜 재구성이 필요했는가?</h3>
+          <p class="mt-2 text-sm sm:text-base text-navy-800 leading-relaxed">${item.problem}</p>
+        </div>
+
+        <!-- STEP 03: 접근 방법 (3단계) -->
+        <div>
+          <span class="font-mono text-xs font-bold text-teal-700 uppercase">STEP 03 · 딥리서치의 3단계 접근 방법 (METHODOLOGY)</span>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+            ${item.steps.map(st => `
+              <div class="rounded-2xl p-5 bg-white border border-paper-border shadow-sm">
+                <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-navy-900 text-teal-300">STEP ${st.no}</span>
+                <h4 class="font-bold text-base text-navy-900 mt-2.5">${st.title}</h4>
+                <p class="text-xs sm:text-sm text-paper-muted mt-1.5 leading-relaxed">${st.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- STEP 04: 핵심 결과 (Before & After 비교와 개선 이유 3가지) -->
+        <div class="rounded-2xl bg-navy-900 text-white p-5 sm:p-7">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="font-mono text-xs font-bold text-teal-300 uppercase">STEP 04 · 핵심 결과 — BEFORE &amp; AFTER 비교 및 개선 포인트</span>
+            <span class="text-xs font-mono text-slate-300">근거 기반 구조화</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-rose-950/35 border border-rose-400/30">
+              <div class="font-mono text-xs font-bold text-rose-300 mb-1.5">${item.beforeLabel || '작업 전 (BEFORE)'}</div>
+              <p class="text-xs sm:text-sm text-slate-200 leading-relaxed">${item.beforeSummary}</p>
+            </div>
+            <div class="p-4 rounded-xl bg-teal-950/45 border border-teal-400/40">
+              <div class="font-mono text-xs font-bold text-teal-300 mb-1.5">${item.afterLabel || '작업 후 (AFTER)'}</div>
+              <p class="text-xs sm:text-sm text-white leading-relaxed">${item.afterSummary}</p>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-white/10">
+            <div class="text-xs font-mono text-teal-300 mb-2">핵심 개선 이유 3가지</div>
+            <ul class="space-y-1.5 text-xs sm:text-sm text-slate-200">
+              ${item.improvements.map(imp => `<li class="flex items-start gap-2"><span class="text-teal-400 font-bold">✓</span><span>${imp}</span></li>`).join('')}
+            </ul>
+          </div>
+        </div>
+
+        <!-- STEP 05 & 06: 진행 과정·납품 조건 & 검증·기준 고지 -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-7 rounded-2xl p-5 bg-teal-50/60 border border-teal-200">
+            <span class="font-mono text-xs font-bold text-teal-800 uppercase">STEP 05 · 진행 과정 &amp; 납품·가격 기준</span>
+            <p class="mt-2 text-xs sm:text-sm text-navy-900 leading-relaxed font-medium">${item.deliveryTerms}</p>
+          </div>
+          <div class="md:col-span-5 rounded-2xl p-5 bg-slate-100 border border-paper-border">
+            <span class="font-mono text-xs font-bold text-navy-800 uppercase">STEP 06 · 검증과 기준 고지</span>
+            <p class="mt-2 text-xs text-paper-muted leading-relaxed">
+              본 사례는 <strong>${item.sourceBadge}</strong>입니다. 딥리서치는 고객의 실제 의뢰 자료를 외부에 절대 노출하지 않으며, 모든 수록 샘플은 대표 본인 저작물이거나 가상 자료로 재구성한 예시입니다.
+            </p>
+          </div>
+        </div>
+      `;
+
+      const modal = document.getElementById('caseModal');
+      lastFocusEl = document.activeElement;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      body.scrollTop = 0;
+      bindMotion(body);
+      document.getElementById('modalCloseBtn').focus();
+    }
+
+    let lastFocusEl = null;
+
+    function closeCaseModal() {
+      const modal = document.getElementById('caseModal');
+      if (modal.classList.contains('hidden')) return;
+      modal.querySelectorAll('video').forEach(v => v.pause());
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+      if (lastFocusEl && lastFocusEl.focus) lastFocusEl.focus();
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const box = document.getElementById('lightbox');
+      if (!box.classList.contains('hidden')) closeLightbox(); else closeCaseModal();
+    });
+
+    /**
+     * ============================================================================
+     * 5. INTERACTIVE ESTIMATOR LOGIC (납기일 통일 + 3D 과학 시각화 옵션 연동)
+     * ============================================================================
+     */
+    const SERVICE_RULES = {
+      ppt_design: {
+        name: 'PPT 구성·디자인 (초안 있음)',
+        basePrice: 100000,
+        baseUnitMax: 30,
+        unitStep: 10,
+        extraPerStep: 30000,
+        unitName: '장',
+        minVal: 10,
+        maxVal: 70,
+        defaultVal: 25,
+        leadTime: '첫 시안 영업일 3~5일',
+        deliverable: '취합 수정 2회 · PPTX + PDF',
+        hasVolume: true
+      },
+      ppt_plan: {
+        name: 'PPT 기획·구성·디자인 (원문 기반)',
+        basePrice: 200000,
+        baseUnitMax: 30,
+        unitStep: 10,
+        extraPerStep: 60000,
+        unitName: '장',
+        minVal: 10,
+        maxVal: 70,
+        defaultVal: 25,
+        leadTime: '첫 시안 영업일 7~10일',
+        deliverable: '취합 수정 2회 · PPTX + PDF',
+        hasVolume: true
+      },
+      poster_draft: {
+        name: '학회 포스터 — 기존 초안 편집',
+        basePrice: 40000,
+        leadTime: '일정 사전 합의 (학회 마감 맞춤)',
+        deliverable: '국문/영문 1장·1규격 · 취합 수정 2회 · PPTX + PDF',
+        hasVolume: false,
+        fromPrice: true
+      },
+      poster_plan: {
+        name: '학회 포스터 — 논문 원문 기반 기획·구성·디자인',
+        basePrice: 80000,
+        leadTime: '일정 사전 합의 (학회 마감 맞춤)',
+        deliverable: '국문/영문 1장·1규격 · 취합 수정 2회 · PPTX + PDF',
+        hasVolume: false,
+        fromPrice: true
+      },
+      viz_3d_still: {
+        name: '3D 과학 시각화 — 3D 이미지 1개',
+        basePrice: 150000,
+        leadTime: '첫 시안 영업일 5~7일 (구조 복잡도별 합의)',
+        deliverable: '취합 수정 2회 · 고해상도 PNG/PDF',
+        hasVolume: false,
+        fromPrice: false
+      },
+      viz_3d_motion: {
+        name: '3D 과학 시각화 — 3D 애니메이션 30초 이내',
+        basePrice: 300000,
+        leadTime: '영업일 7~12일 (스토리보드 합의 후 제작)',
+        deliverable: '취합 수정 2회 · MP4 영상',
+        hasVolume: false,
+        fromPrice: false
+      },
+      doc_edit: {
+        name: '문서 교정·편집 (Word + PDF)',
+        basePrice: 50000,
+        baseUnitMax: 30,
+        extraFor: v => (v <= 30 ? 0 : 20000 + (v > 50 ? Math.ceil((v - 50) / 10) * 10000 : 0)),
+        unitName: '쪽',
+        minVal: 10,
+        maxVal: 80,
+        sliderStep: 5,
+        defaultVal: 25,
+        leadTime: '분량 확인 후 합의',
+        deliverable: '취합 수정 1회 · Word(DOCX) + PDF',
+        hasVolume: true
+      },
+      doc_feedback: {
+        name: '문서 서면 피드백 (메시지·논리·근거 검토)',
+        basePrice: 70000,
+        baseUnitMax: 20,
+        unitStep: 10,
+        extraPerStep: 30000,
+        unitName: '쪽',
+        minVal: 5,
+        maxVal: 50,
+        sliderStep: 5,
+        defaultVal: 20,
+        leadTime: '영업일 3~5일',
+        deliverable: '피드백 보고서 1종 + 질문 답변 1회',
+        hasVolume: true
+      },
+      doc_resume: {
+        name: '취업·대학원 서류 첨삭 (1건)',
+        basePrice: 30000,
+        baseUnitMax: 3000,
+        unitStep: 1000,
+        extraPerStep: 10000,
+        unitName: '자',
+        minVal: 1000,
+        maxVal: 6000,
+        sliderStep: 500,
+        defaultVal: 3000,
+        leadTime: '영업일 2~3일',
+        deliverable: '서면 의견 + 첨삭본 · 수정 2회',
+        hasVolume: true
+      },
+      consult_pres: {
+        name: '발표 컨설팅 (15~20분 발표 · 미팅 60분)',
+        basePrice: 100000,
+        leadTime: '리허설 종료 후 영업일 2일 이내 서면 피드백',
+        deliverable: '시간 배분표 + 서면 피드백 · 보완 1회',
+        hasVolume: false
+      },
+      consult_pf: {
+        name: '직무 포트폴리오 컨설팅·편집',
+        basePrice: 150000,
+        baseUnitMax: 20,
+        unitStep: 10,
+        extraPerStep: 70000,
+        unitName: '쪽',
+        minVal: 5,
+        maxVal: 50,
+        sliderStep: 5,
+        defaultVal: 20,
+        leadTime: '6단계 과정 일정 합의',
+        deliverable: '취합 수정 2회 · 서면 의견 + 편집본 PDF',
+        hasVolume: true
+      }
+    };
+
+    let lastChangedServiceKey = '';
+
+    function updateEstimator() {
+      const selectEl = document.getElementById('estServiceSelect');
+      const key = selectEl.value;
+      const rule = SERVICE_RULES[key];
+      if (!rule) return;
+
+      const sliderWrapper = document.getElementById('estVolumeWrapper');
+      const sliderEl = document.getElementById('estVolumeSlider');
+
+      if (key !== lastChangedServiceKey) {
+        lastChangedServiceKey = key;
+        if (rule.hasVolume) {
+          sliderWrapper.classList.remove('hidden');
+          sliderEl.min = rule.minVal;
+          sliderEl.max = rule.maxVal;
+          sliderEl.step = rule.sliderStep || 5;
+          sliderEl.value = rule.defaultVal;
+          document.getElementById('estVolumeHint').textContent = rule.extraFor
+            ? '30쪽까지 50,000원, 31~50쪽 70,000원, 50쪽 초과는 10쪽마다 10,000원 추가'
+            : `${rule.baseUnitMax.toLocaleString()}${rule.unitName}까지 기본가, 초과 시 ${rule.unitStep.toLocaleString()}${rule.unitName}마다 ${rule.extraPerStep.toLocaleString()}원 추가`;
+        } else {
+          sliderWrapper.classList.add('hidden');
+        }
+      }
+
+      let volume = parseInt(sliderEl.value, 10) || rule.defaultVal || 25;
+      let extraVolumeCost = 0;
+
+      if (rule.hasVolume) {
+        const unitLabel = rule.unitName === '자' ? '글자 수(공백 포함)' : `${rule.unitName} 수`;
+        document.getElementById('estVolumeLabel').textContent = `02. 예상 작업 분량 (${unitLabel})`;
+        const volText = `${volume.toLocaleString()}${rule.unitName}`;
+        if (volume <= rule.baseUnitMax) {
+          document.getElementById('estVolumeValue').textContent = `${volText} (기본 ${rule.baseUnitMax.toLocaleString()}${rule.unitName} 이내)`;
+        } else {
+          extraVolumeCost = rule.extraFor
+            ? rule.extraFor(volume)
+            : Math.ceil((volume - rule.baseUnitMax) / rule.unitStep) * rule.extraPerStep;
+          document.getElementById('estVolumeValue').textContent = `${volText} (초과 구간 추가)`;
+        }
+      }
+
+      const subtotal = rule.basePrice + extraVolumeCost;
+      const isUrgent = document.getElementById('estOptUrgent').checked;
+      const isEnglish = document.getElementById('estOptEnglish').checked;
+
+      // 단리 30%씩 각각 가산
+      const urgentAdd = isUrgent ? Math.round(rule.basePrice * 0.3) : 0;
+      const englishAdd = isEnglish ? Math.round(rule.basePrice * 0.3) : 0;
+      const total = subtotal + urgentAdd + englishAdd;
+
+      const suffix = rule.fromPrice ? '원부터' : '원';
+      document.getElementById('estTotalPrice').textContent = `${total.toLocaleString()}${suffix}`;
+      document.getElementById('estSummaryName').textContent = rule.name;
+      document.getElementById('estSummaryLeadTime').textContent = rule.leadTime;
+      document.getElementById('estSummaryDeliverable').textContent = rule.deliverable;
+
+      const parts = [`기본 ${rule.basePrice.toLocaleString()}원`];
+      if (extraVolumeCost > 0) parts.push(`분량 추가 +${extraVolumeCost.toLocaleString()}원`);
+      if (urgentAdd > 0) parts.push(`급행 +${urgentAdd.toLocaleString()}원`);
+      if (englishAdd > 0) parts.push(`언어 전환 +${englishAdd.toLocaleString()}원`);
+      document.getElementById('estSummaryBreakdown').textContent = parts.join(' / ');
+    }
+
+    function applyEstimateToContactForm() {
+      const key = document.getElementById('estServiceSelect').value;
+      const rule = SERVICE_RULES[key];
+      const totalText = document.getElementById('estTotalPrice').textContent;
+      const volText = rule.hasVolume ? ` (예상 ${Number(document.getElementById('estVolumeSlider').value).toLocaleString()}${rule.unitName})` : '';
+      const opts = [];
+      if (document.getElementById('estOptUrgent').checked) opts.push('급행');
+      if (document.getElementById('estOptEnglish').checked) opts.push('언어 전환');
+      const optStr = opts.length > 0 ? ` [${opts.join('·')} 옵션 포함]` : '';
+
+      document.getElementById('inqService').value = `${rule.name}${volText}${optStr} — 예상 견적 ${totalText}`;
+      syncInquiryPreview();
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /**
+     * ============================================================================
+     * 6. ONE-CLICK INQUIRY BUILDER, EMAIL SENDER & CLIPBOARD COPY (Section 7)
+     * ============================================================================
+     */
+    function syncInquiryPreview() {
+      const s = document.getElementById('inqService').value || '(선택 서비스 입력)';
+      const p = document.getElementById('inqPurpose').value || '(예: 학회 발표 / 강의안 / 연구과제 평가 / 3D 연구 시각화 등)';
+      const m = document.getElementById('inqMaterial').value || '(예: 논문 원문 PDF / PPT 초안 보유 여부 및 목표 분량)';
+      const d = document.getElementById('inqDeadline').value || '(예: 희망 첫 시안 수령일 및 최종 발표·제출 마감일)';
+
+      const text = `[딥리서치 작업 문의]
+1. 희망 서비스: ${s}
+2. 용도 및 대상: ${p}
+3. 현재 보유 자료 및 목표 분량(국/영문): ${m}
+4. 희망 첫 시안일 및 최종 마감일: ${d}
+
+위 내용으로 작업 범위와 일정 확인 부탁드립니다.
+(참고 자료 파일이 있는 경우 첨부하여 보내주시면 더욱 정확한 안내가 가능합니다.)`;
+
+      document.getElementById('inqPreviewTextarea').value = text;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('copyToastMsg');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 4000);
+    }
+
+    function copyInquiryText() {
+      const textarea = document.getElementById('inqPreviewTextarea');
+      const fallbackCopy = () => {
+        textarea.select();
+        textarea.setSelectionRange(0, 99999);
+        try { document.execCommand('copy'); } catch (err) {}
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textarea.value).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+      showToast('✓ 문의 양식이 복사되었습니다! 숨고 메시지창에 붙여넣어 주세요.');
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      switchHeroPreview(0);
+      createMicrocavityLoop(document.getElementById('heroSceneCanvas'));
+      renderWorkCards();
+      updateEstimator();
+      syncInquiryPreview();
+
+      document.querySelectorAll('section:not(#top) .wrap > *').forEach(el => el.classList.add('reveal'));
+      bindMotion(document);
+
+      if (document.documentElement.classList.contains('check-mode')) {
+        const rows = PORTFOLIO_CASES.map(c => {
+          const m = getMedia(c.id);
+          return { 사례: c.id, 영상: m && m.video ? m.video.src : '-', 대표이미지: m && m.cover ? m.cover.src : '- (도식 표시)', 추가이미지: m && m.gallery ? m.gallery.length : 0 };
+        });
+        console.table(rows);
+      }
+    });
+  </script>
+</body>
+</html>
