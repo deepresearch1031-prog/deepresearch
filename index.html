@@ -636,12 +636,13 @@
                 <td class="py-4 px-5 font-mono">국문/영문 1장·1규격<br/><span class="text-[11px] text-paper-muted">(A0 등 학회 양식)</span></td>
                 <td class="py-4 px-5 font-mono font-bold text-navy-900">40,000원</td>
                 <td class="py-4 px-5" rowspan="2">원문 전체 독해·요약·번역·신규 도식 제작은 범위 확인 후 견적 반영</td>
-                <td class="py-4 px-5" rowspan="2">영업일 2~3일 · 취합 수정 2회 · <span class="font-mono text-xs">PPTX + 인쇄용 PDF</span></td>
+                <td class="py-4 px-5">영업일 1~2일 · 취합 수정 2회 · <span class="font-mono text-xs">PPTX + 인쇄용 PDF</span></td>
               </tr>
               <tr class="hover:bg-teal-50/40">
                 <td class="py-4 px-5 font-semibold text-teal-700">기획·구성·디자인 <span class="block text-xs font-normal text-paper-muted">논문 원문·핵심 자료 기반 구성</span></td>
                 <td class="py-4 px-5 font-mono">국문/영문 1장·1규격</td>
                 <td class="py-4 px-5 font-mono font-bold text-teal-700">80,000원</td>
+                <td class="py-4 px-5">영업일 2~3일 · 취합 수정 2회 · <span class="font-mono text-xs">PPTX + 인쇄용 PDF</span></td>
               </tr>
 
               <!-- 3D 과학 시각화 (신규 정식 반영) -->
@@ -1682,7 +1683,7 @@
         improvements: [
           '디자인 판단: 상부 구조에 가려 보이지 않던 내부 광 경로를 절개하는 연출로 개선하여 물리적 이해도 강화',
           '모션 구현: 펌프 광 입사 → 공진기 내부 왕복 반사 → 레이저 방출까지 시간적 흐름을 보여 주는 3D 모션그래픽 제작'],
-        deliveryTerms: '① 3D 이미지 1개(기획~디자인): 150,000원 (영업일 5~7일, 고해상도 PNG/PDF) / ② 3D 애니메이션 30초 이내(기획~구현): 300,000원 (영업일 7~10일, MP4) | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
+        deliveryTerms: '① 3D 이미지 1개(기획~디자인): 150,000원 (영업일 5~7일, 고해상도 PNG/PDF) / ② 3D 애니메이션 30초 이내(기획~구현): 300,000원 (영업일 7~10일, MP4 + 핵심 스틸컷) | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
       }
     ];
     const PORTFOLIO_CASES = ALL_PORTFOLIO_CASES.filter(c => !PAUSED_CASE_IDS.includes(c.id));
@@ -2274,14 +2275,14 @@
         minVal: 10,
         maxVal: 70,
         defaultVal: 25,
-        leadTime: '첫 시안 영업일 7~10일',
+        leadTime: '첫 시안 영업일 5~7일',
         deliverable: '취합 수정 2회 · PPTX + PDF',
         hasVolume: true
       },
       poster_draft: {
         name: '학회 포스터 — 기존 초안 편집',
         basePrice: 40000,
-        leadTime: '일정 사전 합의 (학회 마감 맞춤)',
+        leadTime: '첫 시안 영업일 1~2일',
         deliverable: '국문/영문 1장·1규격 · 취합 수정 2회 · PPTX + PDF',
         hasVolume: false,
         fromPrice: true
@@ -2289,7 +2290,7 @@
       poster_plan: {
         name: '학회 포스터 — 논문 원문 기반 기획·구성·디자인',
         basePrice: 80000,
-        leadTime: '일정 사전 합의 (학회 마감 맞춤)',
+        leadTime: '첫 시안 영업일 2~3일',
         deliverable: '국문/영문 1장·1규격 · 취합 수정 2회 · PPTX + PDF',
         hasVolume: false,
         fromPrice: true
@@ -2305,8 +2306,8 @@
       viz_3d_motion: {
         name: '3D 과학 시각화 — 3D 애니메이션 30초 이내',
         basePrice: 300000,
-        leadTime: '영업일 7~12일 (스토리보드 합의 후 제작)',
-        deliverable: '취합 수정 2회 · MP4 영상',
+        leadTime: '영업일 7~10일 (스토리보드 합의 후 제작)',
+        deliverable: '취합 수정 2회 · MP4 영상 + 핵심 스틸컷',
         hasVolume: false,
         fromPrice: false
       },
