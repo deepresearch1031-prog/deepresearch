@@ -57,32 +57,6 @@ window.DR_MEDIA = {
     video: null
   },
 
-  'case-editing': {
-    cover: {
-      src: 'assets/cases/04_editing/editing_process_v1.0.png',
-      alt: '가상 연구계획서 문단의 첨삭 전, 수정 이유 3가지, 첨삭 후 문단과 작성자 확인 질문',
-      ratio: '16/9'
-    },
-    gallery: [],
-    video: null
-  },
-
-  'case-pres-consult': {
-    cover: {
-      src: 'assets/cases/05_presentation/presentation_timing_v0.1.png',
-      alt: '강의안 31장을 15분 발표 7구간으로 나눈 시간 배분표와 리허설 뒤 서면 피드백 예시',
-      ratio: '1/1'
-    },
-    gallery: [],
-    video: null
-  },
-
-  // 아직 이미지 없음 — 가상 재구성 샘플 이미지를 만들면 경로를 적는다
-  'case-job-portfolio': {
-    cover: null,
-    gallery: [],
-    video: null
-  },
 
   // 아직 영상 없음 — Blender 루프(mp4)와 첫 장면(jpg)을 넣으면 경로를 적는다
   // 예: video: { src: 'assets/cases/07_microcavity/microcavity_loop.mp4',
