@@ -324,11 +324,6 @@
                 <span class="font-semibold text-sm text-white group-hover:text-teal-200 block mt-0.5">3D 과학 시각화</span>
                 <span class="text-[11px] text-slate-300 block mt-1">원리·구조 모션 그래픽</span>
               </button>
-              <button hidden data-paused="서비스 일시 중단" onclick="filterAndScrollToWork('consulting')" class="text-left p-3 rounded-xl bg-white/[0.06] hover:bg-teal-600/25 border border-white/10 hover:border-teal-300/50 transition-all group">
-                <span class="font-mono text-[11px] text-teal-300 block">SERVICE 04</span>
-                <span class="font-semibold text-sm text-white group-hover:text-teal-200 block mt-0.5">발표·포트폴리오</span>
-                <span class="text-[11px] text-slate-300 block mt-1">시간 배분·STAR 구조</span>
-              </button>
             </div>
           </div>
 
@@ -518,12 +513,6 @@
           <button onclick="filterWorks('poster')" data-cat="poster" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
             학회 포스터 (1)
           </button>
-          <button hidden data-paused="서비스 일시 중단" onclick="filterWorks('editing')" data-cat="editing" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
-            문서 교정·첨삭 (1)
-          </button>
-          <button hidden data-paused="서비스 일시 중단" onclick="filterWorks('consulting')" data-cat="consulting" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
-            발표·포트폴리오 컨설팅 (2)
-          </button>
           <button onclick="filterWorks('3d-motion')" data-cat="3d-motion" class="work-filter-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium bg-white text-navy-900 hover:bg-teal-50 border border-paper-border transition-all">
             3D 과학 시각화 (1)
           </button>
@@ -565,9 +554,9 @@
             이미 장별 내용이나 PPT 초안이 준비되어 있고, <strong>레이아웃 정돈·가독성 개선·도식 다듬기·시각적 통일감</strong>이 필요할 때 적합합니다.
           </p>
           <ul class="mt-4 space-y-1.5 text-xs sm:text-sm text-navy-800">
+            <li>• <strong>완성 PPT 최종 검토·디자인 개선:</strong> 최대 30장 <strong>30,000~50,000원</strong> (편집 가능한 PPTX, 첫 시안 영업일 1~3일)</li>
             <li>• <strong>PPT 구성·디자인:</strong> 최대 30장 기준 <strong>100,000원</strong> (첫 시안 영업일 3~5일)</li>
             <li>• <strong>학회 포스터 초안 편집:</strong> 국문/영문 1장·1규격 <strong>40,000원</strong></li>
-            <li data-paused="서비스 일시 중단">• <strong>문서 교정·편집:</strong> 30쪽 이내 <strong>50,000원</strong> / 31~50쪽 <strong>70,000원</strong></li>
           </ul>
         </div>
 
@@ -584,7 +573,6 @@
             <li>• <strong>PPT 기획·구성·디자인:</strong> 최대 30장 기준 <strong>200,000원</strong> (첫 시안 영업일 5~7일)</li>
             <li>• <strong>학회 포스터 기획·구성·디자인:</strong> 논문 원문 기반 <strong>80,000원</strong></li>
             <li>• <strong>3D 과학 시각화:</strong> 3D 이미지 <strong>150,000원</strong> / 3D 애니메이션(30초 이내) <strong>300,000원</strong></li>
-            <li data-paused="서비스 일시 중단">• <strong>직무 포트폴리오 컨설팅·편집:</strong> 20쪽 이내 <strong>150,000원</strong> / <strong>발표 컨설팅:</strong> <strong>100,000원</strong></li>
           </ul>
         </div>
       </div>
@@ -614,7 +602,14 @@
             <tbody class="divide-y divide-paper-border text-navy-800">
               <!-- PPT -->
               <tr class="hover:bg-teal-50/40">
-                <td class="py-4 px-5 font-bold text-navy-900" rowspan="2">① PPT·강의안 제작</td>
+                <td class="py-4 px-5 font-bold text-navy-900" rowspan="3">① PPT·강의안 제작</td>
+                <td class="py-4 px-5 font-semibold">최종 검토·디자인 개선 <span class="block text-xs font-normal text-paper-muted">완성된 PPT의 정렬·가독성·일관성 개선 (편집 가능한 PPTX)</span></td>
+                <td class="py-4 px-5 font-mono">최대 30장</td>
+                <td class="py-4 px-5 font-mono font-bold text-navy-900">30,000~50,000원<span class="block text-[11px] font-normal text-paper-muted">자료 확인 후 난이도 판정</span></td>
+                <td class="py-4 px-5">31장부터 10장마다 <span class="font-mono font-semibold">+10,000원</span></td>
+                <td class="py-4 px-5">영업일 1~3일 · 취합 수정 1회 · <span class="font-mono text-xs">PPTX + PDF</span></td>
+              </tr>
+              <tr class="hover:bg-teal-50/40">
                 <td class="py-4 px-5 font-semibold">구성·디자인 <span class="block text-xs font-normal text-paper-muted">장별 초안이 정리된 상태</span></td>
                 <td class="py-4 px-5 font-mono">최대 30장</td>
                 <td class="py-4 px-5 font-mono font-bold text-navy-900">100,000원</td>
@@ -660,54 +655,6 @@
                 <td class="py-4 px-5 font-mono font-bold text-teal-700">300,000원</td>
                 <td class="py-4 px-5">영업일 7~10일 · 스토리보드 합의 후 제작 · <span class="font-mono text-xs">MP4 + 스틸컷</span></td>
               </tr>
-
-              <!-- 문서 교정·첨삭 (일시 중단) -->
-              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
-                <td class="py-4 px-5 font-bold text-navy-900" rowspan="3">④ 문서 교정·첨삭</td>
-                <td class="py-4 px-5 font-semibold">문서 교정·편집 <span class="block text-xs font-normal text-paper-muted">문장 교정 + 문서 서식·편집 정리</span></td>
-                <td class="py-4 px-5 font-mono">30쪽 이내<br/>(31~50쪽)</td>
-                <td class="py-4 px-5 font-mono font-bold text-navy-900">50,000원<br/><span class="text-xs font-normal">(70,000원)</span></td>
-                <td class="py-4 px-5">50쪽 초과 시 분량 확인 후 사전 합의</td>
-                <td class="py-4 px-5">취합 수정 1회 · <span class="font-mono text-xs">Word(DOCX) + PDF</span></td>
-              </tr>
-              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
-                <td class="py-4 px-5 font-semibold text-teal-700">문서 서면 피드백 <span class="block text-xs font-normal text-paper-muted">핵심 메시지·논리·근거 검토 의견서</span></td>
-                <td class="py-4 px-5 font-mono">20쪽 이내</td>
-                <td class="py-4 px-5 font-mono font-bold text-teal-700">70,000원</td>
-                <td class="py-4 px-5">20쪽 초과 시 범위 사전 합의</td>
-                <td class="py-4 px-5">영업일 3~5일 · 질문 답변 1회 · <span class="font-mono text-xs">피드백 보고서 1종</span></td>
-              </tr>
-              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
-                <td class="py-4 px-5 font-semibold">취업·대학원 서류 첨삭 <span class="block text-xs font-normal text-paper-muted">학업계획서·연구계획서·자기소개서</span></td>
-                <td class="py-4 px-5 font-mono">1건 3,000자 이내<br/><span class="text-[11px] text-paper-muted">(공백 포함)</span></td>
-                <td class="py-4 px-5 font-mono font-bold text-navy-900">30,000원</td>
-                <td class="py-4 px-5">글자 수 초과 시 사전 합의</td>
-                <td class="py-4 px-5">영업일 2~3일 · 수정 2회 · <span class="font-mono text-xs">서면 의견 + 첨삭본</span></td>
-              </tr>
-
-              <!-- 발표 & 포트폴리오 컨설팅 (일시 중단) -->
-              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
-                <td class="py-4 px-5 font-bold text-navy-900" rowspan="3">⑤ 발표 &amp; 직무 포트폴리오 컨설팅</td>
-                <td class="py-4 px-5 font-semibold">발표 컨설팅 <span class="block text-xs font-normal text-paper-muted">장별 요점·시간 배분 + 리허설 피드백</span></td>
-                <td class="py-4 px-5 font-mono">15~20분 발표<br/><span class="text-[11px] text-paper-muted">(온라인 미팅 60분 이내)</span></td>
-                <td class="py-4 px-5 font-mono font-bold text-navy-900">100,000원</td>
-                <td class="py-4 px-5">발표 시간 초과 시 사전 합의</td>
-                <td class="py-4 px-5">리허설 후 영업일 2일 내 서면 피드백 + 시간 배분표 · 보완 1회</td>
-              </tr>
-              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
-                <td class="py-4 px-5 font-semibold text-teal-700">포트폴리오 컨설팅·편집 <span class="block text-xs font-normal text-paper-muted">6단계 직무 분석·STAR 정리·레이아웃 편집</span></td>
-                <td class="py-4 px-5 font-mono">20쪽 이내</td>
-                <td class="py-4 px-5 font-mono font-bold text-teal-700">150,000원</td>
-                <td class="py-4 px-5">20쪽 초과 시 사전 합의</td>
-                <td class="py-4 px-5">취합 수정 2회 · <span class="font-mono text-xs">서면 의견 + 편집본 PDF</span></td>
-              </tr>
-              <tr data-paused="서비스 일시 중단" class="hover:bg-teal-50/40">
-                <td class="py-4 px-5 font-semibold">포트폴리오 서면 진단 (단독) <span class="block text-xs font-normal text-paper-muted">전체 진단+우선순위 과제+장별·배치 의견</span></td>
-                <td class="py-4 px-5 font-mono">분량·범위 확인</td>
-                <td class="py-4 px-5 font-mono font-bold text-navy-900">개별 견적</td>
-                <td class="py-4 px-5">검토 범위 확인 후 안내</td>
-                <td class="py-4 px-5">취합 수정 2회 · <span class="font-mono text-xs">서면 진단 보고서</span></td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -722,18 +669,6 @@
 
       <!-- 분량 초과·추가 작업 요금 & 연구비 결제/행정 서류 안내 (2단 그리드) -->
       <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div data-paused="서비스 일시 중단" class="bg-white rounded-3xl border border-paper-border shadow-sm overflow-hidden">
-          <div class="px-6 py-4 border-b border-paper-border">
-            <h3 class="text-base font-bold text-navy-900">PPT + 발표 컨설팅 함께 진행</h3>
-            <p class="text-xs text-paper-muted mt-0.5">두 서비스 금액을 더한 총액입니다 (별도 할인 묶음 상품 아님)</p>
-          </div>
-          <table class="w-full text-left text-xs sm:text-sm">
-            <tbody class="divide-y divide-paper-border text-navy-800">
-              <tr><td class="py-3 px-6 font-semibold">PPT 구성·디자인 + 발표 컨설팅</td><td class="py-3 px-6 font-mono">최대 30장 + 리허설 1회</td><td class="py-3 px-6 font-mono font-bold text-navy-900 text-right">200,000원</td></tr>
-              <tr><td class="py-3 px-6 font-semibold text-teal-700">PPT 기획·구성·디자인 + 발표 컨설팅</td><td class="py-3 px-6 font-mono">최대 30장 + 리허설 1회</td><td class="py-3 px-6 font-mono font-bold text-teal-700 text-right">300,000원</td></tr>
-            </tbody>
-          </table>
-        </div>
 
         <div class="bg-white rounded-3xl border border-paper-border shadow-sm overflow-hidden">
           <div class="px-6 py-4 border-b border-paper-border">
@@ -742,15 +677,13 @@
           </div>
           <table class="w-full text-left text-xs sm:text-sm">
             <tbody class="divide-y divide-paper-border text-navy-800">
+              <tr><td class="py-2.5 px-6">PPT 최종 검토·디자인 개선 30장 초과</td><td class="py-2.5 px-6 font-mono text-right">10장마다 +10,000원</td></tr>
               <tr><td class="py-2.5 px-6">PPT 구성·디자인 30장 초과</td><td class="py-2.5 px-6 font-mono text-right">10장마다 +30,000원</td></tr>
               <tr><td class="py-2.5 px-6">PPT 기획·구성·디자인 30장 초과</td><td class="py-2.5 px-6 font-mono text-right">10장마다 +60,000원</td></tr>
               <tr><td class="py-2.5 px-6">포스터 내 신규 고난도 도식·3D 스틸컷 추가</td><td class="py-2.5 px-6 font-mono text-right">범위 확인 후 사전 합의</td></tr>
-              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">문서 교정·편집 50쪽 초과</td><td class="py-2.5 px-6 font-mono text-right">10쪽마다 +10,000원</td></tr>
-              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">서면 피드백 20쪽 초과</td><td class="py-2.5 px-6 font-mono text-right">10쪽마다 +30,000원</td></tr>
-              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">포트폴리오 20쪽 초과</td><td class="py-2.5 px-6 font-mono text-right">10쪽마다 +70,000원</td></tr>
-              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">서류 첨삭 3천 자 초과</td><td class="py-2.5 px-6 font-mono text-right">1천 자마다 +10,000원</td></tr>
-              <tr data-paused="서비스 일시 중단"><td class="py-2.5 px-6">추가 리허설 (60분 이내)</td><td class="py-2.5 px-6 font-mono text-right">1회 50,000원</td></tr>
-              <tr><td class="py-2.5 px-6">포함 횟수(2회)를 넘는 추가 수정</td><td class="py-2.5 px-6 font-mono text-right">1회당 20,000원</td></tr>
+              <tr><td class="py-2.5 px-6">추가 수정 — PPT 최종 검토·디자인 개선 (포함 1회 초과)</td><td class="py-2.5 px-6 font-mono text-right">1회당 5,000원</td></tr>
+              <tr><td class="py-2.5 px-6">추가 수정 — 학회 포스터 (포함 2회 초과)</td><td class="py-2.5 px-6 font-mono text-right">1회당 10,000원</td></tr>
+              <tr><td class="py-2.5 px-6">추가 수정 — PPT 제작·3D 시각화 (포함 2회 초과)</td><td class="py-2.5 px-6 font-mono text-right">1회당 20,000원</td></tr>
             </tbody>
           </table>
         </div>
@@ -767,7 +700,7 @@
               대학 산학협력단, 국책·기업 연구과제, 법인 비용 처리를 위한 결제 및 사전 견적 안내를 지원합니다.
             </p>
             <ul class="mt-3.5 space-y-1.5 text-xs sm:text-sm text-navy-800">
-              <li>• <strong>공식 견적서·내역 안내:</strong> 숨고 메시지로 문의 시 작업 항목별 상세 견적서 발급</li>
+              <li>• <strong>공식 견적서·내역 안내:</strong> 메시지로 문의 시 작업 항목별 상세 견적서 발급</li>
               <li>• <strong>플랫폼 카드 결제:</strong> 숨고페이 등 안전결제를 통한 연구비 카드·법인카드 결제 지원</li>
               <li>• <strong>원본+납품 증빙:</strong> 결과물 납품 시 편집 가능한 원본(PPTX)과 검수용 PDF/MP4 동시 전달</li>
             </ul>
@@ -800,17 +733,13 @@
             <div>
               <label for="estServiceSelect" class="block text-xs font-mono uppercase text-teal-300 mb-2">01. 필요한 서비스 선택</label>
               <select id="estServiceSelect" onchange="updateEstimator()" class="w-full rounded-xl bg-navy-800 border border-white/15 px-4 py-3 text-sm text-white focus:outline-none focus:border-teal-400">
+                <option value="ppt_l1">PPT 최종 검토·디자인 개선 — 완성 PPT 정리 (편집 가능한 PPTX · 30장 30,000~50,000원)</option>
                 <option value="ppt_design">PPT·강의안 제작 — 구성·디자인 (초안 있음 · 기본 30장 100,000원)</option>
                 <option value="ppt_plan" selected>PPT·강의안 제작 — 기획·구성·디자인 (원문 기반 · 기본 30장 200,000원)</option>
                 <option value="poster_draft">학회 포스터 제작 — 기존 초안 편집 (국문 1장 40,000원~)</option>
                 <option value="poster_plan">학회 포스터 제작 — 논문 원문 기반 기획·구성·디자인 (국문 1장 80,000원~)</option>
                 <option value="viz_3d_still">3D 과학 시각화 — 연구 모식도 3D 스틸컷 (3D 이미지 1개 150,000원)</option>
                 <option value="viz_3d_motion">3D 과학 시각화 — 3D 과학 모션그래픽 루프 영상 (30초 이내 300,000원)</option>
-                <!-- 서비스 일시 중단(2026-10-30): <option value="doc_edit">문서 교정·편집 — 문장 교정 및 서식 정리 (30쪽 이내 50,000원)</option>
-                <option value="doc_feedback">문서 서면 피드백 — 메시지·논리·근거 피드백 보고서 (20쪽 이내 70,000원)</option>
-                <option value="doc_resume">취업·대학원 서류 첨삭 — 학업·연구계획서·자소서 (3,000자 이내 30,000원)</option>
-                <option value="consult_pres">발표 컨설팅 — 장별 요점·시간 배분 + 60분 리허설 피드백 (100,000원)</option>
-                <option value="consult_pf">직무 포트폴리오 컨설팅·편집 — 6단계 구조화 + 편집본 (20쪽 이내 150,000원)</option> -->
               </select>
             </div>
 
@@ -1052,7 +981,7 @@
               자료와 마감일을 보내주세요
             </h2>
             <p class="mt-3 text-sm text-slate-300 leading-relaxed">
-              숨고 메시지로 연락 주실 때 아래 <strong>3가지 사항</strong>을 함께 알려주시면, 작업 범위와 정확한 일정·견적을 빠르게 안내해 드립니다.
+              메시지로 연락 주실 때 아래 <strong>3가지 사항</strong>을 함께 알려주시면, 작업 범위와 정확한 일정·견적을 빠르게 안내해 드립니다.
             </p>
           </div>
 
@@ -1082,7 +1011,7 @@
           <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
             <div>
               <span class="text-xs font-mono text-teal-300">ONE-CLICK INQUIRY BUILDER</span>
-              <h3 class="text-lg sm:text-xl font-bold text-white">숨고 문의 양식 자동 생성기</h3>
+              <h3 class="text-lg sm:text-xl font-bold text-white">문의 양식 자동 생성기</h3>
             </div>
             <span class="px-2.5 py-1 rounded bg-teal-500/20 text-teal-300 font-mono text-xs">클립보드 복사 지원</span>
           </div>
@@ -1101,27 +1030,35 @@
               <input id="inqMaterial" type="text" placeholder="예: 영문 논문 PDF 1편 + 핵심 그래프 원본 보유 (국문 제작)" oninput="syncInquiryPreview()" class="w-full rounded-xl bg-navy-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-teal-400" />
             </div>
             <div>
-              <label for="inqDeadline" class="block text-xs font-mono text-slate-300 mb-1">4. 희망 첫 시안일 / 최종 마감일</label>
+              <label for="inqFormat" class="block text-xs font-mono text-slate-300 mb-1">4. 자료 형식 (편집 가능한 PPTX 여부)</label>
+              <input id="inqFormat" type="text" placeholder="예: 편집 가능한 PPTX 있음 / PDF·이미지만 있음 / Word 원고" oninput="syncInquiryPreview()" class="w-full rounded-xl bg-navy-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-teal-400" />
+            </div>
+            <div>
+              <label for="inqDeadline" class="block text-xs font-mono text-slate-300 mb-1">5. 희망 첫 시안일 / 최종 마감일</label>
               <input id="inqDeadline" type="text" placeholder="예: 첫 시안 11/10 희망 (최종 발표 11/15)" oninput="syncInquiryPreview()" class="w-full rounded-xl bg-navy-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-teal-400" />
+            </div>
+            <div>
+              <label for="inqSensitive" class="block text-xs font-mono text-slate-300 mb-1">6. 민감 자료 여부 (미공개 연구·출원 전 특허 등)</label>
+              <input id="inqSensitive" type="text" placeholder="예: 없음 / 미공개 데이터 포함 — 사전 협의 필요" oninput="syncInquiryPreview()" class="w-full rounded-xl bg-navy-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-teal-400" />
             </div>
           </div>
 
           <div class="mt-4">
             <label for="inqPreviewTextarea" class="block text-xs font-mono text-slate-300 mb-1.5">자동 생성된 문의 메시지 (직접 수정 가능)</label>
-            <textarea id="inqPreviewTextarea" rows="7" class="w-full rounded-2xl bg-navy-950 border border-white/15 p-4 text-xs sm:text-sm font-mono text-slate-200 leading-relaxed focus:outline-none focus:border-teal-400"></textarea>
+            <textarea id="inqPreviewTextarea" rows="11" class="w-full rounded-2xl bg-navy-950 border border-white/15 p-4 text-xs sm:text-sm font-mono text-slate-200 leading-relaxed focus:outline-none focus:border-teal-400"></textarea>
           </div>
 
           <!-- Action Buttons: Direct Email Send + Copy to Clipboard -->
           <div class="mt-5 flex flex-wrap items-center gap-3">
             <button type="button" onclick="copyInquiryText()" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm border border-white/15 transition-all">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-              <span>문의 양식 클립보드 복사 (숨고 붙여넣기용)</span>
+              <span>문의 양식 클립보드 복사 (붙여넣기용)</span>
             </button>
           </div>
 
           <div class="mt-3 min-h-[20px]">
             <span id="copyToastMsg" class="text-xs font-mono text-teal-300 opacity-0 transition-opacity">
-              ✓ 문의 양식이 복사되었습니다! 숨고 메시지창에 붙여넣어 주세요.
+              ✓ 문의 양식이 복사되었습니다! 메시지창에 붙여넣어 주세요.
             </span>
           </div>
         </div>
@@ -1491,7 +1428,7 @@
      * 2. PORTFOLIO CASES DATA
      * ============================================================================
      */
-    const PAUSED_CASE_IDS = ['case-editing', 'case-pres-consult', 'case-job-portfolio', 'case-rne-ppt'];
+    const PAUSED_CASE_IDS = ['case-rne-ppt'];
     const ALL_PORTFOLIO_CASES = [
       {
         id: 'case-pn-ppt',
@@ -1613,93 +1550,6 @@
           '짧은 시간 안에 방문자가 연구 목적과 결론을 파악할 수 있도록 핵심 지표 강조',
          ],
         deliveryTerms: '국문/영문 1장·1규격(A0 등 학회 지정 양식) 기준 | ① 기존 초안 편집: 40,000원부터 / ② 논문 원문 기반 기획·구성·디자인: 80,000원부터 | 납품: 편집 가능한 PPTX + 인쇄용 고해상도 PDF | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함 (원문 전체 독해·번역·신규 도식 제작은 범위 확인 후 견적 반영)'
-      },
-
-      {
-        id: 'case-editing',
-        num: '04 / 06',
-        category: 'editing',
-        categoryLabel: '문서 교정·첨삭 & 서면 피드백',
-        sourceBadge: '가상 자료·결과로 재구성한 자체 제작 샘플',
-        sourceType: 'reconstructed',
-        title: '문장마다 수정 이유를 설명하고, 확인이 필요한 내용은 질문으로 남깁니다',
-        subtitle: '단순히 문장만 고쳐서 돌려주는 것이 아니라 왜 고쳤는지 3가지 기준을 설명하고, 작성자만 알 수 있는 사실관계나 평가 기준은 질문 메모로 남겨 완성도를 높입니다.',
-        pricePill: '문서 교정 50,000원(30쪽) · 서면 피드백 70,000원(20쪽)',
-        estimatorKey: 'doc_feedback',
-        visualType: 'doc-editing-3col',
-
-        problem: '연구계획서, 보고서, 학업계획서를 작성할 때 가장 흔한 문제는 (1) 같은 단어가 한 문단에 수차례 반복되고, (2) 연구 목적과 조사 방법 사이의 연결이 느슨하며, (3) 아직 수행하거나 검증하지 않은 결과를 이미 달성한 것처럼 단정적으로 서술하여 심사위원에게 감점을 받는 것입니다.',
-        steps: [
-          { no: '01', title: '반복 표현 정리', desc: '반복되는 표현(‘사용성’, ‘개선’)을 줄여 연구 목적을 짧게 정리합니다.' },
-          { no: '02', title: '목적과 방법 연결', desc: '이용자 조사와 개선 과제 도출의 관계가 한 문장에서 분명히 보이게 만듭니다.' },
-          { no: '03', title: '결과 단정 점검 & 확인 질문', desc: '검증 전 효과를 단정하지 않고, 작성자만 아는 조사 대상·방법·평가 기준은 질문으로 남깁니다.' }
-        ],
-        beforeSummary: '[첨삭 전 · 가상 연구계획서 문단] “본 연구는 온라인 학습 서비스의 사용성을 개선하기 위한 연구이다. 사용성 개선을 위해 이용자의 의견을 조사하고자 한다. 이를 통해 사용성을 크게 향상시킬 수 있을 것으로 생각한다.”',
-        afterSummary: '[첨삭 후] “본 연구는 이용자 의견을 조사하여 온라인 학습 서비스의 사용성 문제와 개선 과제를 도출하고자 한다.” + [작성자에게 확인할 질문: 조사 대상과 방법은 무엇인가요? 어떤 기준으로 사용성을 평가하나요?]',
-        improvements: [
-          '01 반복 표현 정리: 세 문장에 반복되던 ‘사용성’·‘개선’을 한 문장의 목적으로 정리',
-          '02 목적과 방법 연결: ‘이용자 의견 조사 → 사용성 문제와 개선 과제 도출’로 관계를 분명히 함',
-          '03 결과 단정 점검: 검증 전 효과(‘크게 향상’)를 지우고, 작성자가 채워야 할 조사 대상·평가 기준을 질문으로 안내 (대신 지어 쓰지 않음)'
-        ],
-        deliveryTerms: '① 문서 교정·편집: 30쪽 이내 50,000원 / 31~50쪽 70,000원 (Word+PDF, 수정 1회) | ② 문서 서면 피드백: 20쪽 이내 70,000원 (영업일 3~5일, 피드백 보고서 1종 + 질문 답변 1회) | ③ 취업·대학원 서류 첨삭: 1건 공백 포함 3,000자 이내 30,000원 (영업일 2~3일, 서면 의견 + 첨삭본, 수정 2회)'
-      },
-
-      {
-        id: 'case-pres-consult',
-        num: '05 / 06',
-        category: 'consulting',
-        categoryLabel: '발표 컨설팅',
-        sourceBadge: '대표 본인 자료 · 발표 준비 예시 (고객 자료가 아닙니다)',
-        sourceType: 'real',
-        title: '31장 강의안을 15분 발표 흐름으로 — 장별 요점과 시간 배분',
-        subtitle: '방대한 31장 슬라이드를 15분 제한 시간에 맞춰 7개 구간으로 재편성하고, 온라인 리허설 뒤 수식 유도 축소·그래프 통합·마무리 질문 유도까지 구체적인 서면 피드백을 제공합니다.',
-        pricePill: '발표 컨설팅 100,000원 (15~20분 발표 · 미팅 60분 이내)',
-        estimatorKey: 'consult_pres',
-        visualType: 'pres-timeline-consult',
-
-        problem: '30장이 넘는 연구·강의 슬라이드를 15분 발표에 그대로 가져가면, 초반 배경 설명과 복잡한 수식 유도에 시간을 다 써버리고 정작 가장 중요한 핵심 결과와 결론은 시간에 쫓겨 빠르게 넘어가게 됩니다.',
-        steps: [
-          { no: '01', title: '발표 목적 · 청중 · 제한 시간 확인', desc: '학회 발표, 과제 평가, 세미나 등 청중의 전공 배경과 질의응답 비중을 고려해 핵심 전달 목표를 설정합니다.' },
-          { no: '02', title: '장별 요점 정리 & 7구간 시간 배분표 설계', desc: '31장 전체를 7개 의미 구간으로 묶어 총 15:00(도입 1분 ~ 실험·정리 1분) 타임라인과 슬라이드별 한 줄 핵심 멘트를 설계합니다.' },
-          { no: '03', title: '실전 리허설 진행 후 서면 피드백 전달', desc: '온라인 미팅(60분 이내)에서 실제 발표 리허설을 점검하고, 영업일 2일 이내에 장별 수정 지침이 담긴 서면 피드백을 전달합니다.' }
-        ],
-        beforeSummary: '31장 모든 슬라이드에 동일한 비중으로 시간을 배분하여 수식 유도 구간에서 시간이 초과되고 핵심 그래프 설명이 압축된 상태.',
-        afterSummary: '15:00 정밀 시간 배분표(도입 1:00 → 캐리어 이동 3:00 → 접합 형성 3:30 → 도핑 차이 2:30 → 캐리어 밀도 2:00 → 전류-전압 2:00 → 실험·정리 1:00) + 실전 리허설 피드백 3대 지침 적용.',
-        improvements: [
-          '피드백 01: “수식 유도는 최종 결과 식만 본문에 남기고 세부 유도 과정은 부록(Appendix) 슬라이드로 이동”',
-          '피드백 02: “16~19장에 나뉜 개별 그래프는 비교 그래프 하나로 묶어 핵심 물리 원리 설명 시간 확보”',
-          '피드백 03: “마지막 장은 질문 하나로 끝내 질의응답으로 연결”'
-        ],
-        deliveryTerms: '15~20분 발표 기준 | 온라인 미팅 총 60분 이내 (리허설 + 실시간 피드백·질의응답) | 기본가: 100,000원 | 납품: 리허설 종료 후 영업일 2일 이내 서면 피드백 보고서 + 슬라이드별 요점·시간 배분표 전달 (보완 1회 포함)'
-      },
-
-      {
-        id: 'case-job-portfolio',
-        num: '06 / 06',
-        category: 'consulting',
-        categoryLabel: '직무·취업 포트폴리오 컨설팅',
-        sourceBadge: '가상 자료·결과로 재구성한 자체 제작 샘플',
-        sourceType: 'reconstructed',
-        title: '경험 나열에서 직무 역량·본인 기여·근거가 보이는 구성으로',
-        subtitle: '지원 회사의 공식 핵심 가치 원문 연결부터 두괄식 결론, S·T·A·R 구조화, 팀 역할과 본인 담당 범위 분리, 주장별 객관적 근거 교차 검증까지 5대 원칙으로 재구성합니다.',
-        pricePill: '포트폴리오 컨설팅·편집 150,000원 (20쪽 이내) · 서면 진단 개별 견적',
-        estimatorKey: 'consult_pf',
-        visualType: 'job-portfolio-star',
-
-        problem: '많은 취업·이직 포트폴리오가 수행한 프로젝트 순서대로 화면을 나열하며 “팀 프로젝트로 데이터 분석을 수행해 성과를 크게 높였다”처럼 모호하게 서술합니다. 채용 담당자와 실무 면접관은 (1) 지원 직무와 무슨 관련이 있는지, (2) 팀 성과 중 본인이 실제로 한 일은 어디까지인지, (3) 수치가 어떤 기준(기간·모수·비교 대상)에서 나온 것인지 즉시 확인하고 싶어 합니다.',
-        steps: [
-          { no: '01', title: '타겟 직무 확정 & 공식 핵심 가치 원문 매칭', desc: '지원 기업 채용 공고와 공식 핵심 가치 원문을 임의 변형 없이 분석하여 보여줄 핵심 역량 키워드를 먼저 확정합니다.' },
-          { no: '02', title: '두괄식 결론 + S·T·A·R & 팀/개인 기여 분리', desc: '페이지 상단에 한 줄 결론을 배치하고 Situation·Task·Action·Result 구조와 [팀 전체 역할 vs 본인 담당 범위 띠]를 명확히 분리합니다.' },
-          { no: '03', title: '근거 2~3개 교차 검증 & 시각·배치 결함 검수', desc: '핵심 주장마다 단위·기간·모수·비교 기준이 포함된 근거를 매칭(`원문에 있음 / 기준 빠짐 / 확인 필요` 점검)하고 레이아웃 가독성을 완성합니다.' }
-        ],
-        beforeSummary: '[Before: 나열형 포트폴리오] “공정 데이터 분석 프로젝트 (2025.03~08) — 팀원들과 협력하여 불량 원인을 분석하고 대시보드를 제작함. 이를 통해 공정 수율을 대폭 향상시키고 업무 효율을 크게 개선함.” (본인 역할 불분명, 비교 기준·모수 누락)',
-        afterSummary: '[After: 5대 원칙 구조화 · 아래 수치는 모두 가상] 두괄식 제목(“센서 로그 12만 건 변수 상관분석을 통한 열처리 온도 편차 규명 및 불량률 3.8%p 감소”) + [팀 4명 중 본인 담당: Python 결측치 전처리 및 회귀 모델 검증] + [근거 상태: 2025년 2분기 파일럿 라인 3개 로트 비교 기준 명시].',
-        improvements: [
-          '원칙 01~02: 상황 설명이 결론을 가리지 않도록 두괄식 헤드라인 + S·T·A·R 4요소 그리드 배치',
-          '원칙 03~04: 허위 수치·기여율 생성 절대 금지 원칙 아래, 기존 자료에서 단위·기간·모수·비교 기준을 찾아 근거 박스로 명시',
-          '원칙 05: 장 리듬 설계, 핵심 수치 콜아웃 강조, 글자 겹침·잘림·캡처 저화질 등 시각 결함 전수 점검'
-        ],
-        deliveryTerms: '① 포트폴리오 컨설팅·편집 (6단계 전 과정: 사전 진단 → 직무 분석 → 경험 선별 → 심층 정리 → 구성안 확인 → 레이아웃 편집): 20쪽 이내 150,000원 (서면 의견 + 편집본 PDF, 취합 수정 2회) | ② 포트폴리오 서면 진단 (단독): 분량·범위 확인 후 개별 견적 (전체 진단+우선순위 과제+장별·배치 의견, 수정 2회)'
       },
 
       {
@@ -2294,6 +2144,21 @@
      * ============================================================================
      */
     const SERVICE_RULES = {
+      ppt_l1: {
+        name: 'PPT 최종 검토·디자인 개선 (완성 PPT)',
+        basePrice: 30000,
+        baseUnitMax: 30,
+        unitStep: 10,
+        extraPerStep: 10000,
+        unitName: '장',
+        minVal: 10,
+        maxVal: 70,
+        defaultVal: 25,
+        leadTime: '첫 시안 영업일 1~3일',
+        deliverable: '취합 수정 1회 · PPTX + PDF (편집 가능한 PPTX 접수)',
+        hasVolume: true,
+        fromPrice: true
+      },
       ppt_design: {
         name: 'PPT 구성·디자인 (초안 있음)',
         basePrice: 100000,
@@ -2353,72 +2218,6 @@
         deliverable: '취합 수정 2회 · MP4 영상 + 핵심 스틸컷',
         hasVolume: false,
         fromPrice: false
-      },
-      doc_edit: {
-        name: '문서 교정·편집 (Word + PDF)',
-        basePrice: 50000,
-        baseUnitMax: 30,
-        extraFor: v => (v <= 30 ? 0 : 20000 + (v > 50 ? Math.ceil((v - 50) / 10) * 10000 : 0)),
-        unitName: '쪽',
-        minVal: 10,
-        maxVal: 80,
-        sliderStep: 5,
-        defaultVal: 25,
-        leadTime: '분량 확인 후 합의',
-        deliverable: '취합 수정 1회 · Word(DOCX) + PDF',
-        hasVolume: true
-      },
-      doc_feedback: {
-        name: '문서 서면 피드백 (메시지·논리·근거 검토)',
-        basePrice: 70000,
-        baseUnitMax: 20,
-        unitStep: 10,
-        extraPerStep: 30000,
-        unitName: '쪽',
-        minVal: 5,
-        maxVal: 50,
-        sliderStep: 5,
-        defaultVal: 20,
-        leadTime: '영업일 3~5일',
-        deliverable: '피드백 보고서 1종 + 질문 답변 1회',
-        hasVolume: true
-      },
-      doc_resume: {
-        name: '취업·대학원 서류 첨삭 (1건)',
-        basePrice: 30000,
-        baseUnitMax: 3000,
-        unitStep: 1000,
-        extraPerStep: 10000,
-        unitName: '자',
-        minVal: 1000,
-        maxVal: 6000,
-        sliderStep: 500,
-        defaultVal: 3000,
-        leadTime: '영업일 2~3일',
-        deliverable: '서면 의견 + 첨삭본 · 수정 2회',
-        hasVolume: true
-      },
-      consult_pres: {
-        name: '발표 컨설팅 (15~20분 발표 · 미팅 60분)',
-        basePrice: 100000,
-        leadTime: '리허설 종료 후 영업일 2일 이내 서면 피드백',
-        deliverable: '시간 배분표 + 서면 피드백 · 보완 1회',
-        hasVolume: false
-      },
-      consult_pf: {
-        name: '직무 포트폴리오 컨설팅·편집',
-        basePrice: 150000,
-        baseUnitMax: 20,
-        unitStep: 10,
-        extraPerStep: 70000,
-        unitName: '쪽',
-        minVal: 5,
-        maxVal: 50,
-        sliderStep: 5,
-        defaultVal: 20,
-        leadTime: '6단계 과정 일정 합의',
-        deliverable: '취합 수정 2회 · 서면 의견 + 편집본 PDF',
-        hasVolume: true
       }
     };
 
@@ -2441,9 +2240,7 @@
           sliderEl.max = rule.maxVal;
           sliderEl.step = rule.sliderStep || 5;
           sliderEl.value = rule.defaultVal;
-          document.getElementById('estVolumeHint').textContent = rule.extraFor
-            ? '30쪽까지 50,000원, 31~50쪽 70,000원, 50쪽 초과는 10쪽마다 10,000원 추가'
-            : `${rule.baseUnitMax.toLocaleString()}${rule.unitName}까지 기본가, 초과 시 ${rule.unitStep.toLocaleString()}${rule.unitName}마다 ${rule.extraPerStep.toLocaleString()}원 추가`;
+          document.getElementById('estVolumeHint').textContent = `${rule.baseUnitMax.toLocaleString()}${rule.unitName}까지 기본가, 초과 시 ${rule.unitStep.toLocaleString()}${rule.unitName}마다 ${rule.extraPerStep.toLocaleString()}원 추가`;
         } else {
           sliderWrapper.classList.add('hidden');
         }
@@ -2459,9 +2256,7 @@
         if (volume <= rule.baseUnitMax) {
           document.getElementById('estVolumeValue').textContent = `${volText} (기본 ${rule.baseUnitMax.toLocaleString()}${rule.unitName} 이내)`;
         } else {
-          extraVolumeCost = rule.extraFor
-            ? rule.extraFor(volume)
-            : Math.ceil((volume - rule.baseUnitMax) / rule.unitStep) * rule.extraPerStep;
+          extraVolumeCost = Math.ceil((volume - rule.baseUnitMax) / rule.unitStep) * rule.extraPerStep;
           document.getElementById('estVolumeValue').textContent = `${volText} (초과 구간 추가)`;
         }
       }
@@ -2512,13 +2307,17 @@
       const s = document.getElementById('inqService').value || '(선택 서비스 입력)';
       const p = document.getElementById('inqPurpose').value || '(예: 학회 발표 / 강의안 / 연구과제 평가 / 3D 연구 시각화 등)';
       const m = document.getElementById('inqMaterial').value || '(예: 논문 원문 PDF / PPT 초안 보유 여부 및 목표 분량)';
+      const f = document.getElementById('inqFormat').value || '(예: 편집 가능한 PPTX / PDF·이미지 / Word 원고)';
       const d = document.getElementById('inqDeadline').value || '(예: 희망 첫 시안 수령일 및 최종 발표·제출 마감일)';
+      const x = document.getElementById('inqSensitive').value || '(예: 없음 / 미공개 연구·출원 전 특허 자료 포함)';
 
       const text = `[딥리서치 작업 문의]
 1. 희망 서비스: ${s}
 2. 용도 및 대상: ${p}
 3. 현재 보유 자료 및 목표 분량(국/영문): ${m}
-4. 희망 첫 시안일 및 최종 마감일: ${d}
+4. 자료 형식: ${f}
+5. 희망 첫 시안일 및 최종 마감일: ${d}
+6. 민감 자료 여부: ${x}
 
 위 내용으로 작업 범위와 일정 확인 부탁드립니다.
 (참고 자료 파일이 있는 경우 첨부하여 보내주시면 더욱 정확한 안내가 가능합니다.)`;
@@ -2550,7 +2349,7 @@
       } else {
         fallbackCopy();
       }
-      showToast('✓ 문의 양식이 복사되었습니다! 숨고 메시지창에 붙여넣어 주세요.');
+      showToast('✓ 문의 양식이 복사되었습니다! 메시지창에 붙여넣어 주세요.');
     }
 
     // Initialize on load
