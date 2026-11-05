@@ -362,11 +362,11 @@
             </div>
 
             <!-- Interactive Showcase Switcher Tabs -->
-            <div class="grid grid-cols-3 border-b border-white/10 bg-navy-900/60 text-[11px] font-medium">
+            <div class="grid grid-cols-4 border-b border-white/10 bg-navy-900/60 text-[11px] font-medium">
               <button onclick="switchHeroPreview(0)" id="heroTab0" class="hero-tab py-2.5 px-2 text-center border-b-2 border-teal-400 text-teal-300 bg-white/[0.04]">01 전공 강의안</button>
               <button onclick="switchHeroPreview(1)" id="heroTab1" class="hero-tab py-2.5 px-2 text-center border-b-2 border-transparent text-slate-400 hover:text-white">02 학회 포스터</button>
               <button onclick="switchHeroPreview(2)" id="heroTab2" class="hero-tab py-2.5 px-2 text-center border-b-2 border-transparent text-slate-400 hover:text-white">03 3D 시각화</button>
-              <button hidden data-paused="서비스 일시 중단" onclick="switchHeroPreview(3)" id="heroTab3" class="hero-tab py-2.5 px-2 text-center border-b-2 border-transparent text-slate-400 hover:text-white">04 포트폴리오</button>
+              <button onclick="switchHeroPreview(3)" id="heroTab3" class="hero-tab py-2.5 px-2 text-center border-b-2 border-transparent text-slate-400 hover:text-white">04 연구 포트폴리오</button>
             </div>
 
             <!-- Dynamic Hero Preview Content -->
@@ -1236,9 +1236,19 @@
         beforeTitle: '글과 수식, 정지된 그림으로만 설명할 때',
         beforeDesc: '눈에 보이지 않는 구조와 원리는 말과 한 장의 그림만으로는 청중이 머릿속에 그리기 어렵습니다',
         afterTitle: '연구 내용 대표 이미지 + 애니메이션 모션 (개념 시각화)',
-        afterDesc: '연구 내용을 대표하는 이미지를 직접 그리고, 그 이미지가 움직이는 모션까지 제작해 원리를 순서대로 보여 줌',
+        afterDesc: '연구 내용을 대표하는 이미지를 직접 그리고, 그 이미지가 움직이는 모션까지 제작해 원리를 순서대로 보여 줌.',
         priceInfo: '3D 이미지 150,000원 / 3D 애니메이션 30초 이내 300,000원 (수정 2회 포함)',
         targetId: 'case-3d-microcavity'
+      },
+      {
+        badge: 'SERVICE 01 · 연구·기술 포트폴리오 PPT',
+        title: '박사 연구를 7단계 서사와 3D 장면으로 한눈에',
+        beforeTitle: '논문 목록과 실험 사진만 나열할 때',
+        beforeDesc: '연구 질문, 본인의 역할, 핵심 결과가 한 흐름으로 이어지지 않아 짧은 시간 안에 연구를 전달하기 어렵습니다',
+        afterTitle: '연구 포트폴리오 6장 (대표 본인 제작)',
+        afterDesc: '연구자 정체성 → 7단계 케이스 스터디 → 3D 과학 시각화 → 인터랙티브 웹 구현까지 한 흐름으로 정리',
+        priceInfo: '구성·디자인 100,000원 (30장) / 기획·구성·디자인 200,000원 (30장)',
+        targetId: 'case-research-ppt'
       }
     ];
 
@@ -1481,7 +1491,7 @@
      * 2. PORTFOLIO CASES DATA
      * ============================================================================
      */
-    const PAUSED_CASE_IDS = ['case-editing', 'case-pres-consult', 'case-job-portfolio'];
+    const PAUSED_CASE_IDS = ['case-editing', 'case-pres-consult', 'case-job-portfolio', 'case-rne-ppt'];
     const ALL_PORTFOLIO_CASES = [
       {
         id: 'case-pn-ppt',
@@ -1505,7 +1515,7 @@
           { no: '03', title: '시각화·강조 정리', desc: '최대 전기장·내장 전위 같은 핵심 결과를 박스·화살표로 그래프 위치와 연결하고, 한 장에 한 개념씩 정리합니다.' }
         ],
         beforeSummary: '수식 유도와 물리 현상을 따로 설명하면 확산·드리프트, 공간 전하, 전기장, 내장 전위가 어떻게 이어지는지 따라가기 어렵습니다.',
-        afterSummary: '수록 슬라이드 6장(강의안 31장 중): ① 접합 형성과 캐리어 확산·드리프트 ② 평형 페르미 준위와 전류 균형 ③·④ 도핑 차이에 따른 전기장 분포 ⑤ 내장 전위 ⑥ 캐리어 밀도 정의.',
+        afterSummary: '수록 슬라이드 3장(강의안 31장 중): ① 접합 형성과 캐리어 확산·드리프트 ② 공핍층 폭 수식 전개 ③ 반도체 전하 캐리어 밀도.',
         improvements: [
           '에너지 밴드·전하 분포·전기장 그래프를 분해해서 보여 줌',
           '결과 식을 박스·화살표로 표시해 그래프의 어느 부분인지 연결',
@@ -1538,8 +1548,40 @@
         beforeSummary: '시뮬레이션 교육에서 이론과 프로그램 조작을 따로 설명하면, 왜 그 경계 조건과 격자 크기를 골라야 하는지 수강생이 연결하기 어렵습니다.',
         afterSummary: '수록 슬라이드 6장(강의안 29장 중): ① Yee Cell 원리 ② 구조(x,y,z span) 설정 매칭 ③ 물질 선정 및 유전율 피팅 곡선 확인 ④ 4대 경계 조건(PML/Metal/PMC/Periodic) 비교 ⑤ 광원 Bandwidth 설정 ⑥ Mesh accuracy 2 vs 8 결과 정밀 비교.',
         improvements: [
+          '원리를 도식으로 보여 주고, 프로그램 UI 화면과 연결하여 세심하게 수강생이 입력값을 이해하게 구성',
           '경계 조건 4가지(흡수·완전도체·대칭·주기)의 물리적 차이를 직관적인 아이콘과 표로 정리',
           'Mesh 설정에 따른 전기장 분포 해상도 차이를 시각적으로 대조하여 파라미터 선택 근거 제시'
+        ],
+        deliveryTerms: '최대 30장 기준 | ① 구성·디자인: 100,000원 (영업일 3~5일, 10장 초과당 +30,000원) / ② 기획·구성·디자인: 200,000원 (영업일 5~7일, 10장 초과당 +60,000원) | 납품: 편집 가능한 PPTX + PDF | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
+      },
+
+      {
+        id: 'case-research-ppt',
+        num: '03 / 05',
+        category: 'ppt',
+        categoryLabel: '강의안·발표 PPT 02',
+        sourceBadge: '대표 본인 제작 · 연구·기술 포트폴리오 자료',
+        sourceType: 'real',
+        title: '박사 연구를 7단계 서사와 3D 장면으로 한눈에 (연구·기술 포트폴리오 PPT)',
+        subtitle: '흩어진 연구 경험을 연구 개요부터 근거 자료까지 7단계 흐름으로 정리하고, 소자 구조와 광학 과정은 3D 장면으로 보여 주는 연구 소개 자료입니다.',
+        beforeLabel: '이런 설명이 어려울 때',
+        afterLabel: '포트폴리오에서 보여 주는 방식 (대표 본인 제작)',
+        pricePill: '구성·디자인 100,000원 · 기획·구성·디자인 200,000원 (30장 기준)',
+        estimatorKey: 'ppt_plan',
+        visualType: 'research-portfolio-slides',
+
+        problem: 'Post-doctoral·R&D 지원이나 연구 소개 자리에서는 논문 여러 편과 실험 경험을 짧은 시간 안에 설명해야 합니다. 논문 순서대로 나열하면 연구 질문, 본인의 역할, 핵심 결과가 어떻게 이어지는지 듣는 사람이 따라가기 어렵습니다.',
+        steps: [
+          { no: '01', title: '연구 정체성·핵심 메시지 정리', desc: '한 줄 연구 정의와 실험 역량(설계·제작·측정)을 먼저 정해 첫 장에서 강조합니다.' },
+          { no: '02', title: '7단계 서사 설계', desc: '연구 개요 → 연구 질문 → 방법·역할 → 핵심 결과 → 과학 시각화 → 검증·한계 → 근거 자료 순서로 장면을 나눕니다.' },
+          { no: '03', title: '3D 장면·도식 제작', desc: '소자 적층, 단면, 내부 확대를 3D 장면으로 만들어 말로 설명하기 어려운 구조와 광학 과정을 보여 줍니다.' }
+        ],
+        beforeSummary: '논문 목록과 실험 사진만으로는 연구 질문과 본인의 역할, 결과의 의미가 한 흐름으로 이어지지 않습니다.',
+        afterSummary: '수록 슬라이드 6장: ① 표지 ② 연구자 정체성 설계 ③ 7단계 케이스 스터디 ④ 3D 과학 시각화(적층 → 단면 → 내부 확대) ⑤ 인터랙티브 웹 구현 ⑥ 전체 완성도.',
+        improvements: [
+          '연구자 정체성을 한 줄 정의로 강조하고, 실험 역량(설계·제작·측정)을 표시',
+          '연구 질문부터 근거 자료까지 7단계로 나눠 듣는 사람이 흐름을 따라가게 구성',
+          '소자 구조와 광학 과정을 3D 장면(적층·단면·내부 확대)으로 단계별 설명',
         ],
         deliveryTerms: '최대 30장 기준 | ① 구성·디자인: 100,000원 (영업일 3~5일, 10장 초과당 +30,000원) / ② 기획·구성·디자인: 200,000원 (영업일 5~7일, 10장 초과당 +60,000원) | 납품: 편집 가능한 PPTX + PDF | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
       },
@@ -1566,8 +1608,9 @@
         beforeSummary: '영문 논문 원문 페이지. 본문 텍스트와 수식, figure가 여러 페이지에 나뉘어 있어 한눈에 전체 흐름을 조망하기 어려움.',
         afterSummary: '상단 타이틀 바 + 좌측(Abstract & Introduction 도식) + 우측(핵심 실험 결과 그래프 비교 및 정량 지표 하이라이트) + 하단(핵심 결론 요약)으로 재구성된 A0 포스터.',
         improvements: [
-          '논문 줄글을 핵심 개조식 문장과 소제목 블록으로 압축해 읽는 부담을 줄임',
-          '핵심 그래프와 소자 구조 도식을 시선 중심부에 배치하고 수치 결과를 컬러 박스로 강조',
+          '논문 원문에서 핵심 연구 질문과 결론을 한 장에 압축',
+          '논문 본문의 줄글 설명을 줄이고, 핵심 도식과 그래프를 중심으로 재배치',
+          '짧은 시간 안에 방문자가 연구 목적과 결론을 파악할 수 있도록 핵심 지표 강조',
          ],
         deliveryTerms: '국문/영문 1장·1규격(A0 등 학회 지정 양식) 기준 | ① 기존 초안 편집: 40,000원부터 / ② 논문 원문 기반 기획·구성·디자인: 80,000원부터 | 납품: 편집 가능한 PPTX + 인쇄용 고해상도 PDF | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함 (원문 전체 독해·번역·신규 도식 제작은 범위 확인 후 견적 반영)'
       },
@@ -1661,14 +1704,14 @@
 
       {
         id: 'case-3d-microcavity',
-        num: 'SPECIAL 04',
+        num: 'SPECIAL 01',
         category: '3d-motion',
         categoryLabel: '연구 발표용 3D 과학 시각화 (Bridge Showcase)',
         sourceBadge: '대표 자체 제작 / 개념 시각화',
         sourceType: 'real',
         title: '보이지 않는 연구 원리를 설명하는 3D 과학 모션그래픽 — Microcavity Laser',
         subtitle: '소자가 어떻게 제작되고 어떻게 작동하는지(광 펌핑·공진·레이저 방출)를 눈으로 이해하도록, 논문의 핵심 현상을 파악한 뒤 어떤 그림으로 보여 줄지 기획 구상 → 디자인 → 구현 순서로 제작했습니다.',
-        pricePill: '3D 이미지 150,000원 · 3D 애니메이션(30초 이내) 300,000원',
+        pricePill: '3D 이미지 150,000원 부터· 3D 애니메이션(30초 이내) 300,000원 부터',
         estimatorKey: 'viz_3d_motion',
         visualType: 'microcavity-3d-bridge',
 
@@ -1683,7 +1726,7 @@
         improvements: [
           '디자인 판단: 상부 구조에 가려 보이지 않던 내부 광 경로를 절개하는 연출로 개선하여 물리적 이해도 강화',
           '모션 구현: 펌프 광 입사 → 공진기 내부 왕복 반사 → 레이저 방출까지 시간적 흐름을 보여 주는 3D 모션그래픽 제작'],
-        deliveryTerms: '① 3D 이미지 1개(기획~디자인): 150,000원 (영업일 5~7일, 고해상도 PNG/PDF) / ② 3D 애니메이션 30초 이내(기획~구현): 300,000원 (영업일 7~10일, MP4 + 핵심 스틸컷) | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
+        deliveryTerms: '① 3D 이미지 1개(기획~디자인): 150,000원 부터 (영업일 5~7일, 고해상도 PNG/PDF) / ② 3D 애니메이션 30초 이내(기획~구현): 300,000원 부터 (영업일 7~10일, MP4 + 핵심 스틸컷) | 수정: 각 시안 수령 후 7일 이내 취합 수정 2회 포함'
       }
     ];
     const PORTFOLIO_CASES = ALL_PORTFOLIO_CASES.filter(c => !PAUSED_CASE_IDS.includes(c.id));
@@ -2211,7 +2254,7 @@
           <div class="md:col-span-5 rounded-2xl p-5 bg-slate-100 border border-paper-border">
             <span class="font-mono text-xs font-bold text-navy-800 uppercase">STEP 06 · 검증과 기준 고지</span>
             <p class="mt-2 text-xs text-paper-muted leading-relaxed">
-              본 사례는 <strong>${item.sourceBadge}</strong>입니다. 딥리서치는 고객의 실제 의뢰 자료를 외부에 절대 노출하지 않으며, 모든 수록 샘플은 대표 본인 저작물이거나 가상 자료로 재구성한 예시입니다.
+              본 사례는 <strong>${item.sourceBadge}</strong>입니다. 딥리서치는 고객의 실제 의뢰 자료를 외부에 절대 노출하지 않으며, 모든 수록 샘플은 본인 제작물이거나 자료를 재구성한 예시입니다.
             </p>
           </div>
         </div>

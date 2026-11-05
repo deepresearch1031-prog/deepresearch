@@ -15,6 +15,18 @@
  *  공개 전 점검: 고객 자료 금지(운영지침 10.1), 대표 본인 자료는 10.2 범위·블러 확인 후 대표님이 넣는다
  */
 window.DR_MEDIA = {
+  'case-research-ppt': {
+    cover: { src: 'assets/cases/08_research-portfolio/research_portfolio_slide1_v2.0.jpg', alt: '연구·기술 포트폴리오 1/6 — 표지 · 연구·기술 포트폴리오', ratio: '4/3' },
+    gallery: [
+      { src: 'assets/cases/08_research-portfolio/research_portfolio_slide2_v2.0.jpg', alt: '연구·기술 포트폴리오 2/6 — 01 연구자 정체성 설계', caption: '2/6 01 연구자 정체성 설계' },
+      { src: 'assets/cases/08_research-portfolio/research_portfolio_slide3_v2.0.jpg', alt: '연구·기술 포트폴리오 3/6 — 02 연구 서사 구조화 (7단계 케이스 스터디)', caption: '3/6 02 연구 서사 구조화 (7단계 케이스 스터디)' },
+      { src: 'assets/cases/08_research-portfolio/research_portfolio_slide4_v2.0.jpg', alt: '연구·기술 포트폴리오 4/6 — 03 과학 시각화 (공진기 구조와 광학 과정)', caption: '4/6 03 과학 시각화 (공진기 구조와 광학 과정)' },
+      { src: 'assets/cases/08_research-portfolio/research_portfolio_slide5_v2.0.jpg', alt: '연구·기술 포트폴리오 5/6 — 04 인터랙티브 웹 구현', caption: '5/6 04 인터랙티브 웹 구현' },
+      { src: 'assets/cases/08_research-portfolio/research_portfolio_slide6_v2.0.jpg', alt: '연구·기술 포트폴리오 6/6 — 05 전체 완성도', caption: '6/6 05 전체 완성도' }
+    ],
+    video: null
+  },
+
   'case-poster': {
     cover: {
       src: 'assets/cases/01_poster/poster_process_v2.2.png',
@@ -27,8 +39,8 @@ window.DR_MEDIA = {
 
   'case-pn-ppt': {
     cover: {
-      src: 'assets/cases/02_pn-lecture/pn_lecture_v1.3.png',
-      alt: 'PN 접합 강의안 슬라이드 6장 — 접합 형성, 평형 페르미 준위, 도핑 차이에 따른 전기장 분포, 내장 전위, 캐리어 밀도',
+      src: 'assets/cases/02_pn-lecture/pn_lecture_v2.0.jpg',
+      alt: 'PN 접합 강의안 슬라이드 3장 — 접합 형성(확산·드리프트), 공핍층 폭 수식 전개, 반도체 전하 캐리어 밀도',
       ratio: '1/1'
     },
     gallery: [],
